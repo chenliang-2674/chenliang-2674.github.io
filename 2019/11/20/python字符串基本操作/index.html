@@ -1,90 +1,85 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="" />
   
-
+  <title>python字符串基本操作</title>
+  <meta name="author" content="John Doe">
+  <meta name="description" content="一 字符串拼接1&amp;gt;&amp;gt;&amp;gt;a=&amp;apos;xyz&amp;apos;+&amp;apos;abc&amp;apos;
+输出：
+1&amp;apos;xyzabc&amp;apos;
+二 字符串复制1&amp;gt;&amp;gt;&amp;gt;a=&amp;apos;xyz&amp;apos;*3    #将字符串打印三次
+输出：
+1‘xyzxyzxyz’
+三 ">
   
-  <title>python字符串基本操作 | Hexo</title>
+  
+  <meta property="og:title" content="python字符串基本操作"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一 字符串拼接1&amp;gt;&amp;gt;&amp;gt;a=&amp;apos;xyz&amp;apos;+&amp;apos;abc&amp;apos; 输出： 1&amp;apos;xyzabc&amp;apos; 二 字符串复制1&amp;gt;&amp;gt;&amp;gt;a=&amp;apos;xyz&amp;apos;*3    #将字符串打印三次 输出： 1‘xyzxyzxyz’ 三 从控制台读取字符串1234&amp;gt;&amp;gt;&amp;gt;myname=input(&amp;quot;请输入名字：">
-<meta property="og:type" content="article">
-<meta property="og:title" content="python字符串基本操作">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;20&#x2F;python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C&#x2F;index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一 字符串拼接1&amp;gt;&amp;gt;&amp;gt;a=&amp;apos;xyz&amp;apos;+&amp;apos;abc&amp;apos; 输出： 1&amp;apos;xyzabc&amp;apos; 二 字符串复制1&amp;gt;&amp;gt;&amp;gt;a=&amp;apos;xyz&amp;apos;*3    #将字符串打印三次 输出： 1‘xyzxyzxyz’ 三 从控制台读取字符串1234&amp;gt;&amp;gt;&amp;gt;myname=input(&amp;quot;请输入名字：">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-20T13:07:25.966Z">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+  <meta property="og:site_name" content="Hexo"/>
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+  <a id="top"></a>
+  <div id="main">
+    <div class="behind">
+      <a href="/" class="back black-color">
+        <svg class="i-close" viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+            <path d="M2 30 L30 2 M30 30 L2 2"></path>
+        </svg>
+      </a>
+      <div class="description">
+        &nbsp;
       </div>
     </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-python字符串基本操作" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/20/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="article-date">
-  <time datetime="2019-11-20T13:08:32.974Z" itemprop="datePublished">2019-11-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+    <div class="main-ctnr">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
   
-    <h1 class="article-title" itemprop="name">
-      python字符串基本操作
+    <h1 class="page-title center">
+        python字符串基本操作
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
+
+    </div>
+    <div class="meta center">
       
-        <h1 id="一-字符串拼接"><a href="#一-字符串拼接" class="headerlink" title="一 字符串拼接"></a>一 字符串拼接</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a=&apos;xyz&apos;+&apos;abc&apos;</span><br></pre></td></tr></table></figure>
+<time datetime="2019-11-20T13:08:32.974Z">
+<svg class="i-calendar" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <path d="M2 6 L2 30 30 30 30 6 Z M2 15 L30 15 M7 3 L7 9 M13 3 L13 9 M19 3 L19 9 M25 3 L25 9"></path>
+  </svg>
+  &nbsp;
+  2019-11-20
+</time>
+
+
+
+
+
+
+
+    </div>
+    <hr>
+    
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一-字符串拼接"><span class="toc-text">一 字符串拼接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二-字符串复制"><span class="toc-text">二 字符串复制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三-从控制台读取字符串"><span class="toc-text">三 从控制台读取字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四-提取字符串"><span class="toc-text">四 提取字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五-字符串替换"><span class="toc-text">五 字符串替换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六-截取一段字符"><span class="toc-text">六 截取一段字符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#七-字符串分割"><span class="toc-text">七 字符串分割</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#八-字符串连接"><span class="toc-text">八 字符串连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#九-查看字符串长度"><span class="toc-text">九 查看字符串长度</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#十-字符串查找，显示位置"><span class="toc-text">十 字符串查找，显示位置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#十一-字符串去除首尾信息"><span class="toc-text">十一 字符串去除首尾信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#十二-字符串大小写转换"><span class="toc-text">十二 字符串大小写转换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-字符串首字母大写"><span class="toc-text">1. 字符串首字母大写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-字符串每个单词首字母大写"><span class="toc-text">2. 字符串每个单词首字母大写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-字符串所有字符大写"><span class="toc-text">3. 字符串所有字符大写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-字符串所有字符小写"><span class="toc-text">4. 字符串所有字符小写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-字符串大写变小写，小写变大写"><span class="toc-text">5. 字符串大写变小写，小写变大写</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#十三-字符串格式化"><span class="toc-text">十三 字符串格式化</span></a></li></ol>
+    
+    <div class="picture-container">
+      
+    </div>
+    <h1 id="一-字符串拼接"><a href="#一-字符串拼接" class="headerlink" title="一 字符串拼接"></a>一 字符串拼接</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a=&apos;xyz&apos;+&apos;abc&apos;</span><br></pre></td></tr></table></figure>
 <p>输出：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;xyzabc&apos;</span><br></pre></td></tr></table></figure>
 <h1 id="二-字符串复制"><a href="#二-字符串复制" class="headerlink" title="二 字符串复制"></a>二 字符串复制</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a=&apos;xyz&apos;*3    #将字符串打印三次</span><br></pre></td></tr></table></figure>
@@ -109,107 +104,66 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=&quot;&#123;:.2f&#125;&quot;  #.2f表示保留两位小数</span><br><span class="line">&gt;&gt;&gt; a.format(3.1415926)    #将数字保留两位小数</span><br><span class="line">&apos;3.14&apos;</span><br></pre></td></tr></table></figure>
 
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" data-id="ck37az4ga0000ysv6352r8c6v" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2019/11/20/hello/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">hello</div>
-    </a>
-  
-</nav>
 
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
-    </div>
+  </article>
+  </script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <div class="busuanzi center">
+    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
   </div>
 
 
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/11/20/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">python字符串基本操作</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/20/hello/">hello</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/20/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+
+
+
     </div>
   </div>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <svg class="i-caret-right" viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+            <path d="M10 30 L26 16 10 2 Z"></path>
+        </svg>
+        </a>
+        © XXX 20xx-2017
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/gaoryrt/hexo-theme-pln" target="_blank" rel="noopener">
+        Theme Pln
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.min.js"></script>
+<script type="text/javascript">
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+// disqus scripts
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
 
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
 
-<script src="/js/script.js"></script>
+</script>
 
-
-
-  </div>
 </body>
 </html>
