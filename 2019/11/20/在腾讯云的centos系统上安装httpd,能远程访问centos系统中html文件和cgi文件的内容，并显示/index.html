@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>在腾讯云的centos系统上安装httpd,能远程访问centos系统中html文件和cgi文件的内容，并显示 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="参考博客：https:&#x2F;&#x2F;blog.csdn.net&#x2F;gnefniu&#x2F;article&#x2F;details&#x2F;42432657 Apache  httpd简介Apache  httpd又可以简称为httpd或者Apache，它是Internet使用最广泛的web服务器之一。     使用Apache提供的web服务器是由守护进程 httpd，通过http协议进行文本传输，默认使用80端口的明文传输方式，后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在腾讯云的centos系统上安装httpd,能远程访问centos系统中html文件和cgi文件的内容，并显示">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;20&#x2F;%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9A%84centos%E7%B3%BB%E7%BB%9F%E4%B8%8A%E5%AE%89%E8%A3%85httpd,%E8%83%BD%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AEcentos%E7%B3%BB%E7%BB%9F%E4%B8%ADhtml%E6%96%87%E4%BB%B6%E5%92%8Ccgi%E6%96%87%E4%BB%B6%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E5%B9%B6%E6%98%BE%E7%A4%BA&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="参考博客：https:&#x2F;&#x2F;blog.csdn.net&#x2F;gnefniu&#x2F;article&#x2F;details&#x2F;42432657 Apache  httpd简介Apache  httpd又可以简称为httpd或者Apache，它是Internet使用最广泛的web服务器之一。     使用Apache提供的web服务器是由守护进程 httpd，通过http协议进行文本传输，默认使用80端口的明文传输方式，后">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191014233837395.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019101423421794.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191014234819332.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191015000223511.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191015001751563.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191015001853158.png">
+<meta property="og:updated_time" content="2019-11-20T13:57:41.767Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191014233837395.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-在腾讯云的centos系统上安装httpd,能远程访问centos系统中html文件和cgi文件的内容，并显示" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9A%84centos%E7%B3%BB%E7%BB%9F%E4%B8%8A%E5%AE%89%E8%A3%85httpd,%E8%83%BD%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AEcentos%E7%B3%BB%E7%BB%9F%E4%B8%ADhtml%E6%96%87%E4%BB%B6%E5%92%8Ccgi%E6%96%87%E4%BB%B6%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E5%B9%B6%E6%98%BE%E7%A4%BA/" class="article-date">
+  <time datetime="2019-11-20T13:57:43.515Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在腾讯云的centos系统上安装httpd,能远程访问centos系统中html文件和cgi文件的内容，并显示
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考博客：<br><a href="https://blog.csdn.net/gnefniu/article/details/42432657" target="_blank" rel="noopener">https://blog.csdn.net/gnefniu/article/details/42432657</a></p>
+<h1 id="Apache-httpd简介"><a href="#Apache-httpd简介" class="headerlink" title="Apache  httpd简介"></a>Apache  httpd简介</h1><p>Apache  httpd又可以简称为httpd或者Apache，它是Internet使用最广泛的web服务器之一。<br>     使用Apache提供的web服务器是由守护进程 httpd，通过http协议进行文本传输，默认使用80端口的明文传输方式，后来，为了保证数据的安全和可靠性，又添加了443的加密传输的方式（https）。<br>     Apache提供的服务器又被称为：补丁服务器，原因很简单，它是一款高度模块化的软件，想要给它添加相应的功能只需添加相应的模块，让其Apache主程序加载相应的模块，不需要的模块也可以不用加载，保证了Apache的简洁，轻便，高效性，当出现大量访问一个服务器是可以使用多种复用模式，保证了服务器能快速回应客户端的请求，如MPM，端口复用技术。</p>
+<h1 id="Apache-httpd安装"><a href="#Apache-httpd安装" class="headerlink" title="Apache httpd安装"></a>Apache httpd安装</h1><p>登录centos系统，开始安装：<br>输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install httpd</span><br></pre></td></tr></table></figure>
+<p>中间会跳出选项，输入y即可（y表示同意）<br>安装完成会在/var/目录中生成一个文件夹，即”www”，打开这个文件，会发现里面有两个文件，为html和cgi-bin，其中html文件夹用来存储html文件，cgi-bin用来存储需要编写的cgi文件。</p>
+<h1 id="启动服务器，设置端口，远程访问"><a href="#启动服务器，设置端口，远程访问" class="headerlink" title="启动服务器，设置端口，远程访问"></a>启动服务器，设置端口，远程访问</h1><p>安装完成，启动服务器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start httpd.service        //启动服务器</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status httpd.service      //查看服务器启动后的状态</span><br></pre></td></tr></table></figure>
+<p>在腾讯云的云服务器安全组中将80端口设置开启。<br><img src="https://img-blog.csdnimg.cn/20191014233837395.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>接着打开浏览器，输入<a href="http://122.51.2.**，即腾讯云的公网IP地址。" target="_blank" rel="noopener">http://122.51.2.**，即腾讯云的公网IP地址。</a><br>出现如下界面，表明成功安装，并能成功访问。<br><img src="https://img-blog.csdnimg.cn/2019101423421794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="编写cgi文件，远程访问"><a href="#编写cgi文件，远程访问" class="headerlink" title="编写cgi文件，远程访问"></a>编写cgi文件，远程访问</h1><p>可以在腾讯云的centos系统中操作，编写程序。也可以使用putty软件远程操作，还可以使用”MobaXterm”，我这里使用MobaXterm远程操作。关于这个软件的使用方法可网上查找教程。<br>使用教程：<a href="https://jingyan.baidu.com/article/6dad5075223635a123e36ec9.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/6dad5075223635a123e36ec9.html</a><br>软件下载：链接：<a href="https://pan.baidu.com/s/1TYlCy2t1DGaRh7ZFvacRsA" target="_blank" rel="noopener">https://pan.baidu.com/s/1TYlCy2t1DGaRh7ZFvacRsA</a><br>提取码：v57n<br>首先打开软件：<br><img src="https://img-blog.csdnimg.cn/20191014234819332.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>进入/var/www/cgi-bin/路径，创建一个.c文件,进入编辑c文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /var/www/cgi-bin/</span><br><span class="line">touch helloworld.c</span><br><span class="line">vim helloworld.c</span><br></pre></td></tr></table></figure>
+<p>编写的c程序如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">        printf(&quot;Content-Type:text/html\n\n&quot;);   ////要将以下的输出语句输出在页面上就必须加此行代码，\n\n为换行，两个换行即中间要空一行，这是规范</span><br><span class="line">        printf(&quot;helloworld!你好\n&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编写好后按esc，输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
+<p>退出。<br>使用gcc编译c程序，编译为helloworld.cgi文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc helloworld.c -o helloworld.cgi</span><br></pre></td></tr></table></figure>
+<p>现在便可打开浏览器，输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://***/cgi-bin/helloworld.cgi</span><br></pre></td></tr></table></figure>
+<p>***为腾讯云的公网IP地址。<br><img src="https://img-blog.csdnimg.cn/20191015000223511.png" alt="在这里插入图片描述"></p>
+<h1 id="编写html文件，能访问cgi文件的内容"><a href="#编写html文件，能访问cgi文件的内容" class="headerlink" title="编写html文件，能访问cgi文件的内容"></a>编写html文件，能访问cgi文件的内容</h1><p>进入/var/www/html/路径创建test.html文件，并编写程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /var/www/html/</span><br><span class="line">touch test1.html</span><br><span class="line">vim test1.html</span><br></pre></td></tr></table></figure>
+<p>编写的程序如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">     &lt;head&gt;&lt;title&gt;测试&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">     &lt;body&gt;</span><br><span class="line">       &lt;font size=30 text=隶书&gt;hello！&lt;/font&gt;        //显示&quot;hello!&quot;</span><br><span class="line">       &lt;form action=&quot;/cgi-bin/helloworld.cgi&quot; method =&quot;post&quot;    &gt;        //能访问cgi文件</span><br><span class="line">       &lt;input type=&quot;submit&quot; value=&quot;提交&quot; /&gt;       //访问方式为点击提交后访问</span><br><span class="line">       &lt;/form&gt;</span><br><span class="line">     &lt;/body&gt;</span><br><span class="line">   &lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>编写好后按esc，输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
+<p>退出。<br>现在打开浏览器，输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://***/test1.html                         //***为腾讯云的公网IP地址。</span><br></pre></td></tr></table></figure>
+<p>访问界面如下：<br><img src="https://img-blog.csdnimg.cn/20191015001751563.png" alt="在这里插入图片描述"><br>点击提交后便可访问cgi文件。<br><img src="https://img-blog.csdnimg.cn/20191015001853158.png" alt="在这里插入图片描述"><br>编写.c程序和.html文件均可在桌面编写，编写好后通过刚刚使用的MobaXterm软件上传：<br>先进入你想存放程序的路径，将程序文件直接拖进软件左边的窗口即可上传。下载也可以直接将文件拖到桌面上。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9A%84centos%E7%B3%BB%E7%BB%9F%E4%B8%8A%E5%AE%89%E8%A3%85httpd,%E8%83%BD%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AEcentos%E7%B3%BB%E7%BB%9F%E4%B8%ADhtml%E6%96%87%E4%BB%B6%E5%92%8Ccgi%E6%96%87%E4%BB%B6%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E5%B9%B6%E6%98%BE%E7%A4%BA/" data-id="ck37d40sd000rawv64oei57m3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/20/%E9%87%87%E7%94%A8python%E5%AE%9E%E7%8E%B0%E8%BE%93%E5%87%BA%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          采用python实现输出九九乘法表的三种方式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/20/%E5%9C%A8web%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E8%BF%90%E8%A1%8Chtml%E6%96%87%E4%BB%B6%EF%BC%8C%E5%86%8D%E8%B0%83%E7%94%A8cgi%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">在web服务器上运行html文件，再调用cgi打开txt文件</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8TCC%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1/">使用TCC自己编译自己</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/Notepad++%E7%AE%80%E4%BB%8B/">Notepad++简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E5%B0%8F%E5%B0%8F%E8%BE%93%E5%85%A5%E6%B3%95%E7%AE%80%E4%BB%8B/">小小输入法简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8tcc%E8%AF%BB%E5%86%99%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6/">使用tcc读写文本文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/typora%E5%8F%8Amarkdown%E7%AE%80%E4%BB%8B/">typora及markdown简介</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

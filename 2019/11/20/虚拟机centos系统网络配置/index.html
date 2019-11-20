@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>虚拟机centos系统网络配置 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前提条件在电脑中安装好虚拟机，我安装的版本为：CentOS-7-x86_64-DVD-1810 配置虚拟机网络注意：虚拟机和主机ip地址要在同一个网段。打开虚拟机，在虚拟机中点左上角选择”虚拟机”，点击”设置”，点击网络适配器2（因为之前网络适配器，后面由于不会设置，导致网络设置混乱，无法连接，所以新建了一个网络适配器），选择NAT模式，如下：更改后点击确定。接着点击左上角”编辑”，选择”虚拟网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="虚拟机centos系统网络配置">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;20&#x2F;%E8%99%9A%E6%8B%9F%E6%9C%BAcentos%E7%B3%BB%E7%BB%9F%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前提条件在电脑中安装好虚拟机，我安装的版本为：CentOS-7-x86_64-DVD-1810 配置虚拟机网络注意：虚拟机和主机ip地址要在同一个网段。打开虚拟机，在虚拟机中点左上角选择”虚拟机”，点击”设置”，点击网络适配器2（因为之前网络适配器，后面由于不会设置，导致网络设置混乱，无法连接，所以新建了一个网络适配器），选择NAT模式，如下：更改后点击确定。接着点击左上角”编辑”，选择”虚拟网络">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191110231510629.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191110233712806.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191111221843376.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019111122201994.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191111215200441.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191110234447928.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191110234622168.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191110234429825.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019111023241030.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191110235720693.png">
+<meta property="og:updated_time" content="2019-11-20T13:53:26.180Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191110231510629.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-虚拟机centos系统网络配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/%E8%99%9A%E6%8B%9F%E6%9C%BAcentos%E7%B3%BB%E7%BB%9F%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time datetime="2019-11-20T13:53:27.596Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      虚拟机centos系统网络配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h1><p>在电脑中安装好虚拟机，我安装的版本为：CentOS-7-x86_64-DVD-1810</p>
+<h1 id="配置虚拟机网络"><a href="#配置虚拟机网络" class="headerlink" title="配置虚拟机网络"></a>配置虚拟机网络</h1><p>注意：虚拟机和主机ip地址要在同一个网段。<br>打开虚拟机，在虚拟机中点左上角选择”虚拟机”，点击”设置”，点击网络适配器2（因为之前网络适配器，后面由于不会设置，导致网络设置混乱，无法连接，所以新建了一个网络适配器），选择NAT模式，如下：<br><img src="https://img-blog.csdnimg.cn/20191110231510629.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>更改后点击确定。<br>接着点击左上角”编辑”，选择”虚拟网络编辑器”，选择VMnet8（即NAT模式），如下：<br><img src="https://img-blog.csdnimg.cn/20191110233712806.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>点击NAT设置，设置网关IP一般为默认：<br><img src="https://img-blog.csdnimg.cn/20191111221843376.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>接着点击DHCP设置，设置起始IP地址和终止IP地址，（如果主机的IP地址不在这个起始IP地址和终止IP地址区间内则无法连接）：<br><img src="https://img-blog.csdnimg.cn/2019111122201994.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>设置好后点击确定。<br>重启网络：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service network restart</span><br></pre></td></tr></table></figure>
+
+<p>接着在虚拟机中，输入ifconfig查看ip地址及网卡信息：<br><img src="https://img-blog.csdnimg.cn/20191111215200441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="配置主机IP"><a href="#配置主机IP" class="headerlink" title="配置主机IP"></a>配置主机IP</h1><p>接着在电脑主机中选择VMnet8，如下：<br><img src="https://img-blog.csdnimg.cn/20191110234447928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>注意：由于是新建的网络适配器，无法像普通的配置虚拟机网络那样进入：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></table></figure>
+<p>修改地址信息，因为找不到需要配置的ens37文件所在地址，但是虽然没有修改，在修改完主机VMnet8的IP地址等后，linux仍然能够ping通主机，能够上网。（可能是之前配置过ens33的原因）需要配置的可参考其他配置网络的博客：<br><a href="https://blog.csdn.net/wujiele/article/details/92803655" target="_blank" rel="noopener">https://blog.csdn.net/wujiele/article/details/92803655</a></p>
+<p>双击进入，点击Ipv4，再点击属性：<br><img src="https://img-blog.csdnimg.cn/20191110234622168.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>设置IP地址如下（IP地址和虚拟机的IP地址前三段设置一样，最后一段设置不一样，默认网关前三段设置和IP地址一样，最后一位一般为1）：<br><img src="https://img-blog.csdnimg.cn/20191110234429825.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>设置好后，点击确定。<br>注意：需要将主机和linux系统的的防火墙关闭。<br>关闭linux防火墙：</p>
+<ul>
+<li>1:查看防火状态<br>systemctl status firewalld<br>service  iptables status</li>
+<li>2:暂时关闭防火墙<br>systemctl stop firewalld<br>service  iptables stop</li>
+<li>3:永久关闭防火墙<br>systemctl disable firewalld<br>chkconfig iptables off</li>
+<li>4:重启防火墙<br>systemctl enable firewalld<br>service iptables restart  </li>
+</ul>
+<p>到这就设置完成。接着<br>ping ip地址：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping 192.168.14.3</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/2019111023241030.png" alt="在这里插入图片描述"><br>ping baidu，看是否能上网：<br><img src="https://img-blog.csdnimg.cn/20191110235720693.png" alt="在这里插入图片描述"><br>成功。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/%E8%99%9A%E6%8B%9F%E6%9C%BAcentos%E7%B3%BB%E7%BB%9F%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" data-id="ck37d40t20011awv69nktht88" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/20/linux%E4%B8%AD%E4%BD%BF%E7%94%A8gnuplot%E7%94%BBsinx%E7%9A%84%E5%9B%BE%E5%83%8F(c%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          linux中使用gnuplot画sinx的图像(c语言编程)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/20/html%E9%93%BE%E6%8E%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E4%B8%AAhtml(%E7%94%BBsinx%E7%9A%84%E5%9B%BE%E5%83%8F)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">html链接到另一个html(画sinx的图像)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8TCC%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1/">使用TCC自己编译自己</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/Notepad++%E7%AE%80%E4%BB%8B/">Notepad++简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E5%B0%8F%E5%B0%8F%E8%BE%93%E5%85%A5%E6%B3%95%E7%AE%80%E4%BB%8B/">小小输入法简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8tcc%E8%AF%BB%E5%86%99%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6/">使用tcc读写文本文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/typora%E5%8F%8Amarkdown%E7%AE%80%E4%BB%8B/">typora及markdown简介</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;2&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-C语言实现DFT，画出信号幅度谱" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0DFT%EF%BC%8C%E7%94%BB%E5%87%BA%E4%BF%A1%E5%8F%B7%E5%B9%85%E5%BA%A6%E8%B0%B1/" class="article-date">
+  <time datetime="2019-11-20T14:02:20.145Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0DFT%EF%BC%8C%E7%94%BB%E5%87%BA%E4%BF%A1%E5%8F%B7%E5%B9%85%E5%BA%A6%E8%B0%B1/">C语言实现DFT，画出信号幅度谱</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="DFT简介"><a href="#DFT简介" class="headerlink" title="DFT简介"></a>DFT简介</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>离散傅里叶变换（Discrete Fourier Transform，缩写为DFT），是傅里叶变换在时域和频域上都呈离散的形式，将信号的时域采样变换为其DTFT的频域采样。在形式上，变换两端（时域和频域上）的序列是有限长的，而实际上这两组序列都应当被认为是离散周期信号的主值序列。即使对有限长的离散信号作DFT，也应当将其看作其周期延拓的变换。其实质是有限长序列傅里叶变换的有限点离散采样，从而实现了频域离散化，使数字信号处理可以在频域采用数字运算的方法进行，这样就大大增加了数字信号处理的灵活性。</p>
+<h2 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h2><p>设x(n)是一个长度为M的有限长序列，则定义x(n)的N点离散傅里叶变换为：<br>$$<br>            X(k) = DFT[x(n)]=\sum_{n=0}^{N-1}x(n)W_N^{kn},k=0,1…,N-1<br>$$<br>其中：$W_N^{kn}$为旋转因子，$W_N=e^{-j\frac{2\Pi}{N}}$ N称为DFT变换区间长度，N$\ge$M<br>利用欧拉公式：<br>$$<br>                 e^{j\theta}=cos\theta+jsin\theta<br>$$<br>得到计算式：<br>$$<br>X(k)=\sum_{n=0}^{N-1}x(n)cos(\frac{2\Pi}{N}kn)-jx(n)sin(\frac{2\Pi}{N}kn),k=0,1…,N-1<br>$$</p>
+<p>幅值计算：<br>$$<br>                asin(x)+bcos(x)=\sqrt {a^2+b^2}sin(x+arctan\frac ab)<br>$$</p>
+<h1 id="仿真"><a href="#仿真" class="headerlink" title="仿真"></a>仿真</h1><p>此次主要实现用c语言编写dft，画出如下信号的幅度谱：<br> f=0.6<em>sin(2</em>pi<em>500</em>n)+0.6<em>sin(2</em>pi<em>50</em>n)<br> 信号为频率分别为500Hz和50Hz，幅度为0.6的正弦信号相加。<br>编写dft程序，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include&lt;math.h&gt;</span><br><span class="line"></span><br><span class="line">#define pi 3.1415926535</span><br><span class="line"></span><br><span class="line">int N;</span><br><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">    double real,imag;</span><br><span class="line">&#125; complex;//复数结构体，定义实部，虚部</span><br><span class="line"></span><br><span class="line">complex dft_out[9000];//用于存储dft计算结果</span><br><span class="line">complex dft_mid[9000];//用于存储实部和虚部计算的值</span><br><span class="line">double Amplitude[9000];//幅值</span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    N = atoi(argv[1]);  //命令行参数argv[1]为输入的N值，可以通过输入，控制N的值</span><br><span class="line">	int n,k;</span><br><span class="line">    double f;</span><br><span class="line">    for(k=0; k&lt;N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(n=0; n&lt;N; n++)</span><br><span class="line">        &#123;</span><br><span class="line">            f=0.6*sin(2*pi*500*n)+0.6*sin(2*pi*50*n);//输入函数</span><br><span class="line">            dft_mid[n].real=f*cos(2*pi*n*k/N);//实部</span><br><span class="line">            dft_mid[n].imag=f*(-j)*sin(2*pi*n*k/N);//虚部</span><br><span class="line">            dft_out[k].real+=dft_mid[n].real;//对每一个点的实部求和</span><br><span class="line">            dft_out[k].imag+=dft_mid[n].imag;//对每一个点的虚部求和</span><br><span class="line">        &#125;</span><br><span class="line">        Amplitude[k]=sqrt(dft_out[k].real*dft_out[k].real+dft_out[k].imag*dft_out[k].imag);//计算幅值</span><br><span class="line">        printf(&quot;%d  %f\n&quot;,k,Amplitude[k]);//打印计算结果</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用tcc编译，计算64点dft，如图：<br><img src="https://img-blog.csdnimg.cn/20190816130435632.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>使用gnuplot画出64点的波形图：<br><img src="https://img-blog.csdnimg.cn/20190816131636665.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190816131713276.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>2000点dft如图：<br><img src="https://img-blog.csdnimg.cn/20190816130723128.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>使用gnuplot画出2000点的波形图：<br><img src="https://img-blog.csdnimg.cn/20190816132113716.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190816132124802.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0DFT%EF%BC%8C%E7%94%BB%E5%87%BA%E4%BF%A1%E5%8F%B7%E5%B9%85%E5%BA%A6%E8%B0%B1/" data-id="ck37d40q30000awv6b8hj39lx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-C语言实现FFT" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0FFT/" class="article-date">
+  <time datetime="2019-11-20T14:02:07.443Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0FFT/">C语言实现FFT</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="FFT简介"><a href="#FFT简介" class="headerlink" title="FFT简介"></a>FFT简介</h1><p>快速傅里叶变换 (fast Fourier transform), 即利用计算机计算离散傅里叶变换（DFT)的高效、快速计算方法的统称，简称FFT。快速傅里叶变换是1965年由J.W.库利和T.W.图基提出的。采用这种算法能使计算机计算离散傅里叶变换所需要的乘法次数大为减少，特别是被变换的抽样点数N越多，FFT算法计算量的节省就越显著。<br>$$<br>            X(k) = DFT[x(n)]=\sum_{n=0}^{N-1}x(n)W_N^{kn},k=0,1…,N-1<br>$$<br>如上式所示，对于某一个k值，直接计算X（k）的一个值需要N次复数乘法和（N-1）次复数加法。因此计算X（k）的所有N个值，共需N^2次复数乘法和N(N-1)次复数加法运算。当N很大时，计算量就会很大。<br>对x(n)进行变换：<br>$$<br> X(k)=\sum_{n=偶数}x(n)W_N^{kn}+\sum_{n=奇数}x(n)W_N^{kn}\<br>       =\sum_{r=0}^{N/2-1}x(2r)W_N^{2kr}+\sum_{r=0}x(2r+1)W_N^{k(2r+1)}\<br>       =\sum_{r=0}^{N/2-1}x_1(r)W_N^{2kr}+W_{N}^{k}\sum_{r=0}^{N/2-1}x_2(r)W_N^{2kr}\<br>$$<br>因为<br>$$<br> W_N^{2kr}=e^{-j\frac{2\Pi}{N}2kr}=e^{-j\frac{2\Pi}{N/2}kr}=W_{N/2}^{kr}<br>$$<br>所以<br>$$<br>X(k)=\sum_{r=0}^{N/2-1}x_1(r)W_{N/2}^{kr}+W_{N}^{k}\sum_{r=0}^{N/2-1}x_2(r)W_{N/2}^{kr}\<br>=X_1(k)+W_{N}^{k}X_2(k) ,k=0,1,2,…,N-1<br>$$<br>又因为<br>$$<br>W_{N}^{k+N/2}=-W_{N}^{k}<br>$$<br>所以<br>$$<br>X(k)=X_1(k)+W_{N}^{k}X_2(k) ,k=0,1,2,…,N-1<br>$$<br>$$<br>X(k+N/2)=X_1(k)-W_{N}^{k}X_2(k) ,k=0,1,2,…,N-1<br>$$<br>通过蝶形运算，进行一次分解，计算1个N点DFT需要计算两个N/2点DFT和N/2个蝶形运算。而计算一个N/2点DFT需要$(N/2)^2$次复数乘法和N/2(N/2-1)次复数加法。所以计算N点DFT时，总的复数乘法次数约为$N^2/2$，复数加法次数约为$N^2/2$由此可见，仅仅经过一次分解，就使运算量减少近一半。<br>经过M次分解，最后将N点DFT分解成N个1点DFT和M级蝶形运算，大大提高了运算效率。<br>一个完整的8点DIT-FFT运算流程图如下图所示：<br><img src="https://img-blog.csdnimg.cn/20190824105055908.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="C语言实现"><a href="#C语言实现" class="headerlink" title="C语言实现"></a>C语言实现</h1><p>使用徐士良老师的FFT的C语言算法程序（kfft）计算出500Hz和50Hz的两个正弦信号相加后的幅度谱，并使用gnuplot画出幅度谱。<br>输入信号为：0.6*sin(2*PI*500*i)+0.6*sin(2*PI*50*i)<br>程序代码如下：<br>fft程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#include &lt;E:\tcc\daima\fft\kfft.c&gt;</span><br><span class="line"></span><br><span class="line">#define PI 3.1415926535 //定义宏变量PI</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123; </span><br><span class="line">	int i,j;</span><br><span class="line">    double pr[64],pi[64],fr[64],fi[64],t[64];//pr表示采样数据的实部，pi表示采样数据的虚部，fr表示离散傅里叶变换结果的实部，fi表示离散傅里叶变换结果的虚部。</span><br><span class="line">    for (i=0; i&lt;=63; i++)  //生成输入信号</span><br><span class="line">    &#123; </span><br><span class="line">		pr[i]=0.6*sin(2*PI*500*i)+0.6*sin(2*PI*50*i); pi[i]=0.0; //依次将值赋值给pr，pi赋值为0</span><br><span class="line">	&#125;</span><br><span class="line">    kfft(pr,pi,64,6,fr,fi,0,1);  //调用FFT函数</span><br><span class="line">	for (i=0; i&lt;64; i++)</span><br><span class="line">    &#123; </span><br><span class="line">        printf(&quot;%d\t%lf\n&quot;,i,pr[i]); //输出结果</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>徐士良老师编写的kfft源程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;math.h&quot;</span><br><span class="line">  void kfft(pr,pi,n,k,fr,fi,l,il)</span><br><span class="line">  int n,k,l,il;</span><br><span class="line">  double pr[],pi[],fr[],fi[];</span><br><span class="line">  &#123; int it,m,is,i,j,nv,l0;</span><br><span class="line">    double p,q,s,vr,vi,poddr,poddi;</span><br><span class="line">    for (it=0; it&lt;=n-1; it++)</span><br><span class="line">      &#123; m=it; is=0;</span><br><span class="line">        for (i=0; i&lt;=k-1; i++)</span><br><span class="line">          &#123; j=m/2; is=2*is+(m-2*j); m=j;&#125;</span><br><span class="line">        fr[it]=pr[is]; fi[it]=pi[is];</span><br><span class="line">      &#125;</span><br><span class="line">    pr[0]=1.0; pi[0]=0.0;</span><br><span class="line">    p=6.283185306/(1.0*n);</span><br><span class="line">    pr[1]=cos(p); pi[1]=-sin(p);</span><br><span class="line">    if (l!=0) pi[1]=-pi[1];</span><br><span class="line">    for (i=2; i&lt;=n-1; i++)</span><br><span class="line">      &#123; p=pr[i-1]*pr[1]; q=pi[i-1]*pi[1];</span><br><span class="line">        s=(pr[i-1]+pi[i-1])*(pr[1]+pi[1]);</span><br><span class="line">        pr[i]=p-q; pi[i]=s-p-q;</span><br><span class="line">      &#125;</span><br><span class="line">    for (it=0; it&lt;=n-2; it=it+2)</span><br><span class="line">      &#123; vr=fr[it]; vi=fi[it];</span><br><span class="line">        fr[it]=vr+fr[it+1]; fi[it]=vi+fi[it+1];</span><br><span class="line">        fr[it+1]=vr-fr[it+1]; fi[it+1]=vi-fi[it+1];</span><br><span class="line">      &#125;</span><br><span class="line">    m=n/2; nv=2;</span><br><span class="line">    for (l0=k-2; l0&gt;=0; l0--)</span><br><span class="line">      &#123; m=m/2; nv=2*nv;</span><br><span class="line">        for (it=0; it&lt;=(m-1)*nv; it=it+nv)</span><br><span class="line">          for (j=0; j&lt;=(nv/2)-1; j++)</span><br><span class="line">            &#123; p=pr[m*j]*fr[it+j+nv/2];</span><br><span class="line">              q=pi[m*j]*fi[it+j+nv/2];</span><br><span class="line">              s=pr[m*j]+pi[m*j];</span><br><span class="line">              s=s*(fr[it+j+nv/2]+fi[it+j+nv/2]);</span><br><span class="line">              poddr=p-q; poddi=s-p-q;</span><br><span class="line">              fr[it+j+nv/2]=fr[it+j]-poddr;</span><br><span class="line">              fi[it+j+nv/2]=fi[it+j]-poddi;</span><br><span class="line">              fr[it+j]=fr[it+j]+poddr;</span><br><span class="line">              fi[it+j]=fi[it+j]+poddi;</span><br><span class="line">            &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    if (l!=0)</span><br><span class="line">      for (i=0; i&lt;=n-1; i++)</span><br><span class="line">        &#123; fr[i]=fr[i]/(1.0*n);</span><br><span class="line">          fi[i]=fi[i]/(1.0*n);</span><br><span class="line">        &#125;</span><br><span class="line">    if (il!=0)</span><br><span class="line">      for (i=0; i&lt;=n-1; i++)</span><br><span class="line">        &#123; pr[i]=sqrt(fr[i]*fr[i]+fi[i]*fi[i]);</span><br><span class="line">          if (fabs(fr[i])&lt;0.000001*fabs(fi[i]))</span><br><span class="line">            &#123; if ((fi[i]*fr[i])&gt;0) pi[i]=90.0;</span><br><span class="line">              else pi[i]=-90.0;</span><br><span class="line">            &#125;</span><br><span class="line">          else</span><br><span class="line">            pi[i]=atan(fi[i]/fr[i])*360.0/6.283185306;</span><br><span class="line">        &#125;</span><br><span class="line">    return;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>使用tcc在命令行中运行，结果如下（抽样点为64）：<br><img src="https://img-blog.csdnimg.cn/20190823231958895.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>使用gnuplot画图：<br><img src="https://img-blog.csdnimg.cn/20190823232217990.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>500Hz和50Hz的两个正弦信号相加后的幅度谱如下·：<br><img src="https://img-blog.csdnimg.cn/2019082323231331.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>使用DFT画出的幅度谱为：<br><img src="https://img-blog.csdnimg.cn/20190824113231588.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>使用DFT画出的幅度谱和使用FFT画出的幅度谱相同。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0FFT/" data-id="ck37d40qc0001awv67h7g250v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-DFT与FFT运算效率的比较" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/DFT%E4%B8%8EFFT%E8%BF%90%E7%AE%97%E6%95%88%E7%8E%87%E7%9A%84%E6%AF%94%E8%BE%83/" class="article-date">
+  <time datetime="2019-11-20T14:01:50.701Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/DFT%E4%B8%8EFFT%E8%BF%90%E7%AE%97%E6%95%88%E7%8E%87%E7%9A%84%E6%AF%94%E8%BE%83/">DFT与FFT运算效率的比较</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一，运算量的比较"><a href="#一，运算量的比较" class="headerlink" title="一，运算量的比较"></a>一，运算量的比较</h1><p>N点DFT共需要N^ 2次复数乘法和N(N-1)次复数加法，当N很大时，计算量很大。<br>N点FFT,$N=2^M$,进行M次分解，构成了从x(n)到X(k)的M级迭代计算，每级由N/2个蝶形运算组成，完成一个蝶形计算需一次乘法和两次复数加法。<br>M级运算总的复数乘次数为：<br>$C_M=N/2<em>M=N/2</em>log_2N$<br>复数加次数为：<br>$C_A=N<em>M=N</em>log_2N$<br>当N远大于1时，FFT的运算量远小于DFT。<br>例如当$N=2^{10}$=1024时<br>$\frac{N^2}{\frac{N}{2}log_2N}=\frac{1048576}{5120}=204.8$<br>这样就使运算效率提高200多倍。</p>
+<h1 id="二，程序运算时间比较"><a href="#二，程序运算时间比较" class="headerlink" title="二，程序运算时间比较"></a>二，程序运算时间比较</h1><p>首先计算进行DFT所需时间，程序如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include&lt;math.h&gt;</span><br><span class="line">#include&lt;time.h&gt;</span><br><span class="line"></span><br><span class="line">#define pi 3.1415926535</span><br><span class="line"></span><br><span class="line">int N;</span><br><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">    double real,imag;</span><br><span class="line">&#125; complex;//复数结构体，定义实部，虚部</span><br><span class="line"></span><br><span class="line">complex dft_out[9000];//用于存储dft计算结果</span><br><span class="line">complex dft_mid[9000];//用于存储实部和虚部计算的值</span><br><span class="line">double Amplitude[9000];//幅值</span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    N = atoi(argv[1]);  //命令行参数argv[1]为输入的N值，可以通过输入，控制N的值</span><br><span class="line">	int n,k;</span><br><span class="line">    double f;</span><br><span class="line">	double time_start,time_end;</span><br><span class="line">    time_start=clock();   //开始计时</span><br><span class="line">    for(k=0; k&lt;N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(n=0; n&lt;N; n++)</span><br><span class="line">        &#123;</span><br><span class="line">            f=0.6*sin(2*pi*500*n)+0.6*sin(2*pi*50*n);//输入函数</span><br><span class="line">            dft_mid[n].real=f*cos(2*pi*n*k/N);//实部</span><br><span class="line">            dft_mid[n].imag=f*sin(2*pi*n*k/N);//虚部</span><br><span class="line">            dft_out[k].real+=dft_mid[n].real;//对每一个点的实部求和</span><br><span class="line">            dft_out[k].imag+=dft_mid[n].imag;//对每一个点的虚部求和</span><br><span class="line">        &#125;</span><br><span class="line">        Amplitude[k]=sqrt(dft_out[k].real*dft_out[k].real+dft_out[k].imag*dft_out[k].imag);//计算幅值</span><br><span class="line">        printf(&quot;%d  %f\n&quot;,k,Amplitude[k]);//打印计算结果</span><br><span class="line">    &#125;</span><br><span class="line">	time_end=clock();    //计时结束</span><br><span class="line">	printf(&quot;进行DFT运算时间为：%f ms\n&quot;,time_end-time_start);  //输出所需时间</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="https://img-blog.csdnimg.cn/20190824112556250.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>FFT计算时间，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#include &lt;E:\tcc\daima\fft\kfft.c&gt;</span><br><span class="line">#include&lt;time.h&gt;</span><br><span class="line"></span><br><span class="line">#define PI 3.1415926535 //定义宏变量PI</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123; </span><br><span class="line">	int i,j;</span><br><span class="line">	double time_start,time_end;//定义计时的变量</span><br><span class="line">    double pr[64],pi[64],fr[64],fi[64],t[64];//pr表示采样数据的实部，pi表示采样数据的虚部，fr表示离散傅里叶变换结果的实部，fi表示离散傅里叶变换结果的虚部。</span><br><span class="line">	for (i=0; i&lt;=63; i++)  //生成输入信号</span><br><span class="line">    &#123; </span><br><span class="line">		pr[i]=0.6*sin(2*PI*500*i)+0.6*sin(2*PI*50*i); pi[i]=0.0; //依次将值赋值给pr，pi赋值为0</span><br><span class="line">	&#125;</span><br><span class="line">    time_start=clock();   //开始计时</span><br><span class="line">    kfft(pr,pi,64,6,fr,fi,0,1);  //调用FFT函数</span><br><span class="line">	time_end=clock();    //计时结束</span><br><span class="line">	for (i=0; i&lt;64; i++)</span><br><span class="line">    &#123; </span><br><span class="line">        printf(&quot;%d\t%lf\n&quot;,i,pr[i]); //输出结果</span><br><span class="line">    &#125;</span><br><span class="line">	printf(&quot;进行FFT运算时间为：%.10f ms\n&quot;,time_end-time_start);  //输出所需时间</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="https://img-blog.csdnimg.cn/20190824112444136.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>由结果可知，进行DFT运算时间远大于进行FFT所需时间，FFT运算效率明显高于DFT。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/DFT%E4%B8%8EFFT%E8%BF%90%E7%AE%97%E6%95%88%E7%8E%87%E7%9A%84%E6%AF%94%E8%BE%83/" data-id="ck37d40qo0005awv66ns3edif" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java学习1-编写简单的HelloWorld并运行" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/Java%E5%AD%A6%E4%B9%A01-%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E7%9A%84HelloWorld%E5%B9%B6%E8%BF%90%E8%A1%8C/" class="article-date">
+  <time datetime="2019-11-20T14:01:22.139Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/Java%E5%AD%A6%E4%B9%A01-%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E7%9A%84HelloWorld%E5%B9%B6%E8%BF%90%E8%A1%8C/">Java学习1-编写简单的HelloWorld并运行</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="配置java编译环境"><a href="#配置java编译环境" class="headerlink" title="配置java编译环境"></a>配置java编译环境</h1><p>编写java 程序之前首先需要安装java的编译环境即JDK，从oracle官网下载JDK,下载链接：<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html</a><br>下载好后，运行.exe文件，直至安装好。<br>安装好后先添加环境变量，将java.exe文件所在路径添加至环境变量中(右键我的电脑选择属性，再选择高级系统设置，进入选择高级里的环境变量，在系统变量中找到path,选中，点编辑，将路径添加进去）：<br><img src="https://img-blog.csdnimg.cn/20190905203617666.png" alt="在这里插入图片描述"><br>添加好环境变量后，打开cmd，输入”javac”，查看是否安装成功：<br><img src="https://img-blog.csdnimg.cn/20190905204614395.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>可以用”java -verison”查看版本：<br><img src="https://img-blog.csdnimg.cn/20190905204637969.jpg" alt="在这里插入图片描述"></p>
+<h1 id="编写简单java程序并运行"><a href="#编写简单java程序并运行" class="headerlink" title="编写简单java程序并运行"></a>编写简单java程序并运行</h1><p>首先新建一个文件夹，在文件夹里新建一个文本文档，命名为”HelloWorld.java”，用Notepad++打开，编写java程序，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class HelloWorld&#123;                         //定义一个公开的类，起名HelloWorld，其中class后面的类名HelloWorld要与文件名称一样</span><br><span class="line">	public static void main(String[] args)&#123;      //String[] args是一个main方法的形式参数列表</span><br><span class="line">		System.out.println(&quot;Hello World!&quot;);      //向控制台输出一段消息</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>写好代码后保存，在java程序所在路径打开cmd，打开方法为：进入文件所在位置，按住shift键，再在空白位置按鼠标右键，选择在此处打开命令窗口，即可打开cmd。<br>接下来编译运行HelloWorld.java<br><img src="https://img-blog.csdnimg.cn/20190905210202671.jpg" alt="在这里插入图片描述"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/Java%E5%AD%A6%E4%B9%A01-%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E7%9A%84HelloWorld%E5%B9%B6%E8%BF%90%E8%A1%8C/" data-id="ck37d40qj0003awv61gysblg1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-使用MATLAB产生均匀分布的白噪声信号" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/%E4%BD%BF%E7%94%A8MATLAB%E4%BA%A7%E7%94%9F%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83%E7%9A%84%E7%99%BD%E5%99%AA%E5%A3%B0%E4%BF%A1%E5%8F%B7/" class="article-date">
+  <time datetime="2019-11-20T14:01:10.411Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/%E4%BD%BF%E7%94%A8MATLAB%E4%BA%A7%E7%94%9F%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83%E7%9A%84%E7%99%BD%E5%99%AA%E5%A3%B0%E4%BF%A1%E5%8F%B7/">使用MATLAB产生均匀分布的白噪声信号</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文主要使用MATLAB产生一均匀分布的白噪声信号u(n)，画出其波形，并画出其直方图，检验其分布情况。<br>rand函数默认产生的是均值为0.5，幅度在0~1之间均有分布的伪随机数。<br>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">%产生一均匀分布的白噪声信号u(n)，画出其波形，并检验其分布情况</span><br><span class="line">clc</span><br><span class="line">clear</span><br><span class="line">close all</span><br><span class="line">N=50000;          %u(n)的长度</span><br><span class="line">u=rand(1,N);      %调用rand，得到均匀分布的伪随机数u(n)</span><br><span class="line">u_mean=mean(u);   %求u(n)的均值，mean是MATLAB的m文件</span><br><span class="line">power_u=var(u);   %求u(n)的方差</span><br><span class="line">subplot(211)</span><br><span class="line">plot(u(1:100));   %plot用来画连续曲线</span><br><span class="line">grid on;          %给图形加网格</span><br><span class="line">ylabel(&apos;u(n)&apos;)    %Y轴标题为u(n)</span><br><span class="line">subplot(212)</span><br><span class="line">hist(u,50);       %画u(n)的直方图,50是对u(n)取值范围(0~1)所分解的细胞数</span><br><span class="line">grid on;</span><br><span class="line">ylabel(&apos;histogram of u(n)&apos;);</span><br></pre></td></tr></table></figure>
+<p>运行图如下：<br><img src="https://img-blog.csdnimg.cn/20190906214404254.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/%E4%BD%BF%E7%94%A8MATLAB%E4%BA%A7%E7%94%9F%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83%E7%9A%84%E7%99%BD%E5%99%AA%E5%A3%B0%E4%BF%A1%E5%8F%B7/" data-id="ck37d40rt000iawv6evbrdead" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-使用MATLAB计算一幅图像的熵" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/%E4%BD%BF%E7%94%A8MATLAB%E8%AE%A1%E7%AE%97%E4%B8%80%E5%B9%85%E5%9B%BE%E5%83%8F%E7%9A%84%E7%86%B5/" class="article-date">
+  <time datetime="2019-11-20T14:00:56.565Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/%E4%BD%BF%E7%94%A8MATLAB%E8%AE%A1%E7%AE%97%E4%B8%80%E5%B9%85%E5%9B%BE%E5%83%8F%E7%9A%84%E7%86%B5/">使用MATLAB计算一幅图像的熵</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h2><p>熵的计算公式：<br>$$<br>H(x)=-\sum_{i=1}^{n}P(a_i)*logP(a_i)<br>$$<br>其中P(ai)为某一事件发生的概率，式中对数一般取2为底，单位为比特。</p>
+<h2 id="编程实现"><a href="#编程实现" class="headerlink" title="编程实现"></a>编程实现</h2><p>使用MATLAB计算一幅图像的熵，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">clc</span><br><span class="line">clear</span><br><span class="line">close all</span><br><span class="line">%---------------------------------</span><br><span class="line">%求一幅图像的熵值</span><br><span class="line">%---------------------------------</span><br><span class="line">I=imread(&apos;rice.png&apos;);</span><br><span class="line">[C,L]=size(I); %求图像的规格</span><br><span class="line">Img_size=C*L; %图像像素点的总个数</span><br><span class="line">G=256; %图像的灰度级</span><br><span class="line">H_x=0;</span><br><span class="line">nk=zeros(G,1);%产生一个G行1列的全零矩阵</span><br><span class="line">for i=1:C</span><br><span class="line">for j=1:L</span><br><span class="line">Img_level=I(i,j)+1; %获取图像的灰度级</span><br><span class="line">nk(Img_level)=nk(Img_level)+1; %统计每个灰度级像素的点数</span><br><span class="line">end</span><br><span class="line">end</span><br><span class="line">for k=1:G  %循环</span><br><span class="line">Ps(k)=nk(k)/Img_size; %计算每一个像素点的概率</span><br><span class="line">if Ps(k)~=0; %如果像素点的概率不为零</span><br><span class="line">H_x=-Ps(k)*log2(Ps(k))+H_x; %求熵值的公式</span><br><span class="line">end</span><br><span class="line">end</span><br><span class="line">H_x  %显示熵值</span><br></pre></td></tr></table></figure>
+<p>本程序中使用MATLAB自带的图片，所计算的熵为：<br><img src="https://img-blog.csdnimg.cn/20190907115333300.jpg" alt="在这里插入图片描述"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/%E4%BD%BF%E7%94%A8MATLAB%E8%AE%A1%E7%AE%97%E4%B8%80%E5%B9%85%E5%9B%BE%E5%83%8F%E7%9A%84%E7%86%B5/" data-id="ck37d40rv000jawv6fff55ck6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java编写程序，实现从键盘输入字符串并显示" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/java%E7%BC%96%E5%86%99%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%BB%8E%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B9%B6%E6%98%BE%E7%A4%BA/" class="article-date">
+  <time datetime="2019-11-20T14:00:42.017Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/java%E7%BC%96%E5%86%99%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%BB%8E%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B9%B6%E6%98%BE%E7%A4%BA/">java编写程序，实现从键盘输入字符串并显示</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class KeyInput&#123;   //定义一个公开的类，起名KeyInput</span><br><span class="line">	public static void main(String[] args)&#123;   //程序入口</span><br><span class="line">	java.util.Scanner s=new java.util.Scanner(System.in);  //扫描从键盘输入的内容</span><br><span class="line">	System.out.println(&quot;请输入内容:&quot;);</span><br><span class="line">	String userInputContent = s.next();    //等待输入，输入后将输入的内容赋给userInputContent</span><br><span class="line">	System.out.println(&quot;您输入了:&quot;+ userInputContent);  //打印输入的字符串</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h1><p><img src="https://img-blog.csdnimg.cn/20190916221337350.png" alt="在这里插入图片描述"><br>从键盘输入的内容通过扫描器扫描，将内容赋给变量，最后进行打印输出。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/java%E7%BC%96%E5%86%99%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%BB%8E%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B9%B6%E6%98%BE%E7%A4%BA/" data-id="ck37d40rf000cawv6bg53aps7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java实现九九乘法表" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/java%E5%AE%9E%E7%8E%B0%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8/" class="article-date">
+  <time datetime="2019-11-20T14:00:27.569Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/java%E5%AE%9E%E7%8E%B0%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8/">java实现九九乘法表</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>使用java实现乘法表主要采用了两个for循环。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class ChengFa&#123;  //定义一个公开的类，起名KeyInput</span><br><span class="line">	public static void main(String[] args)&#123;  //程序入口</span><br><span class="line">	for (int i=1; i&lt;=9;i++)&#123;         //第一次循环控制行数，行数代表乘法的第一个数</span><br><span class="line">		for (int j=1;j&lt;=i;j++)&#123;      //第二次循环控制乘法的第二个数字</span><br><span class="line">			System.out.print(i + &quot;*&quot; + j + &quot;=&quot; + i*j +&quot; &quot;);  //打印乘法表</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(); //每循环一行后换行</span><br><span class="line">	&#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h1><p><img src="https://img-blog.csdnimg.cn/20190920220816847.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/java%E5%AE%9E%E7%8E%B0%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8/" data-id="ck37d40rb000bawv6hpgwabht" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-使用python编程实现绘制奥运五环图" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/%E4%BD%BF%E7%94%A8python%E7%BC%96%E7%A8%8B%E5%AE%9E%E7%8E%B0%E7%BB%98%E5%88%B6%E5%A5%A5%E8%BF%90%E4%BA%94%E7%8E%AF%E5%9B%BE/" class="article-date">
+  <time datetime="2019-11-20T14:00:14.643Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/%E4%BD%BF%E7%94%A8python%E7%BC%96%E7%A8%8B%E5%AE%9E%E7%8E%B0%E7%BB%98%E5%88%B6%E5%A5%A5%E8%BF%90%E4%BA%94%E7%8E%AF%E5%9B%BE/">使用python编程实现绘制奥运五环图</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h1><p>主要是通过导入turtle包，turtle包是python中很流行的绘制图形的函数库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#绘制五环</span><br><span class="line"></span><br><span class="line">import turtle     #导入turtle模块</span><br><span class="line">turtle.width(10)  #线的宽度</span><br><span class="line">turtle.color(&quot;blue&quot;)  #环的颜色</span><br><span class="line">turtle.circle(50) #环的半径</span><br><span class="line"></span><br><span class="line">turtle.penup()         #把画笔抬起，不画</span><br><span class="line">turtle.goto(120,0)     #笔移动到(120,0)的坐标位置</span><br><span class="line">turtle.pendown()       #开始画</span><br><span class="line">turtle.color(&quot;black&quot;)  #环的颜色</span><br><span class="line">turtle.circle(50) #环的半径</span><br><span class="line"></span><br><span class="line">turtle.penup()         #把画笔抬起，不画</span><br><span class="line">turtle.goto(240,0)     #笔移动到(240,0)的坐标位置</span><br><span class="line">turtle.pendown()       #开始画</span><br><span class="line">turtle.color(&quot;red&quot;)  #环的颜色</span><br><span class="line">turtle.circle(50) #环的半径</span><br><span class="line"></span><br><span class="line">turtle.penup()         #把画笔抬起，不画</span><br><span class="line">turtle.goto(60,-50)     #笔移动到(120,0)的坐标位置</span><br><span class="line">turtle.pendown()       #开始画</span><br><span class="line">turtle.color(&quot;yellow&quot;)  #环的颜色</span><br><span class="line">turtle.circle(50) #环的半径</span><br><span class="line"></span><br><span class="line">turtle.penup()         #把画笔抬起，不画</span><br><span class="line">turtle.goto(180,-50)     #笔移动到(120,0)的坐标位置</span><br><span class="line">turtle.pendown()       #开始画</span><br><span class="line">turtle.color(&quot;green&quot;)  #环的颜色</span><br><span class="line">turtle.circle(50) #环的半径</span><br></pre></td></tr></table></figure>
+<h1 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h1><p><img src="https://img-blog.csdnimg.cn/20190921091657968.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/%E4%BD%BF%E7%94%A8python%E7%BC%96%E7%A8%8B%E5%AE%9E%E7%8E%B0%E7%BB%98%E5%88%B6%E5%A5%A5%E8%BF%90%E4%BA%94%E7%8E%AF%E5%9B%BE/" data-id="ck37d40s2000mawv68qaq1e72" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-[JAVA]采用方法调用求和，n从命令行输入控制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/%5BJAVA%5D%E9%87%87%E7%94%A8%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%B1%82%E5%92%8C%EF%BC%8Cn%E4%BB%8E%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BE%93%E5%85%A5%E6%8E%A7%E5%88%B6/" class="article-date">
+  <time datetime="2019-11-20T13:59:35.129Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/%5BJAVA%5D%E9%87%87%E7%94%A8%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%B1%82%E5%92%8C%EF%BC%8Cn%E4%BB%8E%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BE%93%E5%85%A5%E6%8E%A7%E5%88%B6/">[JAVA]采用方法调用求和，n从命令行输入控制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一-从命令行输入n的值，调用方法求和"><a href="#一-从命令行输入n的值，调用方法求和" class="headerlink" title="一 从命令行输入n的值，调用方法求和"></a>一 从命令行输入n的值，调用方法求和</h1><p>采用从命令行输入n的值，可以随意求1到任意一个数字的和。求和过程采用调用方法来计算。<br>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Sum1&#123;  //定义一个公开的类，起名Sum1</span><br><span class="line">	public static void main(String[] args)&#123;  //程序入口</span><br><span class="line">		java.util.Scanner s=new java.util.Scanner(System.in); //扫描从键盘输入的内容</span><br><span class="line">		System.out.print(&quot;请输入n的值：&quot;);  </span><br><span class="line">		int n=s.nextInt();  //将输入的内容转换成int型，并赋给n</span><br><span class="line">		int retValue = sum(n);  //调用方法</span><br><span class="line">		System.out.print(retValue);  //打印结果</span><br><span class="line">	&#125;</span><br><span class="line">	public static int sum(int n)&#123;  //方法体</span><br><span class="line">		int result = 0;            //result赋初始值</span><br><span class="line">		for (int i=1;i&lt;=n;i++)&#123;    //循环控制求和</span><br><span class="line">			result +=i;            //累加</span><br><span class="line">		&#125;</span><br><span class="line">		return result;             //循环结束后返回计算结果</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="https://img-blog.csdnimg.cn/20191002193213122.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="二-采用方法递归求和"><a href="#二-采用方法递归求和" class="headerlink" title="二 采用方法递归求和"></a>二 采用方法递归求和</h1><p>同样采用从命令行输入n的值，只是求和的时候采用方法递归调用。<br>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Sum2&#123;  //定义一个公开的类，起名Sum1</span><br><span class="line">	public static void main(String[] args)&#123;  //程序入口</span><br><span class="line">		java.util.Scanner s=new java.util.Scanner(System.in); //扫描从键盘输入的内容</span><br><span class="line">		System.out.print(&quot;请输入n的值：&quot;);  </span><br><span class="line">		int n=s.nextInt();  //将输入的内容转换成int型，并赋给n</span><br><span class="line">		int retValue = sum(n);  //调用方法</span><br><span class="line">		System.out.print(retValue);  //打印结果</span><br><span class="line">	&#125;</span><br><span class="line">	public static int sum(int n)&#123;  //方法体</span><br><span class="line">		int result = 0;</span><br><span class="line">		if (n == 1)&#123;</span><br><span class="line">			return 1;</span><br><span class="line">		&#125;</span><br><span class="line">		result = n + sum(n-1);      //一直调用方法体sum来求和</span><br><span class="line">		return result;             //循环结束后返回计算结果</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="https://img-blog.csdnimg.cn/20191002194910912.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>递归做为一种算法在程序设计语言中广泛应用.是指函数/过程/子程序在运行过程中直接或间接调用自身而产生的重入现象.递归是计算机科学的一个重要概念,递归的方法是程序设计中有效的方法,采用递归编写程序能使程序变得简洁和清晰.。但是方法的递归调用也很耗费内存。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/[JAVA]%E9%87%87%E7%94%A8%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%B1%82%E5%92%8C%EF%BC%8Cn%E4%BB%8E%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BE%93%E5%85%A5%E6%8E%A7%E5%88%B6/" data-id="ck37d40qy0007awv63hnjbc2a" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8TCC%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1/">使用TCC自己编译自己</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/Notepad++%E7%AE%80%E4%BB%8B/">Notepad++简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E5%B0%8F%E5%B0%8F%E8%BE%93%E5%85%A5%E6%B3%95%E7%AE%80%E4%BB%8B/">小小输入法简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8tcc%E8%AF%BB%E5%86%99%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6/">使用tcc读写文本文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/typora%E5%8F%8Amarkdown%E7%AE%80%E4%BB%8B/">typora及markdown简介</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

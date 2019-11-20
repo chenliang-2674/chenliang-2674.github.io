@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>在虚拟机中安装WinXP系统，并使用ftp下载虚拟机中的文件 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装虚拟机从网上下载Vmware（我下载的是：VMware-workstation-full-15.1.0-13591040.exe），按照网上教程安装即可（https:&#x2F;&#x2F;blog.csdn.net&#x2F;sinat_38297809&#x2F;article&#x2F;details&#x2F;94450297）。安装好的虚拟机界面如下（已安装好WinXP系统）： 在虚拟机中安装WinXP系统下载WinXP的iso光盘文件（我下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在虚拟机中安装WinXP系统，并使用ftp下载虚拟机中的文件">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;20&#x2F;%E5%9C%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E5%AE%89%E8%A3%85WinXP%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%B9%B6%E4%BD%BF%E7%94%A8ftp%E4%B8%8B%E8%BD%BD%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="安装虚拟机从网上下载Vmware（我下载的是：VMware-workstation-full-15.1.0-13591040.exe），按照网上教程安装即可（https:&#x2F;&#x2F;blog.csdn.net&#x2F;sinat_38297809&#x2F;article&#x2F;details&#x2F;94450297）。安装好的虚拟机界面如下（已安装好WinXP系统）： 在虚拟机中安装WinXP系统下载WinXP的iso光盘文件（我下">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20190724124220958.jpg?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20190724130932413.jpg?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20190724130842914.jpg?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20190724131129526.jpg?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20190724132730219.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-11-20T14:03:33.539Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20190724124220958.jpg?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-在虚拟机中安装WinXP系统，并使用ftp下载虚拟机中的文件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/%E5%9C%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E5%AE%89%E8%A3%85WinXP%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%B9%B6%E4%BD%BF%E7%94%A8ftp%E4%B8%8B%E8%BD%BD%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6/" class="article-date">
+  <time datetime="2019-11-20T14:03:34.949Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在虚拟机中安装WinXP系统，并使用ftp下载虚拟机中的文件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装虚拟机"><a href="#安装虚拟机" class="headerlink" title="安装虚拟机"></a>安装虚拟机</h1><p>从网上下载Vmware（我下载的是：VMware-workstation-full-15.1.0-13591040.exe），按照网上教程安装即可（<a href="https://blog.csdn.net/sinat_38297809/article/details/94450297" target="_blank" rel="noopener">https://blog.csdn.net/sinat_38297809/article/details/94450297</a>）。<br>安装好的虚拟机界面如下（已安装好WinXP系统）：<br><img src="https://img-blog.csdnimg.cn/20190724124220958.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="在虚拟机中安装WinXP系统"><a href="#在虚拟机中安装WinXP系统" class="headerlink" title="在虚拟机中安装WinXP系统"></a>在虚拟机中安装WinXP系统</h1><p>下载WinXP的iso光盘文件（我下载的是：zh-hans_windows_xp_professional_with_service_pack_3_x86_cd_vl_x14-74070.iso），下载好后打开虚拟机，创建新的虚拟机，选择刚刚下载的.iso光盘文件,进行安装，具体安装步骤，请查看网上安装教程（<a href="https://jingyan.baidu.com/article/624e745918ac5a34e8ba5ab6.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/624e745918ac5a34e8ba5ab6.html</a>）。<br>安装好后开启虚拟机，进入WinXP系统的界面，如下·：<br><img src="https://img-blog.csdnimg.cn/20190724130932413.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="测试连通性"><a href="#测试连通性" class="headerlink" title="测试连通性"></a>测试连通性</h1><p>在命令行中使用ipconfig查看IP地址，在主机进行ping命令，测试与虚拟机之间是否连通。<br><img src="https://img-blog.csdnimg.cn/20190724130842914.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>查看主机IP地址，从虚拟机ping是否与主机连通。<br><img src="https://img-blog.csdnimg.cn/20190724131129526.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h1><p>测试连通后，从网上下载FTP服务器软件（如FileZilla Server），复制到虚拟机，在虚拟机中装好，打开软件，添加用户，密码等，进行相关设置，具体设置步骤见：<a href="https://www.jb51.net/article/122172.htm" target="_blank" rel="noopener">https://www.jb51.net/article/122172.htm</a>。<br>设置好后，便可在主机中使用ftp客户端下载虚拟机中的文件。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190724132730219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/%E5%9C%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E5%AE%89%E8%A3%85WinXP%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%B9%B6%E4%BD%BF%E7%94%A8ftp%E4%B8%8B%E8%BD%BD%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6/" data-id="ck37d40sn000vawv6fsjaelra" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/20/%E4%BD%BF%E7%94%A8C%E8%AF%AD%E8%A8%80%E4%BA%A7%E7%94%9F%E6%8A%BD%E6%A0%B7%E4%BF%A1%E5%8F%B7%EF%BC%8C%E5%B9%B6%E7%94%A8gnuplot%E7%94%BB%E5%87%BA%E6%B3%A2%E5%BD%A2%E5%9B%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          使用C语言产生抽样信号，并用gnuplot画出波形图
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/20/%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%94%A8GCC%E3%80%81JAVA%E5%92%8CPython%E7%BC%96%E5%86%99hello%20world%E7%AE%80%E5%8D%95%E7%A8%8B%E5%BA%8F%E5%B9%B6%E8%BF%90%E8%A1%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">在linux系统下用GCC、JAVA和Python编写hello world简单程序并运行</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8TCC%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1/">使用TCC自己编译自己</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/Notepad++%E7%AE%80%E4%BB%8B/">Notepad++简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E5%B0%8F%E5%B0%8F%E8%BE%93%E5%85%A5%E6%B3%95%E7%AE%80%E4%BB%8B/">小小输入法简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8tcc%E8%AF%BB%E5%86%99%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6/">使用tcc读写文本文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/typora%E5%8F%8Amarkdown%E7%AE%80%E4%BB%8B/">typora及markdown简介</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

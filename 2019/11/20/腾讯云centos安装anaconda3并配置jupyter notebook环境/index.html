@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>腾讯云centos安装anaconda3并配置jupyter notebook环境 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="准备工作 腾讯云centos系统 配置好网络安装anaconda3从官网下载：  1wget https:&#x2F;&#x2F;repo.continuum.io&#x2F;archive&#x2F;Anaconda3-2019.07-Linux-x86_64.sh 给下载的文件增加执行的权限( u代表用户，x代表执行，u+x即给用户增加执行的权限)： 1chmod u+x Anaconda3-2019.07-Linux-x86_64">
+<meta property="og:type" content="article">
+<meta property="og:title" content="腾讯云centos安装anaconda3并配置jupyter notebook环境">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;20&#x2F;%E8%85%BE%E8%AE%AF%E4%BA%91centos%E5%AE%89%E8%A3%85anaconda3%E5%B9%B6%E9%85%8D%E7%BD%AEjupyter%20notebook%E7%8E%AF%E5%A2%83&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="准备工作 腾讯云centos系统 配置好网络安装anaconda3从官网下载：  1wget https:&#x2F;&#x2F;repo.continuum.io&#x2F;archive&#x2F;Anaconda3-2019.07-Linux-x86_64.sh 给下载的文件增加执行的权限( u代表用户，x代表执行，u+x即给用户增加执行的权限)： 1chmod u+x Anaconda3-2019.07-Linux-x86_64">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019111920280451.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191119203847959.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191119203946318.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191119205831287.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191119210010342.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019111921010378.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191119210133109.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191119210320194.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-11-20T13:51:37.924Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019111920280451.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-腾讯云centos安装anaconda3并配置jupyter notebook环境" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/%E8%85%BE%E8%AE%AF%E4%BA%91centos%E5%AE%89%E8%A3%85anaconda3%E5%B9%B6%E9%85%8D%E7%BD%AEjupyter%20notebook%E7%8E%AF%E5%A2%83/" class="article-date">
+  <time datetime="2019-11-20T13:51:50.169Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      腾讯云centos安装anaconda3并配置jupyter notebook环境
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul>
+<li>腾讯云centos系统</li>
+<li>配置好网络<h1 id="安装anaconda3"><a href="#安装anaconda3" class="headerlink" title="安装anaconda3"></a>安装anaconda3</h1>从官网下载：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://repo.continuum.io/archive/Anaconda3-2019.07-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+<p>给下载的文件增加执行的权限( u代表用户，x代表执行，u+x即给用户增加执行的权限)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u+x Anaconda3-2019.07-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+<p>接着运行脚本，安装anaconda3</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./Anaconda3-2019.07-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+<p>安装过程中一直回车，遇到选择yes或no的地方都选yes，显示如下，表示安装完成。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">For changes to take effect, close and re-open your current shell. &lt;==</span><br><span class="line"></span><br><span class="line">If you<span class="string">'d prefer that conda'</span>s base environment not be activated on startup,</span><br><span class="line">   <span class="built_in">set</span> the auto_activate_base parameter to <span class="literal">false</span>:</span><br><span class="line"></span><br><span class="line">conda config --<span class="built_in">set</span> auto_activate_base <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">Thank you <span class="keyword">for</span> installing Anaconda3!</span><br><span class="line"></span><br><span class="line">===========================================================================</span><br><span class="line"></span><br><span class="line">Anaconda and JetBrains are working together to bring you Anaconda-powered</span><br><span class="line">environments tightly integrated <span class="keyword">in</span> the PyCharm IDE.</span><br><span class="line"></span><br><span class="line">PyCharm <span class="keyword">for</span> Anaconda is available at:</span><br><span class="line">https://www.anaconda.com/pycharm</span><br></pre></td></tr></table></figure>
+<p>要激活Anaconda安装，请使用以下命令将Anaconda安装程序添加的新PATH环境变量加载到当前shell会话中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>验证是否安装好：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda --version</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/2019111920280451.png" alt="在这里插入图片描述"><br>还可以查看anaconda3安装的详细信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda info</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> active environment : base</span><br><span class="line">   active env location : /root/anaconda3</span><br><span class="line">           shell level : 1</span><br><span class="line">      user config file : /root/.condarc</span><br><span class="line">populated config files :</span><br><span class="line">         conda version : 4.7.10</span><br><span class="line">   conda-build version : 3.18.8</span><br><span class="line">        python version : 3.7.3.final.0</span><br><span class="line">      virtual packages :</span><br><span class="line">      base environment : /root/anaconda3  (writable)</span><br><span class="line">          channel URLs : https://repo.anaconda.com/pkgs/main/linux-64</span><br><span class="line">                         https://repo.anaconda.com/pkgs/main/noarch</span><br><span class="line">                         https://repo.anaconda.com/pkgs/r/linux-64</span><br><span class="line">                         https://repo.anaconda.com/pkgs/r/noarch</span><br><span class="line">         package cache : /root/anaconda3/pkgs</span><br><span class="line">                         /root/.conda/pkgs</span><br><span class="line">      envs directories : /root/anaconda3/envs</span><br><span class="line">                         /root/.conda/envs</span><br><span class="line">              platform : linux-64</span><br><span class="line">            user-agent : conda/4.7.10 requests/2.22.0 CPython/3.7.3 Linux/3.10.</span><br><span class="line">               UID:GID : 0:0</span><br><span class="line">            netrc file : None</span><br><span class="line">          offline mode : False</span><br></pre></td></tr></table></figure>
+<h1 id="配置jupyter-notebook"><a href="#配置jupyter-notebook" class="headerlink" title="配置jupyter notebook"></a>配置jupyter notebook</h1><p>生成配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成配置文件jupyter_notebook_config.py</span></span><br><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191119203847959.png" alt="在这里插入图片描述"><br>设置jupyter notebook的登录密码(记住密码，登录的时候会用到)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook password</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191119203946318.png" alt="在这里插入图片描述"><br>接着进入刚刚生成的配置文件jupyter_notebook_config.py</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /root/.jupyter/jupyter_notebook_config.py</span><br></pre></td></tr></table></figure>
+<p>找到如下内容，并进行修改（配置文件比较长）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># '*'代表绑定所有的IP，在文件的第205行</span></span><br><span class="line">c.NotebookApp.ip = <span class="string">'*'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置打开时不启动浏览器（因为没有配置好使用浏览器打开），在文件的268行</span></span><br><span class="line">c.NotebookApp.open_browser = False</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置启动服务时绑定的端口为8888，在文件的第291行</span></span><br><span class="line">c.NotebookApp.port = 8888</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置默认工作目录/root/python_home，如果没有该目录，可以新建，或者自行选择目录，</span></span><br><span class="line"><span class="comment">#在文件的第262行</span></span><br><span class="line">c.NotebookApp.notebook_dir = <span class="string">'/root/python_home'</span></span><br></pre></td></tr></table></figure>
+<p>修改好后保存退出。</p>
+<p>启动jupyter notebook（<code>因为使用的是root用户安装的软件，Jupyter Notebook为了安全起见启动的时候需要加上‘–allow-root’</code>）:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --allow-root</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="注意：jupyter-notebook启动之后就暂时不关闭了，因为打开浏览器登录的时候需要jupyter-notebook后台是运行着的"><a href="#注意：jupyter-notebook启动之后就暂时不关闭了，因为打开浏览器登录的时候需要jupyter-notebook后台是运行着的" class="headerlink" title="注意：jupyter notebook启动之后就暂时不关闭了，因为打开浏览器登录的时候需要jupyter notebook后台是运行着的"></a>注意：jupyter notebook启动之后就暂时不关闭了，因为打开浏览器登录的时候需要jupyter notebook后台是运行着的</h3>到这里就配置完成了。<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1>打开浏览器，输入：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://公网ip:8888</span><br></pre></td></tr></table></figure>
+<p>输入刚刚设置的登录密码：<br><img src="https://img-blog.csdnimg.cn/20191119205831287.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>即可登录。<br><img src="https://img-blog.csdnimg.cn/20191119210010342.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>验证是否能正常编译运行python代码。在右上角点new，选择python3:<br><img src="https://img-blog.csdnimg.cn/2019111921010378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>如下：<br><img src="https://img-blog.csdnimg.cn/20191119210133109.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>接着编写简单的python程序运行（编写好后点运行）：<br><img src="https://img-blog.csdnimg.cn/20191119210320194.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>成功！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/%E8%85%BE%E8%AE%AF%E4%BA%91centos%E5%AE%89%E8%A3%85anaconda3%E5%B9%B6%E9%85%8D%E7%BD%AEjupyter%20notebook%E7%8E%AF%E5%A2%83/" data-id="ck37d40sz0010awv60alf59pf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/20/%E4%BD%BF%E7%94%A8Matlab%E7%BB%98%E5%88%B6%E8%AF%AD%E9%9F%B3%E4%BF%A1%E5%8F%B7%E7%9A%84%E8%AF%AD%E8%B0%B1%E5%9B%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          使用Matlab绘制语音信号的语谱图
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/20/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">python字符串基本操作</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8TCC%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1/">使用TCC自己编译自己</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/Notepad++%E7%AE%80%E4%BB%8B/">Notepad++简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E5%B0%8F%E5%B0%8F%E8%BE%93%E5%85%A5%E6%B3%95%E7%AE%80%E4%BB%8B/">小小输入法简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8tcc%E8%AF%BB%E5%86%99%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6/">使用tcc读写文本文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/typora%E5%8F%8Amarkdown%E7%AE%80%E4%BB%8B/">typora及markdown简介</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

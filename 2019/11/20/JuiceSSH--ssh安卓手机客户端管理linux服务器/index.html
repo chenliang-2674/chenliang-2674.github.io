@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>JuiceSSH--ssh安卓手机客户端管理linux服务器 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一 JuiceSSH简介JuiceSSH是一个安卓终端客户端支持包括SSH，Local Shell,Mosh 和Telnet。 特点： 1 全彩色终端&#x2F;SSH客户端 2 弹出式键盘包含常用的字符 3 可使用音量键快速调节字体大小 4 支持外接键盘 5 支持官方Mosh(一种在手机上的shell，适合网络不稳定的情况下使用，官网地址：http:&#x2F;&#x2F;mosh.mit.edu&#x2F;) 6 Telnet支持">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JuiceSSH--ssh安卓手机客户端管理linux服务器">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;20&#x2F;JuiceSSH--ssh%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%AE%A1%E7%90%86linux%E6%9C%8D%E5%8A%A1%E5%99%A8&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一 JuiceSSH简介JuiceSSH是一个安卓终端客户端支持包括SSH，Local Shell,Mosh 和Telnet。 特点： 1 全彩色终端&#x2F;SSH客户端 2 弹出式键盘包含常用的字符 3 可使用音量键快速调节字体大小 4 支持外接键盘 5 支持官方Mosh(一种在手机上的shell，适合网络不稳定的情况下使用，官网地址：http:&#x2F;&#x2F;mosh.mit.edu&#x2F;) 6 Telnet支持">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191018104809885.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191018104959473.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191018105713891.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019101811012565.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;201910181103457.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191018110642235.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191018111025547.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191018111525244.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-11-20T13:57:10.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191018104809885.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JuiceSSH--ssh安卓手机客户端管理linux服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/JuiceSSH--ssh%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%AE%A1%E7%90%86linux%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
+  <time datetime="2019-11-20T13:57:12.215Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JuiceSSH--ssh安卓手机客户端管理linux服务器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一-JuiceSSH简介"><a href="#一-JuiceSSH简介" class="headerlink" title="一 JuiceSSH简介"></a>一 JuiceSSH简介</h1><p>JuiceSSH是一个安卓终端客户端支持包括SSH，Local Shell,Mosh 和Telnet。<br> 特点：<br> 1 全彩色终端/SSH客户端<br> 2 弹出式键盘包含常用的字符<br> 3 可使用音量键快速调节字体大小<br> 4 支持外接键盘<br> 5 支持官方Mosh(一种在手机上的shell，适合网络不稳定的情况下使用，官网地址：<a href="http://mosh.mit.edu/" target="_blank" rel="noopener">http://mosh.mit.edu/</a>)<br> 6 Telnet支持<br> 7支持安卓本地终端<br> 8 会话中可复制、粘贴<br> 9 支持UTF-8编码<br>10 可以通过组分类管理你的SSh连接<br>11 后端可以同时开启多个会话<br>12 通过一键点击实现无缝连接其他SSH会话<br>13 在打开App时能够快速与常用的SSH链接建立会话<br>14 支持密码和OpenSSH私钥认证<br>15 更新密码或秘钥等后，会话开启就直接使用新的密码秘钥连接<br>本文主要讲使用JuiceSSH连接远程腾讯云服务器的centos系统的基本步骤，创建连接，设置背景，字体等。</p>
+<h1 id="二-下载"><a href="#二-下载" class="headerlink" title="二 下载"></a>二 下载</h1><p>可以从网上下载客户端，也可以从手机的软件商店直接搜索JuiceSSH即可下载。</p>
+<h1 id="三-连接远程云服务器centos系统"><a href="#三-连接远程云服务器centos系统" class="headerlink" title="三 连接远程云服务器centos系统"></a>三 连接远程云服务器centos系统</h1><p>下载好以后打开，点击连接：<br><img src="https://img-blog.csdnimg.cn/20191018104809885.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>再点击右下角的”+”号新建:<br><img src="https://img-blog.csdnimg.cn/20191018104959473.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>输入自己的昵称和云服务器公网IP地址，点击认证：<br><img src="https://img-blog.csdnimg.cn/20191018105713891.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>输入用户名，centos系统登录密码，如下：<br><img src="https://img-blog.csdnimg.cn/2019101811012565.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>最后点击添加到组：<br><img src="https://img-blog.csdnimg.cn/201910181103457.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>点击刚刚创建好的组，便可连接到腾讯云服务器的centos系统，可以远程操作控制，新建文件，命令操作等和电脑上一样。而且想要复制界面的文字长按便可复制了。<br><img src="https://img-blog.csdnimg.cn/20191018110642235.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>可以使用音量的加减来控制界面字体的大小，很方便。<br>也可以在主界面中点击设置，可以设置字体大小，登录主题颜色等。<br><img src="https://img-blog.csdnimg.cn/20191018111025547.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>而且可以创建几个用户，想连接哪一个，点击就可以连接了。<br>JuiceSSH还包含很多插件，可以下载使用，还可以解锁很多高级功能，不过是付费的。<br><img src="https://img-blog.csdnimg.cn/20191018111525244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/JuiceSSH--ssh%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%AE%A1%E7%90%86linux%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ck37d40qm0004awv61q010q2d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/20/%E5%9C%A8web%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E8%BF%90%E8%A1%8Chtml%E6%96%87%E4%BB%B6%EF%BC%8C%E5%86%8D%E8%B0%83%E7%94%A8cgi%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          在web服务器上运行html文件，再调用cgi打开txt文件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/20/python%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%5B1%5D/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">python函数学习[1]</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8TCC%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1/">使用TCC自己编译自己</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/Notepad++%E7%AE%80%E4%BB%8B/">Notepad++简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E5%B0%8F%E5%B0%8F%E8%BE%93%E5%85%A5%E6%B3%95%E7%AE%80%E4%BB%8B/">小小输入法简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8tcc%E8%AF%BB%E5%86%99%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6/">使用tcc读写文本文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/typora%E5%8F%8Amarkdown%E7%AE%80%E4%BB%8B/">typora及markdown简介</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

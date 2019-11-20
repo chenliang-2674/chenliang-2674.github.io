@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>C语言实现FFT | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="FFT简介快速傅里叶变换 (fast Fourier transform), 即利用计算机计算离散傅里叶变换（DFT)的高效、快速计算方法的统称，简称FFT。快速傅里叶变换是1965年由J.W.库利和T.W.图基提出的。采用这种算法能使计算机计算离散傅里叶变换所需要的乘法次数大为减少，特别是被变换的抽样点数N越多，FFT算法计算量的节省就越显著。$$            X(k) = DFT[x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言实现FFT">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;20&#x2F;C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0FFT&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="FFT简介快速傅里叶变换 (fast Fourier transform), 即利用计算机计算离散傅里叶变换（DFT)的高效、快速计算方法的统称，简称FFT。快速傅里叶变换是1965年由J.W.库利和T.W.图基提出的。采用这种算法能使计算机计算离散傅里叶变换所需要的乘法次数大为减少，特别是被变换的抽样点数N越多，FFT算法计算量的节省就越显著。$$            X(k) = DFT[x">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20190824105055908.jpg?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20190823231958895.jpg?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20190823232217990.jpg?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019082323231331.jpg?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20190824113231588.jpg?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-11-20T14:02:06.011Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20190824105055908.jpg?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-C语言实现FFT" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0FFT/" class="article-date">
+  <time datetime="2019-11-20T14:02:07.443Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C语言实现FFT
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="FFT简介"><a href="#FFT简介" class="headerlink" title="FFT简介"></a>FFT简介</h1><p>快速傅里叶变换 (fast Fourier transform), 即利用计算机计算离散傅里叶变换（DFT)的高效、快速计算方法的统称，简称FFT。快速傅里叶变换是1965年由J.W.库利和T.W.图基提出的。采用这种算法能使计算机计算离散傅里叶变换所需要的乘法次数大为减少，特别是被变换的抽样点数N越多，FFT算法计算量的节省就越显著。<br>$$<br>            X(k) = DFT[x(n)]=\sum_{n=0}^{N-1}x(n)W_N^{kn},k=0,1…,N-1<br>$$<br>如上式所示，对于某一个k值，直接计算X（k）的一个值需要N次复数乘法和（N-1）次复数加法。因此计算X（k）的所有N个值，共需N^2次复数乘法和N(N-1)次复数加法运算。当N很大时，计算量就会很大。<br>对x(n)进行变换：<br>$$<br> X(k)=\sum_{n=偶数}x(n)W_N^{kn}+\sum_{n=奇数}x(n)W_N^{kn}\<br>       =\sum_{r=0}^{N/2-1}x(2r)W_N^{2kr}+\sum_{r=0}x(2r+1)W_N^{k(2r+1)}\<br>       =\sum_{r=0}^{N/2-1}x_1(r)W_N^{2kr}+W_{N}^{k}\sum_{r=0}^{N/2-1}x_2(r)W_N^{2kr}\<br>$$<br>因为<br>$$<br> W_N^{2kr}=e^{-j\frac{2\Pi}{N}2kr}=e^{-j\frac{2\Pi}{N/2}kr}=W_{N/2}^{kr}<br>$$<br>所以<br>$$<br>X(k)=\sum_{r=0}^{N/2-1}x_1(r)W_{N/2}^{kr}+W_{N}^{k}\sum_{r=0}^{N/2-1}x_2(r)W_{N/2}^{kr}\<br>=X_1(k)+W_{N}^{k}X_2(k) ,k=0,1,2,…,N-1<br>$$<br>又因为<br>$$<br>W_{N}^{k+N/2}=-W_{N}^{k}<br>$$<br>所以<br>$$<br>X(k)=X_1(k)+W_{N}^{k}X_2(k) ,k=0,1,2,…,N-1<br>$$<br>$$<br>X(k+N/2)=X_1(k)-W_{N}^{k}X_2(k) ,k=0,1,2,…,N-1<br>$$<br>通过蝶形运算，进行一次分解，计算1个N点DFT需要计算两个N/2点DFT和N/2个蝶形运算。而计算一个N/2点DFT需要$(N/2)^2$次复数乘法和N/2(N/2-1)次复数加法。所以计算N点DFT时，总的复数乘法次数约为$N^2/2$，复数加法次数约为$N^2/2$由此可见，仅仅经过一次分解，就使运算量减少近一半。<br>经过M次分解，最后将N点DFT分解成N个1点DFT和M级蝶形运算，大大提高了运算效率。<br>一个完整的8点DIT-FFT运算流程图如下图所示：<br><img src="https://img-blog.csdnimg.cn/20190824105055908.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="C语言实现"><a href="#C语言实现" class="headerlink" title="C语言实现"></a>C语言实现</h1><p>使用徐士良老师的FFT的C语言算法程序（kfft）计算出500Hz和50Hz的两个正弦信号相加后的幅度谱，并使用gnuplot画出幅度谱。<br>输入信号为：0.6*sin(2*PI*500*i)+0.6*sin(2*PI*50*i)<br>程序代码如下：<br>fft程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#include &lt;E:\tcc\daima\fft\kfft.c&gt;</span><br><span class="line"></span><br><span class="line">#define PI 3.1415926535 //定义宏变量PI</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123; </span><br><span class="line">	int i,j;</span><br><span class="line">    double pr[64],pi[64],fr[64],fi[64],t[64];//pr表示采样数据的实部，pi表示采样数据的虚部，fr表示离散傅里叶变换结果的实部，fi表示离散傅里叶变换结果的虚部。</span><br><span class="line">    for (i=0; i&lt;=63; i++)  //生成输入信号</span><br><span class="line">    &#123; </span><br><span class="line">		pr[i]=0.6*sin(2*PI*500*i)+0.6*sin(2*PI*50*i); pi[i]=0.0; //依次将值赋值给pr，pi赋值为0</span><br><span class="line">	&#125;</span><br><span class="line">    kfft(pr,pi,64,6,fr,fi,0,1);  //调用FFT函数</span><br><span class="line">	for (i=0; i&lt;64; i++)</span><br><span class="line">    &#123; </span><br><span class="line">        printf(&quot;%d\t%lf\n&quot;,i,pr[i]); //输出结果</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>徐士良老师编写的kfft源程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;math.h&quot;</span><br><span class="line">  void kfft(pr,pi,n,k,fr,fi,l,il)</span><br><span class="line">  int n,k,l,il;</span><br><span class="line">  double pr[],pi[],fr[],fi[];</span><br><span class="line">  &#123; int it,m,is,i,j,nv,l0;</span><br><span class="line">    double p,q,s,vr,vi,poddr,poddi;</span><br><span class="line">    for (it=0; it&lt;=n-1; it++)</span><br><span class="line">      &#123; m=it; is=0;</span><br><span class="line">        for (i=0; i&lt;=k-1; i++)</span><br><span class="line">          &#123; j=m/2; is=2*is+(m-2*j); m=j;&#125;</span><br><span class="line">        fr[it]=pr[is]; fi[it]=pi[is];</span><br><span class="line">      &#125;</span><br><span class="line">    pr[0]=1.0; pi[0]=0.0;</span><br><span class="line">    p=6.283185306/(1.0*n);</span><br><span class="line">    pr[1]=cos(p); pi[1]=-sin(p);</span><br><span class="line">    if (l!=0) pi[1]=-pi[1];</span><br><span class="line">    for (i=2; i&lt;=n-1; i++)</span><br><span class="line">      &#123; p=pr[i-1]*pr[1]; q=pi[i-1]*pi[1];</span><br><span class="line">        s=(pr[i-1]+pi[i-1])*(pr[1]+pi[1]);</span><br><span class="line">        pr[i]=p-q; pi[i]=s-p-q;</span><br><span class="line">      &#125;</span><br><span class="line">    for (it=0; it&lt;=n-2; it=it+2)</span><br><span class="line">      &#123; vr=fr[it]; vi=fi[it];</span><br><span class="line">        fr[it]=vr+fr[it+1]; fi[it]=vi+fi[it+1];</span><br><span class="line">        fr[it+1]=vr-fr[it+1]; fi[it+1]=vi-fi[it+1];</span><br><span class="line">      &#125;</span><br><span class="line">    m=n/2; nv=2;</span><br><span class="line">    for (l0=k-2; l0&gt;=0; l0--)</span><br><span class="line">      &#123; m=m/2; nv=2*nv;</span><br><span class="line">        for (it=0; it&lt;=(m-1)*nv; it=it+nv)</span><br><span class="line">          for (j=0; j&lt;=(nv/2)-1; j++)</span><br><span class="line">            &#123; p=pr[m*j]*fr[it+j+nv/2];</span><br><span class="line">              q=pi[m*j]*fi[it+j+nv/2];</span><br><span class="line">              s=pr[m*j]+pi[m*j];</span><br><span class="line">              s=s*(fr[it+j+nv/2]+fi[it+j+nv/2]);</span><br><span class="line">              poddr=p-q; poddi=s-p-q;</span><br><span class="line">              fr[it+j+nv/2]=fr[it+j]-poddr;</span><br><span class="line">              fi[it+j+nv/2]=fi[it+j]-poddi;</span><br><span class="line">              fr[it+j]=fr[it+j]+poddr;</span><br><span class="line">              fi[it+j]=fi[it+j]+poddi;</span><br><span class="line">            &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    if (l!=0)</span><br><span class="line">      for (i=0; i&lt;=n-1; i++)</span><br><span class="line">        &#123; fr[i]=fr[i]/(1.0*n);</span><br><span class="line">          fi[i]=fi[i]/(1.0*n);</span><br><span class="line">        &#125;</span><br><span class="line">    if (il!=0)</span><br><span class="line">      for (i=0; i&lt;=n-1; i++)</span><br><span class="line">        &#123; pr[i]=sqrt(fr[i]*fr[i]+fi[i]*fi[i]);</span><br><span class="line">          if (fabs(fr[i])&lt;0.000001*fabs(fi[i]))</span><br><span class="line">            &#123; if ((fi[i]*fr[i])&gt;0) pi[i]=90.0;</span><br><span class="line">              else pi[i]=-90.0;</span><br><span class="line">            &#125;</span><br><span class="line">          else</span><br><span class="line">            pi[i]=atan(fi[i]/fr[i])*360.0/6.283185306;</span><br><span class="line">        &#125;</span><br><span class="line">    return;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>使用tcc在命令行中运行，结果如下（抽样点为64）：<br><img src="https://img-blog.csdnimg.cn/20190823231958895.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>使用gnuplot画图：<br><img src="https://img-blog.csdnimg.cn/20190823232217990.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>500Hz和50Hz的两个正弦信号相加后的幅度谱如下·：<br><img src="https://img-blog.csdnimg.cn/2019082323231331.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>使用DFT画出的幅度谱为：<br><img src="https://img-blog.csdnimg.cn/20190824113231588.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>使用DFT画出的幅度谱和使用FFT画出的幅度谱相同。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0FFT/" data-id="ck37d40qc0001awv67h7g250v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/20/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0DFT%EF%BC%8C%E7%94%BB%E5%87%BA%E4%BF%A1%E5%8F%B7%E5%B9%85%E5%BA%A6%E8%B0%B1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          C语言实现DFT，画出信号幅度谱
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/20/DFT%E4%B8%8EFFT%E8%BF%90%E7%AE%97%E6%95%88%E7%8E%87%E7%9A%84%E6%AF%94%E8%BE%83/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">DFT与FFT运算效率的比较</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8TCC%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1/">使用TCC自己编译自己</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/Notepad++%E7%AE%80%E4%BB%8B/">Notepad++简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E5%B0%8F%E5%B0%8F%E8%BE%93%E5%85%A5%E6%B3%95%E7%AE%80%E4%BB%8B/">小小输入法简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8tcc%E8%AF%BB%E5%86%99%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6/">使用tcc读写文本文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/typora%E5%8F%8Amarkdown%E7%AE%80%E4%BB%8B/">typora及markdown简介</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>在腾讯云的centos系统中配置jupyter notebook并能使用外网访问 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Jupyter Notebook（此前被称为 IPython notebook）是一个交互式笔记本，支持运行 40 多种编程语言。Jupyter Notebook 的本质是一个 Web 应用程序，便于创建和共享文学化程序文档，支持实时代码，数学方程，可视化和 markdown。 用途包括：数据清理和转换，数值模拟，统计建模，机器学习等等。 一 jupyter 安装首先登陆腾讯云服务器的centos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在腾讯云的centos系统中配置jupyter notebook并能使用外网访问">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;20&#x2F;%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9A%84centos%E7%B3%BB%E7%BB%9F%E4%B8%AD%E9%85%8D%E7%BD%AEjupyter%20notebook%E5%B9%B6%E8%83%BD%E4%BD%BF%E7%94%A8%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Jupyter Notebook（此前被称为 IPython notebook）是一个交互式笔记本，支持运行 40 多种编程语言。Jupyter Notebook 的本质是一个 Web 应用程序，便于创建和共享文学化程序文档，支持实时代码，数学方程，可视化和 markdown。 用途包括：数据清理和转换，数值模拟，统计建模，机器学习等等。 一 jupyter 安装首先登陆腾讯云服务器的centos">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191007191740295.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191007192716129.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191007193353859.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191007193543154.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019100719401140.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191007195610355.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191007194545882.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191007205319461.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019100720024296.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019100720555968.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191007204550697.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191007204750187.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-11-20T13:58:19.413Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191007191740295.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-在腾讯云的centos系统中配置jupyter notebook并能使用外网访问" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9A%84centos%E7%B3%BB%E7%BB%9F%E4%B8%AD%E9%85%8D%E7%BD%AEjupyter%20notebook%E5%B9%B6%E8%83%BD%E4%BD%BF%E7%94%A8%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/" class="article-date">
+  <time datetime="2019-11-20T13:58:21.128Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在腾讯云的centos系统中配置jupyter notebook并能使用外网访问
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Jupyter Notebook（此前被称为 IPython notebook）是一个交互式笔记本，支持运行 40 多种编程语言。<br>Jupyter Notebook 的本质是一个 Web 应用程序，便于创建和共享文学化程序文档，支持实时代码，数学方程，可视化和 markdown。 用途包括：数据清理和转换，数值模拟，统计建模，机器学习等等。</p>
+<h1 id="一-jupyter-安装"><a href="#一-jupyter-安装" class="headerlink" title="一 jupyter 安装"></a>一 jupyter 安装</h1><p>首先登陆腾讯云服务器的centos系统，<br><img src="https://img-blog.csdnimg.cn/20191007191740295.png" alt="在这里插入图片描述"><br>输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter jupyterlab</span><br></pre></td></tr></table></figure>
+<p>进行安装，安装的过程很快。<br><img src="https://img-blog.csdnimg.cn/20191007192716129.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="二-jupyter外网访问的密码设置"><a href="#二-jupyter外网访问的密码设置" class="headerlink" title="二 jupyter外网访问的密码设置"></a>二 jupyter外网访问的密码设置</h1><p>首先输入:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipython</span><br></pre></td></tr></table></figure>
+<p>接着输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from notebook.auth import passwd</span><br></pre></td></tr></table></figure>
+<p>最后输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd()</span><br></pre></td></tr></table></figure>
+<p>设置密码：<br><img src="https://img-blog.csdnimg.cn/20191007193353859.png" alt="在这里插入图片描述"><br>最后会生成很长一串密钥，将密钥复制保存一下。<br><img src="https://img-blog.csdnimg.cn/20191007193543154.png" alt="在这里插入图片描述"></p>
+<h1 id="三-生成并修改配置文件"><a href="#三-生成并修改配置文件" class="headerlink" title="三 生成并修改配置文件"></a>三 生成并修改配置文件</h1><p>先按ctrl+D，再输入y确认退出。<br><img src="https://img-blog.csdnimg.cn/2019100719401140.png" alt="在这里插入图片描述"><br>生成配置文件：<br>输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter lab --generate-config</span><br></pre></td></tr></table></figure>
+<p>如下：<br><img src="https://img-blog.csdnimg.cn/20191007195610355.png" alt="在这里插入图片描述"><br>打开Xftp6，连接上腾讯云的centos系统，在右边的窗口文件中找到如下图中的文件（刚刚生成的配置文件）：<br><img src="https://img-blog.csdnimg.cn/20191007194545882.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>将文件下载到桌面上，使用notepad++编辑器打开（也可以使用其他编辑器打开），在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#------------------------------------------------------------------------------</span><br><span class="line"># JupyterApp(Application) configuration</span><br><span class="line">#------------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
+<p>的下方输入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 将ip设置为*，意味允许任何IP访问</span><br><span class="line">c.NotebookApp.ip = &apos;*&apos;</span><br><span class="line"># 这里的密码就是上边我们生成的那一串</span><br><span class="line">c.NotebookApp.password = u&apos;sha1:d6d3f5bcdc77:e20bda29c92f20914372df4818a46c9140c3f7cc&apos;</span><br><span class="line"># 服务器上并没有浏览器可以供Jupyter打开</span><br><span class="line">c.NotebookApp.open_browser = False</span><br><span class="line"># 监听端口设置为8889或其他自己喜欢的端口</span><br><span class="line">c.NotebookApp.port = 8889</span><br><span class="line"># 我们可以修改jupyter的工作目录，也可以保持原样不变，如果修改的话，要保证这一目录已存在</span><br><span class="line">#c.MappingKernelManager.root_dir = &apos;/root/jupyter_run&apos;</span><br><span class="line"># 允许远程访问</span><br><span class="line">c.NotebookApp.allow_remote_access = True</span><br></pre></td></tr></table></figure>
+<p>如图所示：<br><img src="https://img-blog.csdnimg.cn/20191007205319461.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>修改好后保存文件，将刚刚修改好的文件替换掉刚刚Xftp6中的那个文件。</p>
+<h1 id="四-添加服务器规则"><a href="#四-添加服务器规则" class="headerlink" title="四 添加服务器规则"></a>四 添加服务器规则</h1><p>打开腾讯云，点击安全组点击新建规则，如下：<br><img src="https://img-blog.csdnimg.cn/2019100720024296.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>再点击修改规则，点击添加规则，设置如下：<br><img src="https://img-blog.csdnimg.cn/2019100720555968.png" alt="在这里插入图片描述"></p>
+<h1 id="五-启动jupyter，并进行远程访问"><a href="#五-启动jupyter，并进行远程访问" class="headerlink" title="五 启动jupyter，并进行远程访问"></a>五 启动jupyter，并进行远程访问</h1><h2 id="1-启动jupyter"><a href="#1-启动jupyter" class="headerlink" title="1 启动jupyter"></a>1 启动jupyter</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter lab --allow-root</span><br></pre></td></tr></table></figure>
+<h2 id="2-远程访问"><a href="#2-远程访问" class="headerlink" title="2 远程访问"></a>2 远程访问</h2><p>打开浏览器，输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://122.51.2.21：8889</span><br></pre></td></tr></table></figure>
+<p>其中122.51.2.21为公网ip地址，8889为刚刚设置的默认端口号，回车。<br>输入密码：<br><img src="https://img-blog.csdnimg.cn/20191007204550697.png" alt="在这里插入图片描述"><br>登录结果：<br><img src="https://img-blog.csdnimg.cn/20191007204750187.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9A%84centos%E7%B3%BB%E7%BB%9F%E4%B8%AD%E9%85%8D%E7%BD%AEjupyter%20notebook%E5%B9%B6%E8%83%BD%E4%BD%BF%E7%94%A8%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/" data-id="ck37d40sh000tawv61xf50id5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/20/%E5%B0%86centos%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E7%9A%84python2.7.5%E6%9B%B4%E6%8D%A2%E4%B8%BApython3.6.1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          将centos系统默认的python2.7.5更换为python3.6.1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/20/%E9%87%87%E7%94%A8python%E5%AE%9E%E7%8E%B0%E8%BE%93%E5%87%BA%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">采用python实现输出九九乘法表的三种方式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8TCC%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1/">使用TCC自己编译自己</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/Notepad++%E7%AE%80%E4%BB%8B/">Notepad++简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E5%B0%8F%E5%B0%8F%E8%BE%93%E5%85%A5%E6%B3%95%E7%AE%80%E4%BB%8B/">小小输入法简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8tcc%E8%AF%BB%E5%86%99%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6/">使用tcc读写文本文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/typora%E5%8F%8Amarkdown%E7%AE%80%E4%BB%8B/">typora及markdown简介</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

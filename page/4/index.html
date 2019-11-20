@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;4&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-在linux系统 [腾讯云centos系统] 中下载安装octave时报错" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%20%5B%E8%85%BE%E8%AE%AF%E4%BA%91centos%E7%B3%BB%E7%BB%9F%5D%20%E4%B8%AD%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85octave%E6%97%B6%E6%8A%A5%E9%94%99/" class="article-date">
+  <time datetime="2019-11-20T13:56:19.051Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%20%5B%E8%85%BE%E8%AE%AF%E4%BA%91centos%E7%B3%BB%E7%BB%9F%5D%20%E4%B8%AD%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85octave%E6%97%B6%E6%8A%A5%E9%94%99/">在linux系统 [腾讯云centos系统] 中下载安装octave时报错</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-octave安装问题"><a href="#1-octave安装问题" class="headerlink" title="1 octave安装问题"></a>1 octave安装问题</h2><p>刚开始在网上找如何在linux系统中安装octave，尝试下载安装octave-5.1.0.tar.gz，<br>下载：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://ftp.gnu.org/gnu/octave/octave-5.1.0.tar.gz</span><br></pre></td></tr></table></figure>
+<p>解压：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf octave-5.1.0.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>但下载好解压后在网上找不到如何安装，折腾了好久也没解决。<br>后面找到了另外一种方法：<br>需要先检查yum能不能用，输入：yum<br>结果：<br><img src="https://img-blog.csdnimg.cn/20191027162208884.png" alt="在这里插入图片描述"><br>我的是因为升级python2.7为python3.6.1的时候修改了yum，所以导致yum有问题。<br>所以在安装octave时报错。<br>输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br></pre></td></tr></table></figure>
+<p>结果报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-bash: /usr/bin/yum: /usr/bin/python2: bad interpreter: No such file or directory</span><br></pre></td></tr></table></figure>
+<p>就是因为yum有问题。</p>
+<h2 id="2解决办法"><a href="#2解决办法" class="headerlink" title="2解决办法"></a>2解决办法</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/bin/yum</span><br></pre></td></tr></table></figure>
+<p>进入yum中，查看第一行，将</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br></pre></td></tr></table></figure>
+<p>修改为：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python2.7</span><br></pre></td></tr></table></figure>
+<p>这样，修改后的yum依然可以调用python2.7的python,<br>保存退出以后，再输入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/libexec/urlgrabber-ext-down</span><br></pre></td></tr></table></figure>
+<p>同样确认第一行，将</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br></pre></td></tr></table></figure>
+<p>修改为：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python2.7</span><br></pre></td></tr></table></figure>
+<p>保存退出，这样yum就修复好了，再输入yum就不会报错了。<br><img src="https://img-blog.csdnimg.cn/20191027165558345.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="3-安装octave"><a href="#3-安装octave" class="headerlink" title="3 安装octave"></a>3 安装octave</h2><p>接着就可以继续安装octave了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br></pre></td></tr></table></figure>
+<p>中途会跳出选择，输入y继续。<br>完成后，再输入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install octave</span><br></pre></td></tr></table></figure>
+<p>中途同样会跳出选择，输入y即可<br>这样octave就安装好了。<br>输入octave就可以进入octave的运行环境了，在里面就可以编辑代码运行了。<br><img src="https://img-blog.csdnimg.cn/20191027165339584.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>也可以新建.m脚本文件，在里面编辑代码，然后调用.m文件运行octave代码就可以了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%20[%E8%85%BE%E8%AE%AF%E4%BA%91centos%E7%B3%BB%E7%BB%9F]%20%E4%B8%AD%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85octave%E6%97%B6%E6%8A%A5%E9%94%99/" data-id="ck37d40s7000oawv6b6grdjo0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-c,python,java,octave，golang，julia编程计算十万次，一百万次，一千万次sinx，比较效率" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/c,python,java,octave%EF%BC%8Cgolang%EF%BC%8Cjulia%E7%BC%96%E7%A8%8B%E8%AE%A1%E7%AE%97%E5%8D%81%E4%B8%87%E6%AC%A1%EF%BC%8C%E4%B8%80%E7%99%BE%E4%B8%87%E6%AC%A1%EF%BC%8C%E4%B8%80%E5%8D%83%E4%B8%87%E6%AC%A1sinx%EF%BC%8C%E6%AF%94%E8%BE%83%E6%95%88%E7%8E%87/" class="article-date">
+  <time datetime="2019-11-20T13:54:47.838Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/c,python,java,octave%EF%BC%8Cgolang%EF%BC%8Cjulia%E7%BC%96%E7%A8%8B%E8%AE%A1%E7%AE%97%E5%8D%81%E4%B8%87%E6%AC%A1%EF%BC%8C%E4%B8%80%E7%99%BE%E4%B8%87%E6%AC%A1%EF%BC%8C%E4%B8%80%E5%8D%83%E4%B8%87%E6%AC%A1sinx%EF%BC%8C%E6%AF%94%E8%BE%83%E6%95%88%E7%8E%87/">c,python,java,octave，golang，julia编程计算十万次，一百万次，一千万次sinx，比较效率</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一-在windows系统中"><a href="#一-在windows系统中" class="headerlink" title="一  在windows系统中"></a>一  在windows系统中</h1><h2 id="1-1-python"><a href="#1-1-python" class="headerlink" title="1.1 python"></a>1.1 python</h2><p>使用python计算sin(3.14)，循环不同次数，计算时间：</p>
+<h3 id="1-1-1-循环十万次："><a href="#1-1-1-循环十万次：" class="headerlink" title="1.1.1 循环十万次："></a>1.1.1 循环十万次：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">start = time.time()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100000</span>):</span><br><span class="line">    y = math.sin(<span class="number">3.14</span>)</span><br><span class="line">end = time.time()</span><br><span class="line">print(<span class="string">"耗时&#123;0&#125;"</span>.format(end-start))</span><br><span class="line">   <span class="comment"># print(y)</span></span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191025192233584.png" alt="在这里插入图片描述"></p>
+<h3 id="1-1-2-循环一百万次："><a href="#1-1-2-循环一百万次：" class="headerlink" title="1.1.2 循环一百万次："></a>1.1.2 循环一百万次：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">start = time.time()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000000</span>):</span><br><span class="line">    y = math.sin(<span class="number">3.14</span>)</span><br><span class="line">end = time.time()</span><br><span class="line">print(<span class="string">"耗时&#123;0&#125;"</span>.format(end-start))</span><br><span class="line">   <span class="comment"># print(y)</span></span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191025192405410.png" alt="在这里插入图片描述"></p>
+<h3 id="1-1-3-循环一千万次："><a href="#1-1-3-循环一千万次：" class="headerlink" title="1.1.3 循环一千万次："></a>1.1.3 循环一千万次：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">start = time.time()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10000000</span>):</span><br><span class="line">    y = math.sin(<span class="number">3.14</span>)</span><br><span class="line">end = time.time()</span><br><span class="line">print(<span class="string">"耗时&#123;0&#125;"</span>.format(end-start))</span><br><span class="line">   <span class="comment"># print(y)</span></span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191025192533122.png" alt="在这里插入图片描述"></p>
+<h2 id="1-2-c语言"><a href="#1-2-c语言" class="headerlink" title="1.2 c语言"></a>1.2 c语言</h2><p>使用c语言编程计算sin(3.14)，循环不同次数，计算时间：</p>
+<h3 id="1-2-1-循环十万次："><a href="#1-2-1-循环十万次：" class="headerlink" title="1.2.1 循环十万次："></a>1.2.1 循环十万次：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="keyword">clock_t</span> start, <span class="built_in">end</span>;</span><br><span class="line"><span class="keyword">double</span> t;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">float</span> y;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">start=clock();</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;=<span class="number">100000</span>;i++)</span><br><span class="line">	&#123;	</span><br><span class="line">		y = <span class="built_in">sin</span>(<span class="number">3.14</span>);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="built_in">end</span> = clock();</span><br><span class="line">t=(<span class="keyword">double</span>)(<span class="built_in">end</span>-start)/CLK_TCK;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%f\n"</span>,t);</span><br><span class="line"><span class="comment">//printf("%lf\n",y);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/2019102520140559.png" alt="在这里插入图片描述"></p>
+<h3 id="1-2-2-循环一百万次："><a href="#1-2-2-循环一百万次：" class="headerlink" title="1.2.2 循环一百万次："></a>1.2.2 循环一百万次：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="keyword">clock_t</span> start, <span class="built_in">end</span>;</span><br><span class="line"><span class="keyword">double</span> t;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">float</span> y;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">start=clock();</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;=<span class="number">1000000</span>;i++)</span><br><span class="line">	&#123;	</span><br><span class="line">		y = <span class="built_in">sin</span>(<span class="number">3.14</span>);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="built_in">end</span> = clock();</span><br><span class="line">t=(<span class="keyword">double</span>)(<span class="built_in">end</span>-start)/CLK_TCK;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%f\n"</span>,t);</span><br><span class="line"><span class="comment">//printf("%lf\n",y);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191025201535227.png" alt="在这里插入图片描述"></p>
+<h3 id="1-2-3-循环一千万次："><a href="#1-2-3-循环一千万次：" class="headerlink" title="1.2.3 循环一千万次："></a>1.2.3 循环一千万次：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="keyword">clock_t</span> start, <span class="built_in">end</span>;</span><br><span class="line"><span class="keyword">double</span> t;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">float</span> y;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">start=clock();</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;=<span class="number">10000000</span>;i++)</span><br><span class="line">	&#123;	</span><br><span class="line">		y = <span class="built_in">sin</span>(<span class="number">3.14</span>);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="built_in">end</span> = clock();</span><br><span class="line">t=(<span class="keyword">double</span>)(<span class="built_in">end</span>-start)/CLK_TCK;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%f\n"</span>,t);</span><br><span class="line"><span class="comment">//printf("%lf\n",y);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191025201657713.png" alt="在这里插入图片描述"></p>
+<h2 id="1-3-java"><a href="#1-3-java" class="headerlink" title="1.3 java"></a>1.3 java</h2><p>使用java语言编程计算sin(3.14)，循环不同次数，计算时间：</p>
+<h3 id="1-3-1-循环十万次："><a href="#1-3-1-循环十万次：" class="headerlink" title="1.3.1 循环十万次："></a>1.3.1 循环十万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sinx1</span></span>&#123;  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;  <span class="comment">//程序入口</span></span><br><span class="line">	<span class="keyword">double</span> y;</span><br><span class="line">	<span class="comment">//double degrees = 3.14;</span></span><br><span class="line">	<span class="comment">//double radians = Math.toRadians(degrees);</span></span><br><span class="line">	<span class="keyword">double</span> startTime =  System.currentTimeMillis();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">100000</span>;i++)&#123;  </span><br><span class="line">		y = Math.sin(<span class="number">3.14</span>);</span><br><span class="line">		<span class="comment">//System.out.printn(y);  </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">double</span> endTime =  System.currentTimeMillis();</span><br><span class="line">	<span class="keyword">double</span> Time = (endTime-startTime)/<span class="number">1000</span>;</span><br><span class="line">	System.out.println(Time);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/2019102521045333.png" alt="在这里插入图片描述"></p>
+<h3 id="1-3-2-循环一百万次："><a href="#1-3-2-循环一百万次：" class="headerlink" title="1.3.2 循环一百万次："></a>1.3.2 循环一百万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sinx1</span></span>&#123;  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;  <span class="comment">//程序入口</span></span><br><span class="line">	<span class="keyword">double</span> y;</span><br><span class="line">	<span class="comment">//double degrees = 3.14;</span></span><br><span class="line">	<span class="comment">//double radians = Math.toRadians(degrees);</span></span><br><span class="line">	<span class="keyword">double</span> startTime =  System.currentTimeMillis();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">1000000</span>;i++)&#123;  </span><br><span class="line">		y = Math.sin(<span class="number">3.14</span>);</span><br><span class="line">		<span class="comment">//System.out.printn(y);  </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">double</span> endTime =  System.currentTimeMillis();</span><br><span class="line">	<span class="keyword">double</span> Time = (endTime-startTime)/<span class="number">1000</span>;</span><br><span class="line">	System.out.println(Time);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191025210551777.png" alt="在这里插入图片描述"></p>
+<h3 id="1-3-3-循环一千万次："><a href="#1-3-3-循环一千万次：" class="headerlink" title="1.3.3 循环一千万次："></a>1.3.3 循环一千万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sinx1</span></span>&#123;  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;  <span class="comment">//程序入口</span></span><br><span class="line">	<span class="keyword">double</span> y;</span><br><span class="line">	<span class="comment">//double degrees = 3.14;</span></span><br><span class="line">	<span class="comment">//double radians = Math.toRadians(degrees);</span></span><br><span class="line">	<span class="keyword">double</span> startTime =  System.currentTimeMillis();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">10000000</span>;i++)&#123;  </span><br><span class="line">		y = Math.sin(<span class="number">3.14</span>);</span><br><span class="line">		<span class="comment">//System.out.printn(y);  </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">double</span> endTime =  System.currentTimeMillis();</span><br><span class="line">	<span class="keyword">double</span> Time = (endTime-startTime)/<span class="number">1000</span>;</span><br><span class="line">	System.out.println(Time);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191025210706928.png" alt="在这里插入图片描述"></p>
+<h2 id="1-4-octave"><a href="#1-4-octave" class="headerlink" title="1.4 octave:"></a>1.4 octave:</h2><h3 id="1-4-1-循环十万次："><a href="#1-4-1-循环十万次：" class="headerlink" title="1.4.1 循环十万次："></a>1.4.1 循环十万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tic</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>:<span class="number">1</span>:<span class="number">100000</span></span><br><span class="line">  y = sin(<span class="number">3.14</span>);</span><br><span class="line">endfor</span><br><span class="line">toc</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027001408509.png" alt="在这里插入图片描述"></p>
+<h3 id="1-4-2-循环一百万次："><a href="#1-4-2-循环一百万次：" class="headerlink" title="1.4.2 循环一百万次："></a>1.4.2 循环一百万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tic</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>:<span class="number">1</span>:<span class="number">1000000</span></span><br><span class="line">  y = sin(<span class="number">3.14</span>);</span><br><span class="line">endfor</span><br><span class="line">toc</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027001618863.png" alt="在这里插入图片描述"></p>
+<h3 id="1-4-3-循环一千万次："><a href="#1-4-3-循环一千万次：" class="headerlink" title="1.4.3 循环一千万次："></a>1.4.3 循环一千万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tic</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>:<span class="number">1</span>:<span class="number">10000000</span></span><br><span class="line">  y = sin(<span class="number">3.14</span>);</span><br><span class="line">endfor</span><br><span class="line">toc</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027002040703.png" alt="在这里插入图片描述"></p>
+<h2 id="1-5-golang语言"><a href="#1-5-golang语言" class="headerlink" title="1.5 golang语言"></a>1.5 golang语言</h2><h3 id="1-5-1-循环十万次"><a href="#1-5-1-循环十万次" class="headerlink" title="1.5.1 循环十万次"></a>1.5.1 循环十万次</h3><p>程序：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"math"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	start := time.Now()</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++ &#123;</span><br><span class="line">		math.Sin(<span class="number">3.14</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	cost := time.Since(start)</span><br><span class="line">	fmt.Printf(<span class="string">"%s\n"</span>, cost)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191028215559588.png" alt="在这里插入图片描述"></p>
+<h3 id="1-5-2-循环一百万次"><a href="#1-5-2-循环一百万次" class="headerlink" title="1.5.2 循环一百万次"></a>1.5.2 循环一百万次</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191028215901374.png" alt="在这里插入图片描述"></p>
+<h3 id="1-5-3-循环一千万次"><a href="#1-5-3-循环一千万次" class="headerlink" title="1.5.3 循环一千万次"></a>1.5.3 循环一千万次</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191028220708302.png" alt="在这里插入图片描述"></p>
+<h2 id="1-6-julia语言"><a href="#1-6-julia语言" class="headerlink" title="1.6 julia语言"></a>1.6 julia语言</h2><h3 id="1-6-1-循环十万次"><a href="#1-6-1-循环十万次" class="headerlink" title="1.6.1 循环十万次"></a>1.6.1 循环十万次</h3><p>程序：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">t1 = time()</span><br><span class="line">	<span class="keyword">for</span> i in <span class="number">1</span>:<span class="number">100000</span></span><br><span class="line">		sin(<span class="number">3.14</span>)</span><br><span class="line">	end</span><br><span class="line">t2 =time()</span><br><span class="line"><span class="built_in">println</span>((t2-t1)*<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191029000453902.png" alt="在这里插入图片描述"><br>单位为秒</p>
+<h3 id="1-6-2-循环一百万次"><a href="#1-6-2-循环一百万次" class="headerlink" title="1.6.2 循环一百万次"></a>1.6.2 循环一百万次</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191029000303163.png" alt="在这里插入图片描述"></p>
+<h3 id="1-6-3-循环一千万次："><a href="#1-6-3-循环一千万次：" class="headerlink" title="1.6.3 循环一千万次："></a>1.6.3 循环一千万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191029000227921.png" alt="在这里插入图片描述"></p>
+<h1 id="二-在linux系统中"><a href="#二-在linux系统中" class="headerlink" title="二 在linux系统中"></a>二 在linux系统中</h1><h2 id="2-1-python"><a href="#2-1-python" class="headerlink" title="2.1 python"></a>2.1 python</h2><p>程序同在windows中一样，不过花费时间更少，效率更高。</p>
+<h3 id="2-1-1-循环十万次："><a href="#2-1-1-循环十万次：" class="headerlink" title="2.1.1 循环十万次："></a>2.1.1 循环十万次：</h3><p>程序：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">start = time.time()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100000</span>):</span><br><span class="line">    y = math.sin(<span class="number">3.14</span>)</span><br><span class="line">end = time.time()</span><br><span class="line">print(<span class="string">"耗时&#123;0&#125;"</span>.format(end-start))</span><br><span class="line">   <span class="comment"># print(y)</span></span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191026163732241.png" alt="在这里插入图片描述"></p>
+<h3 id="2-1-2-循环一百万次："><a href="#2-1-2-循环一百万次：" class="headerlink" title="2.1.2 循环一百万次："></a>2.1.2 循环一百万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191026163850806.png" alt="在这里插入图片描述"></p>
+<h3 id="2-1-3-循环一千万次："><a href="#2-1-3-循环一千万次：" class="headerlink" title="2.1.3 循环一千万次："></a>2.1.3 循环一千万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191026163122134.png" alt="在这里插入图片描述"></p>
+<h2 id="2-2-c语言"><a href="#2-2-c语言" class="headerlink" title="2.2 c语言"></a>2.2 c语言</h2><h3 id="2-2-1-循环十万次："><a href="#2-2-1-循环十万次：" class="headerlink" title="2.2.1 循环十万次："></a>2.2.1 循环十万次：</h3><p>程序：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="keyword">clock_t</span> start, <span class="built_in">end</span>;</span><br><span class="line"><span class="keyword">double</span> t;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">float</span> y;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">start=clock();</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;=<span class="number">100000</span>;i++)</span><br><span class="line">	&#123;	</span><br><span class="line">		y = <span class="built_in">sin</span>(<span class="number">3.14</span>);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="built_in">end</span> = clock();</span><br><span class="line">t=(<span class="keyword">double</span>)(<span class="built_in">end</span>-start)/<span class="number">1000000.000000</span>;  <span class="comment">//将时间转换为秒</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%.15lfs\n"</span>,t);</span><br><span class="line"><span class="comment">//printf("%lf\n",y);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于时间很短，所以显示为0s，<br>结果：<br><img src="https://img-blog.csdnimg.cn/20191026165535464.png" alt="在这里插入图片描述"></p>
+<h3 id="2-2-2-循环一百万次："><a href="#2-2-2-循环一百万次：" class="headerlink" title="2.2.2 循环一百万次："></a>2.2.2 循环一百万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191026171535824.png" alt="在这里插入图片描述"></p>
+<h3 id="2-2-3-循环一千万次："><a href="#2-2-3-循环一千万次：" class="headerlink" title="2.2.3 循环一千万次："></a>2.2.3 循环一千万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191026171258488.png" alt="在这里插入图片描述"></p>
+<h2 id="2-3-java"><a href="#2-3-java" class="headerlink" title="2.3 java"></a>2.3 java</h2><h3 id="2-3-1-循环十万次："><a href="#2-3-1-循环十万次：" class="headerlink" title="2.3.1 循环十万次："></a>2.3.1 循环十万次：</h3><p>程序：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sinx3</span></span>&#123;  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;  </span><br><span class="line">	<span class="keyword">double</span> y;</span><br><span class="line">	<span class="comment">//double degrees = 3.14;</span></span><br><span class="line">	<span class="comment">//double radians = Math.toRadians(degrees);</span></span><br><span class="line">	<span class="keyword">double</span> startTime =  System.currentTimeMillis();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">100000</span>;i++)&#123;  </span><br><span class="line">		y = Math.sin(<span class="number">3.14</span>);</span><br><span class="line">		<span class="comment">//System.out.printn(y);  </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">double</span> endTime =  System.currentTimeMillis();</span><br><span class="line">	<span class="keyword">double</span> Time = (endTime-startTime)/<span class="number">1000</span>;</span><br><span class="line">	System.out.println(Time+<span class="string">"s"</span>);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027003431989.png" alt=""></p>
+<h3 id="2-3-2-循环一百万次："><a href="#2-3-2-循环一百万次：" class="headerlink" title="2.3.2 循环一百万次："></a>2.3.2 循环一百万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027003623743.png" alt="在这里插入图片描述"></p>
+<h3 id="2-3-3-循环一千万次："><a href="#2-3-3-循环一千万次：" class="headerlink" title="2.3.3 循环一千万次："></a>2.3.3 循环一千万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027003830724.png" alt="在这里插入图片描述"></p>
+<h2 id="2-4-octave"><a href="#2-4-octave" class="headerlink" title="2.4 octave:"></a>2.4 octave:</h2><p>octave安装可以参考我的另外一篇博客：<br><a href="https://blog.csdn.net/qq_44420246/article/details/102767943" target="_blank" rel="noopener">https://blog.csdn.net/qq_44420246/article/details/102767943</a></p>
+<h3 id="2-4-1-循环十万次："><a href="#2-4-1-循环十万次：" class="headerlink" title="2.4.1 循环十万次："></a>2.4.1 循环十万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tic</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>:<span class="number">1</span>:<span class="number">100000</span></span><br><span class="line">  y = sin(<span class="number">3.14</span>);</span><br><span class="line">endfor</span><br><span class="line">toc</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027154802438.png" alt="在这里插入图片描述"></p>
+<h3 id="2-4-2-循环一百万次："><a href="#2-4-2-循环一百万次：" class="headerlink" title="2.4.2 循环一百万次："></a>2.4.2 循环一百万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tic</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>:<span class="number">1</span>:<span class="number">1000000</span></span><br><span class="line">  y = sin(<span class="number">3.14</span>);</span><br><span class="line">endfor</span><br><span class="line">toc</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027154641118.png" alt="在这里插入图片描述"></p>
+<h3 id="2-4-3-循环一千万次："><a href="#2-4-3-循环一千万次：" class="headerlink" title="2.4.3 循环一千万次："></a>2.4.3 循环一千万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tic</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>:<span class="number">1</span>:<span class="number">10000000</span></span><br><span class="line">  y = sin(<span class="number">3.14</span>);</span><br><span class="line">endfor</span><br><span class="line">toc</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/2019102715440783.png" alt="在这里插入图片描述"></p>
+<h2 id="2-5-golang语言"><a href="#2-5-golang语言" class="headerlink" title="2.5 golang语言"></a>2.5 golang语言</h2><p>golang下载安装：<br><a href="https://www.cnblogs.com/chnmig/p/10107158.html" target="_blank" rel="noopener">https://www.cnblogs.com/chnmig/p/10107158.html</a></p>
+<h3 id="2-5-1-循环十万次："><a href="#2-5-1-循环十万次：" class="headerlink" title="2.5.1  循环十万次："></a>2.5.1  循环十万次：</h3><p>程序：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">        <span class="string">"fmt"</span></span><br><span class="line">        <span class="string">"math"</span></span><br><span class="line">        <span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">        start := time.Now()</span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++ &#123;</span><br><span class="line">                math.Sin(<span class="number">3.14</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        cost := time.Since(start)</span><br><span class="line">        fmt.Printf(<span class="string">"%s\n"</span>, cost)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027194441957.png" alt="在这里插入图片描述"></p>
+<h3 id="2-5-2-循环一百万次："><a href="#2-5-2-循环一百万次：" class="headerlink" title="2.5.2  循环一百万次："></a>2.5.2  循环一百万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027194039552.png" alt="在这里插入图片描述"></p>
+<h3 id="2-5-3-循环一千万次："><a href="#2-5-3-循环一千万次：" class="headerlink" title="2.5.3  循环一千万次："></a>2.5.3  循环一千万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027193829759.png" alt="在这里插入图片描述"></p>
+<h2 id="2-6-Julia语言"><a href="#2-6-Julia语言" class="headerlink" title="2.6 Julia语言"></a>2.6 Julia语言</h2><p>julia在linux系统上的安装和配置参考了如下两个博客：<br>安装：<br><a href="https://blog.csdn.net/kingyuan666/article/details/81592822" target="_blank" rel="noopener">https://blog.csdn.net/kingyuan666/article/details/81592822</a><br>报错配置：<br><a href="https://blog.csdn.net/taw19960426/article/details/102754209" target="_blank" rel="noopener">https://blog.csdn.net/taw19960426/article/details/102754209</a></p>
+<h3 id="2-6-1-循环十万次"><a href="#2-6-1-循环十万次" class="headerlink" title="2.6.1 循环十万次"></a>2.6.1 循环十万次</h3><p>程序：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">t1 = time()</span><br><span class="line">	<span class="keyword">for</span> i in <span class="number">1</span>:<span class="number">100000</span></span><br><span class="line">		sin(<span class="number">2</span>*pi*<span class="number">500</span>*i)</span><br><span class="line">	end</span><br><span class="line">t2 =time()</span><br><span class="line"><span class="built_in">println</span>((t2-t1)*<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027220445954.png" alt="在这里插入图片描述"><br>单位为秒。</p>
+<h3 id="2-6-2-循环一百万次"><a href="#2-6-2-循环一百万次" class="headerlink" title="2.6.2 循环一百万次"></a>2.6.2 循环一百万次</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027220302196.png" alt="在这里插入图片描述"></p>
+<h3 id="2-6-3-循环一千万次"><a href="#2-6-3-循环一千万次" class="headerlink" title="2.6.3 循环一千万次"></a>2.6.3 循环一千万次</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027220220905.png" alt="在这里插入图片描述"></p>
+<h1 id="三-总结"><a href="#三-总结" class="headerlink" title="三 总结"></a>三 总结</h1><p>从上面的结果来看，在linux系统中运行效率明显高于windows系统，但对于golang语言和julia语言在windows和linux上则不相上下。</p>
+<h2 id="在windows系统中运行时间比较："><a href="#在windows系统中运行时间比较：" class="headerlink" title="在windows系统中运行时间比较："></a>在windows系统中运行时间比较：</h2><p>python循环一千万次sin(3.14)的时间约为：<br>3.972s<br>c语言循环一千万次sin(3.14)的时间为：<br>0.532s<br>java循环一千万次sin(3.14)的时间为：<br>0.209s<br>octave循环一千万次sin(3.14)的时间为：<br>92s<br>golang循环一千万次sin(3.14)的时间约为：<br>0.214s<br>julia循环一千万次sin(3.14)的时间约为：<br>0.103s<br>所以运行效率：<br><strong>julia&gt;java&gt;golang&gt;c&gt;python&gt;octave</strong></p>
+<h2 id="在linux系统中运行时间比较："><a href="#在linux系统中运行时间比较：" class="headerlink" title="在linux系统中运行时间比较："></a>在linux系统中运行时间比较：</h2><p>python循环一千万次sin(3.14)的时间约为：<br>1.69s<br>c语言循环一千万次sin(3.14)的时间为：<br>0.02s<br>java循环一千万次sin(3.14)的时间为：<br>0.147s<br>octave循环一千万次sin(3.14)的时间为：<br>24.5216s<br>golang循环一千万次sin(3.14)的时间约为：<br>0.114s<br>julia循环一千万次sin(3.14)的时间约为：<br>0.127s<br>所以运行效率：<br><strong>c&gt;golang&gt;julia&gt;java&gt;python&gt;octave</strong></p>
+<p>这几门语言中效率最低的为octave。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/c,python,java,octave%EF%BC%8Cgolang%EF%BC%8Cjulia%E7%BC%96%E7%A8%8B%E8%AE%A1%E7%AE%97%E5%8D%81%E4%B8%87%E6%AC%A1%EF%BC%8C%E4%B8%80%E7%99%BE%E4%B8%87%E6%AC%A1%EF%BC%8C%E4%B8%80%E5%8D%83%E4%B8%87%E6%AC%A1sinx%EF%BC%8C%E6%AF%94%E8%BE%83%E6%95%88%E7%8E%87/" data-id="ck37d40r20008awv63ge68oux" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-html远程访问云服务cgi，实现简单的加法计算" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/html%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E4%BA%91%E6%9C%8D%E5%8A%A1cgi%EF%BC%8C%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E5%8A%A0%E6%B3%95%E8%AE%A1%E7%AE%97/" class="article-date">
+  <time datetime="2019-11-20T13:53:56.579Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/html%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E4%BA%91%E6%9C%8D%E5%8A%A1cgi%EF%BC%8C%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E5%8A%A0%E6%B3%95%E8%AE%A1%E7%AE%97/">html远程访问云服务cgi，实现简单的加法计算</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一-准备条件"><a href="#一-准备条件" class="headerlink" title="一 准备条件"></a>一 准备条件</h1><ol>
+<li>安装配置好腾讯云的centos系统</li>
+<li>远程腾讯云服务器的centos系统配置好httpd</li>
+<li>腾讯云的云服务器安全组中将80端口设置开启<br>接着启动腾讯云服务器：</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start httpd.service        //启动服务器</span><br></pre></td></tr></table></figure>
+<p>查看是否开启：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status httpd.service      //查看服务器启动后的状态</span><br></pre></td></tr></table></figure>
+<p>配置好以后，浏览器新打开一个窗口，输入：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://腾讯云公网IP:<span class="number">80</span>/</span><br></pre></td></tr></table></figure>
+<p>腾讯云的公网ip在腾讯云的实例中即可看到。<br>输入后显示结果如下，表示配置成功。<br><img src="https://img-blog.csdnimg.cn/20191104220608329.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>关于具体配置细节可参考我的另一篇博客：<br><a href="https://blog.csdn.net/qq_44420246/article/details/102558842" target="_blank" rel="noopener">https://blog.csdn.net/qq_44420246/article/details/102558842</a></p>
+<h1 id="二-编写html代码"><a href="#二-编写html代码" class="headerlink" title="二 编写html代码"></a>二 编写html代码</h1><p>编写html代码，使其能访问腾讯云的cgi编译程序，并能显示在网页上。<br>采用post方式提交（提交方式有两种，GET - 从指定的资源请求数据。POST - 向指定的资源提交要被处理的数据）<br>代码如下：<br>html程序：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;ADCU&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;tr&gt;&lt;td&gt;</span><br><span class="line">&lt;div&gt; please input your information:</span><br><span class="line">&lt;!--form method=<span class="string">"GET"</span> action=<span class="string">"./cgi-bin/get.cgi"</span>--&gt;</span><br><span class="line">&lt;form method=<span class="string">"POST"</span> action=<span class="string">"./cgi-bin/test4.cgi"</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">"text"</span> size=<span class="number">30</span> maxlength=<span class="number">100</span> name=x&gt;</span><br><span class="line">	&lt;font size=<span class="number">30</span> text=隶书&gt;+&lt;/font&gt;</span><br><span class="line">    &lt;input type=<span class="string">"text"</span> size=<span class="number">30</span> maxlength=<span class="number">100</span> name=y&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    &lt;input type=<span class="string">"submit"</span> value=<span class="string">"submit"</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">"reset"</span> value=<span class="string">"reset_parameters"</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/td&gt;&lt;/tr&gt;</span><br><span class="line"></span><br><span class="line">&lt;/table&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>编写好后将其放在刚刚配置好的httpd服务器的腾讯云centos系统的/var/www/html/路径下。</p>
+<h1 id="三-编写c程序，编译为-cgi程序"><a href="#三-编写c程序，编译为-cgi程序" class="headerlink" title="三 编写c程序，编译为.cgi程序"></a>三 编写c程序，编译为.cgi程序</h1><p>接着编写c程序，用于对来自html的数据，进行计算，并将结果返回给服务器，代码如下：<br>腾讯云中编译为cgi程序的c程序：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> len;</span><br><span class="line">   FILE *fp1,*fp2;  <span class="comment">//定义两个指针</span></span><br><span class="line">   <span class="keyword">char</span> *poststr,inputdata[<span class="number">512</span>];    <span class="comment">//用于接收来自网页的数据</span></span><br><span class="line">   <span class="keyword">char</span> x[<span class="number">10</span>]=&#123;<span class="number">0</span>&#125;,y[<span class="number">10</span>]=&#123;<span class="number">0</span>&#125;;    <span class="comment">//定义字符型数组，用于存储来自网页的数据</span></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"Content-Type:text/html\n\n"</span>);  <span class="comment">//要将以下的输出语句输出在页面上就必须加此行代码，\n\n为换行，两个换行即中间要空一行，这是规范</span></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"&lt;HTML&gt;\n"</span>);</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"&lt;BODY&gt;\n"</span>);</span><br><span class="line">   poststr=getenv(<span class="string">"CONTENT_LENGTH"</span>);    <span class="comment">//计算从网友传输过来的数据的长度</span></span><br><span class="line">   <span class="keyword">if</span>(poststr==<span class="literal">NULL</span>)  </span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"&lt;DIV STYLE=\"/\"mce_STYLE=\"/\"\"COLOR:RED/\"&gt;ERROR Input,no Data!&lt;/DIV&gt;\n"</span>);</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"&lt;DIV STYLE=\"/\"mce_STYLE=\"/\"\"COLOR:RED/\"&gt; the end:&lt;/DIV&gt;\n"</span>);</span><br><span class="line">     len=atoi(poststr);  </span><br><span class="line">     fgets(inputdata,len+<span class="number">2</span>,<span class="built_in">stdin</span>);  <span class="comment">//功能是从stdin缓存中读取len+2个字符存储到数组inputdata</span></span><br><span class="line">     <span class="built_in">sscanf</span>(inputdata,<span class="string">"x=%[^&amp;]&amp;y=%[^&amp;]"</span>,x,y);  <span class="comment">//sscanf与scanf类似，都是用于输入的，只是后者以键盘(stdin)为输入源，前者以固定字符串为输入源。将数据分别存储到x，y中</span></span><br><span class="line">	 <span class="comment">//printf("%s\t%s",x,y);</span></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> a=atoi(x);  <span class="comment">//接收到的数据为字符串类型，需要转换成整型才能进行加减运算</span></span><br><span class="line">    <span class="keyword">int</span> b=atoi(y);</span><br><span class="line">   <span class="comment">// printf("%d\t%d",a,b);</span></span><br><span class="line">    <span class="keyword">int</span> c=a+b;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,c);  <span class="comment">//打印结果</span></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"&lt;/div&gt;\n"</span>);</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"&lt;/BODY&gt;\n"</span>);</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"&lt;/HTML&gt;\n"</span>);</span><br><span class="line">   fflush(<span class="built_in">stdout</span>);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编写好后，将代码上传至腾讯云centos系统的/var/www/cgi-bin/路径下，并在centos系统中编译为.cgi程序，编译代码：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc test4.c -o test4.cgi</span><br></pre></td></tr></table></figure>
+<h1 id="四-网页访问"><a href="#四-网页访问" class="headerlink" title="四 网页访问"></a>四 网页访问</h1><p>打开浏览器窗口，输入http://腾讯云公网ip:80/test6.html<br>test6.html为html文件名称<br>页面显示如下：<br><img src="https://img-blog.csdnimg.cn/20191104222715907.png" alt="在这里插入图片描述"><br>在两个文本框输入4和5，点击submit，即可访问远程腾讯云centos系统的cgi程序，将输入的4和5传递过去，cgi程序接收并进行计算两个数的和，并将结果返回，显示在网页上。结果如下：<br><img src="https://img-blog.csdnimg.cn/20191104231319645.png" alt="在这里插入图片描述"><br>到这里就实现了html远程访问云服务cgi，实现简单的加法计算。<br>参考博客：<br><a href="https://blog.csdn.net/xygl2009/article/details/41971441" target="_blank" rel="noopener">https://blog.csdn.net/xygl2009/article/details/41971441</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/html%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E4%BA%91%E6%9C%8D%E5%8A%A1cgi%EF%BC%8C%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E5%8A%A0%E6%B3%95%E8%AE%A1%E7%AE%97/" data-id="ck37d40r9000aawv647y20xht" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux中使用gnuplot画sinx的图像(c语言编程)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/linux%E4%B8%AD%E4%BD%BF%E7%94%A8gnuplot%E7%94%BBsinx%E7%9A%84%E5%9B%BE%E5%83%8F(c%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B)/" class="article-date">
+  <time datetime="2019-11-20T13:53:42.738Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/linux%E4%B8%AD%E4%BD%BF%E7%94%A8gnuplot%E7%94%BBsinx%E7%9A%84%E5%9B%BE%E5%83%8F(c%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B)/">linux中使用gnuplot画sinx的图像(c语言编程)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装gnuplot"><a href="#安装gnuplot" class="headerlink" title="安装gnuplot"></a>安装gnuplot</h1><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gnuplot</span><br></pre></td></tr></table></figure>
+<p>（2） 配置环境变量，进入/etc/profile.d/gnuplot.sh文件中，将以下内容添加进文件：</p>
+<pre><code>export GNUTERM=dumb
+
+export GNUPLOT=/home/hadoop/software/gnuplot
+
+export PATH=/home/hadoop/gnuplot/bin:$PATH
+
+export MANPATH=/home/hadoop/gnuplot/share/man/man1:$MANPATH</code></pre><p> （3）启用环境：</p>
+<pre><code>#source /etc/profile.d/gnuplot.sh</code></pre><h1 id="编写c程序"><a href="#编写c程序" class="headerlink" title="编写c程序"></a>编写c程序</h1><p>首先进入到某一个保存文件的路径下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /var</span><br></pre></td></tr></table></figure>
+<p>接着创建文件：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch sinx1.c</span><br></pre></td></tr></table></figure>
+<p>进入编写程序：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim sinx1.c</span><br></pre></td></tr></table></figure>
+<p>编写好后保存退出。编写的程序如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pi 3.1415</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">double</span> t,y;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">8000</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		t=i/<span class="number">8000.0</span>;</span><br><span class="line">		y=<span class="number">0.6</span>*<span class="built_in">sin</span>(<span class="number">2</span>*pi*<span class="number">50</span>*t);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%.4f\t%.6f\n"</span>,t,y);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h1><p>使用gcc对sinx1.c文件进行编译，编译为sinx1.out：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc sinx1.c -o sinx1.out -lm</span><br></pre></td></tr></table></figure>
+
+<p>将编译得到的sinx1.out文件运行，并将运行的数据保存到sinx1.dat文件中：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./sinx1.out &gt;sinx1.dat</span><br></pre></td></tr></table></figure>
+
+<h1 id="调用gnuplot-画图"><a href="#调用gnuplot-画图" class="headerlink" title="调用gnuplot 画图"></a>调用gnuplot 画图</h1><p>先输入gnuplot，进入gnuplot画图环境。<br>再输入如下语句画出图像：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot [<span class="number">0</span>:<span class="number">0.1</span>] [<span class="number">-1</span>:<span class="number">1</span>] <span class="string">"sinx1.dat"</span> w l</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191107155746382.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/linux%E4%B8%AD%E4%BD%BF%E7%94%A8gnuplot%E7%94%BBsinx%E7%9A%84%E5%9B%BE%E5%83%8F(c%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B)/" data-id="ck37d40rj000dawv6hk8xgrv6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-虚拟机centos系统网络配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/%E8%99%9A%E6%8B%9F%E6%9C%BAcentos%E7%B3%BB%E7%BB%9F%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time datetime="2019-11-20T13:53:27.596Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/%E8%99%9A%E6%8B%9F%E6%9C%BAcentos%E7%B3%BB%E7%BB%9F%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/">虚拟机centos系统网络配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h1><p>在电脑中安装好虚拟机，我安装的版本为：CentOS-7-x86_64-DVD-1810</p>
+<h1 id="配置虚拟机网络"><a href="#配置虚拟机网络" class="headerlink" title="配置虚拟机网络"></a>配置虚拟机网络</h1><p>注意：虚拟机和主机ip地址要在同一个网段。<br>打开虚拟机，在虚拟机中点左上角选择”虚拟机”，点击”设置”，点击网络适配器2（因为之前网络适配器，后面由于不会设置，导致网络设置混乱，无法连接，所以新建了一个网络适配器），选择NAT模式，如下：<br><img src="https://img-blog.csdnimg.cn/20191110231510629.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>更改后点击确定。<br>接着点击左上角”编辑”，选择”虚拟网络编辑器”，选择VMnet8（即NAT模式），如下：<br><img src="https://img-blog.csdnimg.cn/20191110233712806.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>点击NAT设置，设置网关IP一般为默认：<br><img src="https://img-blog.csdnimg.cn/20191111221843376.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>接着点击DHCP设置，设置起始IP地址和终止IP地址，（如果主机的IP地址不在这个起始IP地址和终止IP地址区间内则无法连接）：<br><img src="https://img-blog.csdnimg.cn/2019111122201994.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>设置好后点击确定。<br>重启网络：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service network restart</span><br></pre></td></tr></table></figure>
+
+<p>接着在虚拟机中，输入ifconfig查看ip地址及网卡信息：<br><img src="https://img-blog.csdnimg.cn/20191111215200441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="配置主机IP"><a href="#配置主机IP" class="headerlink" title="配置主机IP"></a>配置主机IP</h1><p>接着在电脑主机中选择VMnet8，如下：<br><img src="https://img-blog.csdnimg.cn/20191110234447928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>注意：由于是新建的网络适配器，无法像普通的配置虚拟机网络那样进入：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></table></figure>
+<p>修改地址信息，因为找不到需要配置的ens37文件所在地址，但是虽然没有修改，在修改完主机VMnet8的IP地址等后，linux仍然能够ping通主机，能够上网。（可能是之前配置过ens33的原因）需要配置的可参考其他配置网络的博客：<br><a href="https://blog.csdn.net/wujiele/article/details/92803655" target="_blank" rel="noopener">https://blog.csdn.net/wujiele/article/details/92803655</a></p>
+<p>双击进入，点击Ipv4，再点击属性：<br><img src="https://img-blog.csdnimg.cn/20191110234622168.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>设置IP地址如下（IP地址和虚拟机的IP地址前三段设置一样，最后一段设置不一样，默认网关前三段设置和IP地址一样，最后一位一般为1）：<br><img src="https://img-blog.csdnimg.cn/20191110234429825.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>设置好后，点击确定。<br>注意：需要将主机和linux系统的的防火墙关闭。<br>关闭linux防火墙：</p>
+<ul>
+<li>1:查看防火状态<br>systemctl status firewalld<br>service  iptables status</li>
+<li>2:暂时关闭防火墙<br>systemctl stop firewalld<br>service  iptables stop</li>
+<li>3:永久关闭防火墙<br>systemctl disable firewalld<br>chkconfig iptables off</li>
+<li>4:重启防火墙<br>systemctl enable firewalld<br>service iptables restart  </li>
+</ul>
+<p>到这就设置完成。接着<br>ping ip地址：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping 192.168.14.3</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/2019111023241030.png" alt="在这里插入图片描述"><br>ping baidu，看是否能上网：<br><img src="https://img-blog.csdnimg.cn/20191110235720693.png" alt="在这里插入图片描述"><br>成功。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/%E8%99%9A%E6%8B%9F%E6%9C%BAcentos%E7%B3%BB%E7%BB%9F%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" data-id="ck37d40t20011awv69nktht88" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-html链接到另一个html(画sinx的图像)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/html%E9%93%BE%E6%8E%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E4%B8%AAhtml(%E7%94%BBsinx%E7%9A%84%E5%9B%BE%E5%83%8F)/" class="article-date">
+  <time datetime="2019-11-20T13:53:10.117Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/html%E9%93%BE%E6%8E%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E4%B8%AAhtml(%E7%94%BBsinx%E7%9A%84%E5%9B%BE%E5%83%8F)/">html链接到另一个html(画sinx的图像)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>[注] 本文的所有程序，文件等都编写存放在腾讯云的centos系统上。<h1 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h1></li>
+<li>申请腾讯云centos系统</li>
+<li>安装配置httpd</li>
+</ul>
+<p>如何安装配置可查看我的另一篇博客：<br><a href="https://blog.csdn.net/qq_44420246/article/details/102558842" target="_blank" rel="noopener">在腾讯云的centos系统上安装httpd,能远程访问centos系统中html文件和cgi文件的内容，并显示</a></p>
+<p>安装好centos的httpd会产生一个文件路径，需要将html程序放在<code>/var/www/html/</code>路径下，这样才能通过网页访问centos系统的html程序。</p>
+<h1 id="编写程序"><a href="#编写程序" class="headerlink" title="编写程序"></a>编写程序</h1><p>配置好后就编写html程序，如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>测试<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"echartsin.html"</span> <span class="attr">frameborder</span>=<span class="string">"0"</span> <span class="attr">width</span>=<span class="string">"3000"</span> <span class="attr">scrolling</span>=<span class="string">"No"</span> <span class="attr">height</span>=<span class="string">"2000"</span> <span class="attr">leftmargin</span>=<span class="string">"0"</span> <span class="attr">topmargin</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其中主要链接另一个html程序的代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"echartsin.html"</span> <span class="attr">frameborder</span>=<span class="string">"0"</span> <span class="attr">width</span>=<span class="string">"3000"</span> <span class="attr">scrolling</span>=<span class="string">"No"</span> <span class="attr">height</span>=<span class="string">"2000"</span> <span class="attr">leftmargin</span>=<span class="string">"0"</span> <span class="attr">topmargin</span>=<span class="string">"0"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">需要链接的html程序如下：</span><br><span class="line"></span><br><span class="line">```html</span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"> &lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;script src=&quot;echarts.simple.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line"> &lt;/head&gt;</span><br><span class="line"> &lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;main&quot; style=&quot;width: 1000px;height:400px;&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">        var myChart = echarts.init(document.getElementById(&apos;main&apos;));</span><br><span class="line">        var option = &#123;</span><br><span class="line">  xAxis: &#123;&#125;,</span><br><span class="line">    yAxis: &#123;&#125;,</span><br><span class="line">    series: [&#123;</span><br><span class="line">        type: &apos;line&apos;,</span><br><span class="line">                showSymbol: false,</span><br><span class="line">        smooth: true,</span><br><span class="line">        data: [</span><br><span class="line">[0.000000e+00,0.000000e+00],</span><br><span class="line">[1.250000e-04,5.877853e-01],</span><br><span class="line">[2.500000e-04,9.510565e-01],</span><br><span class="line">[3.750000e-04,9.510565e-01],</span><br><span class="line">[5.000000e-04,5.877853e-01],</span><br><span class="line">[6.250000e-04,3.589793e-09],</span><br><span class="line">[7.500000e-04,-5.877852e-01],</span><br><span class="line">[8.750000e-04,-9.510565e-01],</span><br><span class="line">[1.000000e-03,-9.510565e-01],</span><br><span class="line">[1.125000e-03,-5.877853e-01],</span><br><span class="line">[1.250000e-03,-7.179586e-09],</span><br><span class="line">[1.375000e-03,5.877852e-01],</span><br><span class="line">[1.500000e-03,9.510565e-01],</span><br><span class="line">[1.625000e-03,9.510565e-01],</span><br><span class="line">[1.750000e-03,5.877853e-01],</span><br><span class="line">[1.875000e-03,1.076938e-08],</span><br><span class="line">[2.000000e-03,-5.877852e-01],</span><br><span class="line">[2.125000e-03,-9.510565e-01],</span><br><span class="line">[2.250000e-03,-9.510565e-01],</span><br><span class="line">[2.375000e-03,-5.877853e-01],</span><br><span class="line">[2.500000e-03,-1.435917e-08],</span><br><span class="line">[2.625000e-03,5.877852e-01],</span><br><span class="line">[2.750000e-03,9.510565e-01],</span><br><span class="line">[2.875000e-03,9.510565e-01],</span><br><span class="line">[3.000000e-03,5.877853e-01],</span><br><span class="line">[3.125000e-03,1.794897e-08],</span><br><span class="line">[3.250000e-03,-5.877852e-01],</span><br><span class="line">[3.375000e-03,-9.510565e-01],</span><br><span class="line">[3.500000e-03,-9.510565e-01],</span><br><span class="line">[3.625000e-03,-5.877853e-01],</span><br><span class="line">[3.750000e-03,-2.153876e-08],</span><br><span class="line">[3.875000e-03,5.877852e-01],</span><br><span class="line">[4.000000e-03,9.510565e-01],</span><br><span class="line">[4.125000e-03,9.510565e-01],</span><br><span class="line">[4.250000e-03,5.877853e-01],</span><br><span class="line">[4.375000e-03,2.512855e-08],</span><br><span class="line">[4.500000e-03,-5.877852e-01],</span><br><span class="line">[4.625000e-03,-9.510565e-01],</span><br><span class="line">[4.750000e-03,-9.510565e-01],</span><br><span class="line">[4.875000e-03,-5.877853e-01],</span><br><span class="line">[5.000000e-03,-2.871834e-08],</span><br><span class="line">[5.125000e-03,5.877852e-01],</span><br><span class="line">[5.250000e-03,9.510565e-01],</span><br><span class="line">[5.375000e-03,9.510565e-01],</span><br><span class="line">[5.500000e-03,5.877853e-01],</span><br><span class="line">[5.625000e-03,3.230814e-08],</span><br><span class="line">[5.750000e-03,-5.877852e-01],</span><br><span class="line">[5.875000e-03,-9.510565e-01],</span><br><span class="line">[6.000000e-03,-9.510565e-01],</span><br><span class="line">[6.125000e-03,-5.877853e-01],</span><br><span class="line">[6.250000e-03,-3.589793e-08],</span><br><span class="line">[6.375000e-03,5.877852e-01],</span><br><span class="line">[6.500000e-03,9.510565e-01],</span><br><span class="line">[6.625000e-03,9.510565e-01],</span><br><span class="line">[6.750000e-03,5.877853e-01],</span><br><span class="line">[6.875000e-03,3.948773e-08],</span><br><span class="line">[7.000000e-03,-5.877852e-01],</span><br><span class="line">[7.125000e-03,-9.510565e-01],</span><br><span class="line">[7.250000e-03,-9.510565e-01],</span><br><span class="line">[7.375000e-03,-5.877853e-01],</span><br><span class="line">[7.500000e-03,-4.307752e-08],</span><br><span class="line">[7.625000e-03,5.877852e-01],</span><br><span class="line">[7.750000e-03,9.510565e-01],</span><br><span class="line">[7.875000e-03,9.510565e-01],</span><br><span class="line">[8.000000e-03,5.877853e-01],</span><br><span class="line">[8.125000e-03,4.666731e-08],</span><br><span class="line">[8.250000e-03,-5.877852e-01],</span><br><span class="line">[8.375000e-03,-9.510565e-01],</span><br><span class="line">[8.500000e-03,-9.510565e-01],</span><br><span class="line">[8.625000e-03,-5.877853e-01],</span><br><span class="line">[8.750000e-03,-5.025710e-08],</span><br><span class="line">[8.875000e-03,5.877852e-01],</span><br><span class="line">[9.000000e-03,9.510565e-01],</span><br><span class="line">[9.125000e-03,9.510565e-01],</span><br><span class="line">[9.250000e-03,5.877853e-01],</span><br><span class="line">[9.375000e-03,5.384690e-08],</span><br><span class="line">[9.500000e-03,-5.877852e-01],</span><br><span class="line">[9.625000e-03,-9.510565e-01],</span><br><span class="line">[9.750000e-03,-9.510565e-01],</span><br><span class="line">[9.875000e-03,-5.877853e-01],</span><br><span class="line">[1.000000e-02,-5.743669e-08],</span><br><span class="line">[1.012500e-02,5.877852e-01],</span><br><span class="line">[1.025000e-02,9.510565e-01],</span><br><span class="line">[1.037500e-02,9.510565e-01],</span><br><span class="line">[1.050000e-02,5.877853e-01],</span><br><span class="line">[1.062500e-02,6.102648e-08],</span><br><span class="line">[1.075000e-02,-5.877852e-01],</span><br><span class="line">[1.087500e-02,-9.510565e-01],</span><br><span class="line">[1.100000e-02,-9.510565e-01],</span><br><span class="line">[1.112500e-02,-5.877853e-01],</span><br><span class="line">[1.125000e-02,-6.461628e-08],</span><br><span class="line">[1.137500e-02,5.877852e-01],</span><br><span class="line">[1.150000e-02,9.510565e-01],</span><br><span class="line">[1.162500e-02,9.510565e-01],</span><br><span class="line">[1.175000e-02,5.877853e-01],</span><br><span class="line">[1.187500e-02,6.820607e-08],</span><br><span class="line">[1.200000e-02,-5.877852e-01],</span><br><span class="line">[1.212500e-02,-9.510565e-01],</span><br><span class="line">[1.225000e-02,-9.510565e-01],</span><br><span class="line">[1.237500e-02,-5.877853e-01],</span><br><span class="line">[1.250000e-02,-7.179586e-08],</span><br><span class="line">[1.262500e-02,5.877852e-01],</span><br><span class="line">[1.275000e-02,9.510565e-01],</span><br><span class="line">[1.287500e-02,9.510565e-01],</span><br><span class="line">[1.300000e-02,5.877853e-01],</span><br><span class="line">[1.312500e-02,7.538566e-08],</span><br><span class="line">[1.325000e-02,-5.877852e-01],</span><br><span class="line">[1.337500e-02,-9.510565e-01],</span><br><span class="line">[1.350000e-02,-9.510565e-01],</span><br><span class="line">[1.362500e-02,-5.877853e-01],</span><br><span class="line">[1.375000e-02,-7.897546e-08],</span><br><span class="line">[1.387500e-02,5.877852e-01],</span><br><span class="line">[1.400000e-02,9.510565e-01],</span><br><span class="line">[1.412500e-02,9.510565e-01],</span><br><span class="line">[1.425000e-02,5.877853e-01],</span><br><span class="line">[1.437500e-02,8.256524e-08],</span><br><span class="line">[1.450000e-02,-5.877852e-01],</span><br><span class="line">[1.462500e-02,-9.510565e-01],</span><br><span class="line">[1.475000e-02,-9.510565e-01],</span><br><span class="line">[1.487500e-02,-5.877853e-01],</span><br><span class="line">[1.500000e-02,-8.615504e-08],</span><br><span class="line">[1.512500e-02,5.877852e-01],</span><br><span class="line">[1.525000e-02,9.510565e-01],</span><br><span class="line">[1.537500e-02,9.510565e-01],</span><br><span class="line">[1.550000e-02,5.877853e-01],</span><br><span class="line">[1.562500e-02,8.974483e-08],</span><br><span class="line">[1.575000e-02,-5.877852e-01],</span><br><span class="line">[1.587500e-02,-9.510565e-01],</span><br><span class="line">[1.600000e-02,-9.510565e-01],</span><br><span class="line">[1.612500e-02,-5.877853e-01],</span><br><span class="line">[1.625000e-02,-9.333462e-08],</span><br><span class="line">[1.637500e-02,5.877852e-01],</span><br><span class="line">[1.650000e-02,9.510565e-01],</span><br><span class="line">[1.662500e-02,9.510565e-01],</span><br><span class="line">[1.675000e-02,5.877853e-01],</span><br><span class="line">[1.687500e-02,9.692442e-08],</span><br><span class="line">[1.700000e-02,-5.877852e-01],</span><br><span class="line">[1.712500e-02,-9.510565e-01],</span><br><span class="line">[1.725000e-02,-9.510565e-01],</span><br><span class="line">[1.737500e-02,-5.877853e-01],</span><br><span class="line">[1.750000e-02,-1.005142e-07],</span><br><span class="line">[1.762500e-02,5.877852e-01],</span><br><span class="line">[1.775000e-02,9.510565e-01],</span><br><span class="line">[1.787500e-02,9.510565e-01],</span><br><span class="line">[1.800000e-02,5.877853e-01],</span><br><span class="line">[1.812500e-02,1.041040e-07],</span><br><span class="line">[1.825000e-02,-5.877852e-01],</span><br><span class="line">[1.837500e-02,-9.510565e-01],</span><br><span class="line">[1.850000e-02,-9.510565e-01],</span><br><span class="line">[1.862500e-02,-5.877853e-01],</span><br><span class="line">[1.875000e-02,-1.076938e-07],</span><br><span class="line">[1.887500e-02,5.877852e-01],</span><br><span class="line">[1.900000e-02,9.510565e-01],</span><br><span class="line">[1.912500e-02,9.510566e-01],</span><br><span class="line">[1.925000e-02,5.877853e-01],</span><br><span class="line">[1.937500e-02,1.112836e-07],</span><br><span class="line">[1.950000e-02,-5.877852e-01],</span><br><span class="line">[1.962500e-02,-9.510565e-01],</span><br><span class="line">[1.975000e-02,-9.510566e-01],</span><br><span class="line">[1.987500e-02,-5.877853e-01],</span><br><span class="line">[2.000000e-02,-1.148734e-07],</span><br><span class="line">[2.012500e-02,5.877852e-01],</span><br><span class="line">[2.025000e-02,9.510565e-01],</span><br><span class="line">[2.037500e-02,9.510566e-01],</span><br><span class="line">[2.050000e-02,5.877853e-01],</span><br><span class="line">[2.062500e-02,1.184632e-07],</span><br><span class="line">[2.075000e-02,-5.877852e-01],</span><br><span class="line">[2.087500e-02,-9.510565e-01],</span><br><span class="line">[2.100000e-02,-9.510566e-01],</span><br><span class="line">[2.112500e-02,-5.877854e-01],</span><br><span class="line">[2.125000e-02,-1.220530e-07],</span><br><span class="line">[2.137500e-02,5.877852e-01],</span><br><span class="line">[2.150000e-02,9.510565e-01],</span><br><span class="line">[2.162500e-02,9.510566e-01],</span><br><span class="line">[2.175000e-02,5.877854e-01],</span><br><span class="line">[2.187500e-02,1.256428e-07],</span><br><span class="line">[2.200000e-02,-5.877852e-01],</span><br><span class="line">[2.212500e-02,-9.510565e-01],</span><br><span class="line">[2.225000e-02,-9.510566e-01],</span><br><span class="line">[2.237500e-02,-5.877854e-01],</span><br><span class="line">[2.250000e-02,-1.292326e-07],</span><br><span class="line">[2.262500e-02,5.877851e-01],</span><br><span class="line">[2.275000e-02,9.510565e-01],</span><br><span class="line">[2.287500e-02,9.510566e-01],</span><br><span class="line">[2.300000e-02,5.877854e-01],</span><br><span class="line">[2.312500e-02,1.328224e-07],</span><br><span class="line">[2.325000e-02,-5.877851e-01],</span><br><span class="line">[2.337500e-02,-9.510565e-01],</span><br><span class="line">[2.350000e-02,-9.510566e-01],</span><br><span class="line">[2.362500e-02,-5.877854e-01],</span><br><span class="line">[2.375000e-02,-1.364121e-07],</span><br><span class="line">[2.387500e-02,5.877851e-01],</span><br><span class="line">[2.400000e-02,9.510565e-01],</span><br><span class="line">[2.412500e-02,9.510566e-01],</span><br><span class="line">[2.425000e-02,5.877854e-01],</span><br><span class="line">[2.437500e-02,1.400019e-07],</span><br><span class="line">[2.450000e-02,-5.877851e-01],</span><br><span class="line">[2.462500e-02,-9.510565e-01],</span><br><span class="line">[2.475000e-02,-9.510566e-01],</span><br><span class="line">[2.487500e-02,-5.877854e-01],</span><br><span class="line">[2.500000e-02,-1.435917e-07],</span><br><span class="line">[2.512500e-02,5.877851e-01],</span><br><span class="line">[2.525000e-02,9.510565e-01],</span><br><span class="line">[2.537500e-02,9.510566e-01],</span><br><span class="line">[2.550000e-02,5.877854e-01],</span><br><span class="line">[2.562500e-02,1.471815e-07],</span><br><span class="line">[2.575000e-02,-5.877851e-01],</span><br><span class="line">[2.587500e-02,-9.510565e-01],</span><br><span class="line">[2.600000e-02,-9.510566e-01],</span><br><span class="line">[2.612500e-02,-5.877854e-01],</span><br><span class="line">[2.625000e-02,-1.507713e-07],</span><br><span class="line">[2.637500e-02,5.877851e-01],</span><br><span class="line">[2.650000e-02,9.510565e-01],</span><br><span class="line">[2.662500e-02,9.510566e-01],</span><br><span class="line">[2.675000e-02,5.877854e-01],</span><br><span class="line">[2.687500e-02,1.543611e-07],</span><br><span class="line">[2.700000e-02,-5.877851e-01],</span><br><span class="line">[2.712500e-02,-9.510565e-01],</span><br><span class="line">[2.725000e-02,-9.510566e-01],</span><br><span class="line">[2.737500e-02,-5.877854e-01],</span><br><span class="line">[2.750000e-02,-1.579509e-07],</span><br><span class="line">[2.762500e-02,5.877851e-01],</span><br><span class="line">[2.775000e-02,9.510565e-01],</span><br><span class="line">[2.787500e-02,9.510566e-01],</span><br><span class="line">[2.800000e-02,5.877854e-01],</span><br><span class="line">[2.812500e-02,1.615407e-07],</span><br><span class="line">[2.825000e-02,-5.877851e-01],</span><br><span class="line">[2.837500e-02,-9.510565e-01],</span><br><span class="line">[2.850000e-02,-9.510566e-01],</span><br><span class="line">[2.862500e-02,-5.877854e-01],</span><br><span class="line">[2.875000e-02,-1.651305e-07],</span><br><span class="line">[2.887500e-02,5.877851e-01],</span><br><span class="line">[2.900000e-02,9.510565e-01],</span><br><span class="line">[2.912500e-02,9.510566e-01],</span><br><span class="line">[2.925000e-02,5.877854e-01],</span><br><span class="line">[2.937500e-02,1.687203e-07],</span><br><span class="line">[2.950000e-02,-5.877851e-01],</span><br><span class="line">[2.962500e-02,-9.510565e-01],</span><br><span class="line">[2.975000e-02,-9.510566e-01],</span><br><span class="line">[2.987500e-02,-5.877854e-01],</span><br><span class="line">[3.000000e-02,-1.723101e-07],</span><br><span class="line">[3.012500e-02,5.877851e-01],</span><br><span class="line">[3.025000e-02,9.510565e-01],</span><br><span class="line">[3.037500e-02,9.510566e-01],</span><br><span class="line">[3.050000e-02,5.877854e-01],</span><br><span class="line">[3.062500e-02,1.758999e-07],</span><br><span class="line">[3.075000e-02,-5.877851e-01],</span><br><span class="line">[3.087500e-02,-9.510565e-01],</span><br><span class="line">[3.100000e-02,-9.510566e-01],</span><br><span class="line">[3.112500e-02,-5.877854e-01],</span><br><span class="line">[3.125000e-02,-1.794897e-07],</span><br><span class="line">[3.137500e-02,5.877851e-01],</span><br><span class="line">[3.150000e-02,9.510565e-01],</span><br><span class="line">[3.162500e-02,9.510566e-01],</span><br><span class="line">[3.175000e-02,5.877854e-01],</span><br><span class="line">[3.187500e-02,1.830794e-07],</span><br><span class="line">[3.200000e-02,-5.877851e-01],</span><br><span class="line">[3.212500e-02,-9.510565e-01],</span><br><span class="line">[3.225000e-02,-9.510566e-01],</span><br><span class="line">[3.237500e-02,-5.877854e-01],</span><br><span class="line">[3.250000e-02,-1.866692e-07],</span><br><span class="line">[3.262500e-02,5.877851e-01],</span><br><span class="line">[3.275000e-02,9.510565e-01],</span><br><span class="line">[3.287500e-02,9.510566e-01],</span><br><span class="line">[3.300000e-02,5.877854e-01],</span><br><span class="line">[3.312500e-02,1.902590e-07],</span><br><span class="line">[3.325000e-02,-5.877851e-01],</span><br><span class="line">[3.337500e-02,-9.510565e-01],</span><br><span class="line">[3.350000e-02,-9.510566e-01],</span><br><span class="line">[3.362500e-02,-5.877854e-01],</span><br><span class="line">[3.375000e-02,-1.938488e-07],</span><br><span class="line">[3.387500e-02,5.877851e-01],</span><br><span class="line">[3.400000e-02,9.510565e-01],</span><br><span class="line">[3.412500e-02,9.510566e-01],</span><br><span class="line">[3.425000e-02,5.877854e-01],</span><br><span class="line">[3.437500e-02,1.974386e-07],</span><br><span class="line">[3.450000e-02,-5.877851e-01],</span><br><span class="line">[3.462500e-02,-9.510565e-01],</span><br><span class="line">[3.475000e-02,-9.510566e-01],</span><br><span class="line">[3.487500e-02,-5.877854e-01],</span><br><span class="line">[3.500000e-02,-2.010284e-07],</span><br><span class="line">[3.512500e-02,5.877851e-01],</span><br><span class="line">[3.525000e-02,9.510565e-01],</span><br><span class="line">[3.537500e-02,9.510566e-01],</span><br><span class="line">[3.550000e-02,5.877854e-01],</span><br><span class="line">[3.562500e-02,2.046182e-07],</span><br><span class="line">[3.575000e-02,-5.877851e-01],</span><br><span class="line">[3.587500e-02,-9.510565e-01],</span><br><span class="line">[3.600000e-02,-9.510566e-01],</span><br><span class="line">[3.612500e-02,-5.877854e-01],</span><br><span class="line">[3.625000e-02,-2.082080e-07],</span><br><span class="line">[3.637500e-02,5.877851e-01],</span><br><span class="line">[3.650000e-02,9.510565e-01],</span><br><span class="line">[3.662500e-02,9.510566e-01],</span><br><span class="line">[3.675000e-02,5.877854e-01],</span><br><span class="line">[3.687500e-02,2.117978e-07],</span><br><span class="line">[3.700000e-02,-5.877851e-01],</span><br><span class="line">[3.712500e-02,-9.510565e-01],</span><br><span class="line">[3.725000e-02,-9.510566e-01],</span><br><span class="line">[3.737500e-02,-5.877854e-01],</span><br><span class="line">       ]</span><br><span class="line">   &#125;]</span><br><span class="line">        &#125;;</span><br><span class="line">        myChart.setOption(option);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"> &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>程序中<code>data: [</code>后面的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[0.000000e+00,0.000000e+00],</span><br><span class="line">[1.250000e-04,5.877853e-01],</span><br><span class="line">[2.500000e-04,9.510565e-01],</span><br><span class="line">[3.750000e-04,9.510565e-01],</span><br><span class="line">[5.000000e-04,5.877853e-01], ...</span><br></pre></td></tr></table></figure>
+<p>为画sinx图像所需要的数据。<br>参生这些数据的代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pi 3.14159265</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">double</span> s,t;</span><br><span class="line">  <span class="keyword">int</span> i;      <span class="comment">//循环变量</span></span><br><span class="line">   <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">300</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">      t=i/<span class="number">8000.0</span>;</span><br><span class="line">      s=<span class="built_in">sin</span>(<span class="number">2</span>*pi*<span class="number">800</span>*t);    <span class="comment">//计算sinx</span></span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"[%e,%e],\n"</span>,t,s);  <span class="comment">//打印数据</span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将生成的数据放入html中即可。<br>程序中调用了echart画图，所以需要将<code>echarts.simple.min.js</code>程序放在centos系统的<code>/var/www/html/</code>路径下，文件下载：<br>链接：<a href="https://pan.baidu.com/s/1bOz04AU7Sbdrin5V3aNnfw" target="_blank" rel="noopener">https://pan.baidu.com/s/1bOz04AU7Sbdrin5V3aNnfw</a><br>提取码：ih6i </p>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p>最后打开浏览器，输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://腾讯云公网IP/test7.html</span><br></pre></td></tr></table></figure>
+<p>即可通过test7.html调用echartsin.html画sinx的图像。<br>结果如下：<br><img src="https://img-blog.csdnimg.cn/20191115113608597.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>参考博客:<br><a href="https://blog.csdn.net/shaoyubin999/article/details/83176883" target="_blank" rel="noopener">https://blog.csdn.net/shaoyubin999/article/details/83176883</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/html%E9%93%BE%E6%8E%A5%E5%88%B0%E5%8F%A6%E4%B8%80%E4%B8%AAhtml(%E7%94%BBsinx%E7%9A%84%E5%9B%BE%E5%83%8F)/" data-id="ck37d40r50009awv6a4uvbwa4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-本地linux系统使用ssh远程连接腾讯云服务器linux系统" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/%E6%9C%AC%E5%9C%B0linux%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8ssh%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8linux%E7%B3%BB%E7%BB%9F/" class="article-date">
+  <time datetime="2019-11-20T13:52:38.676Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/%E6%9C%AC%E5%9C%B0linux%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8ssh%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8linux%E7%B3%BB%E7%BB%9F/">本地linux系统使用ssh远程连接腾讯云服务器linux系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="腾讯云linux的ssh配置"><a href="#腾讯云linux的ssh配置" class="headerlink" title="腾讯云linux的ssh配置"></a>腾讯云linux的ssh配置</h1><p>需要开启ssh<br>查看是否安装了openssh-server：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed |grep openssh-server</span><br></pre></td></tr></table></figure>
+<p>显示已经有openssh-server.x86_64：<br><img src="https://img-blog.csdnimg.cn/20191117164354699.png" alt="在这里插入图片描述"><br>如果没有则需要安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install openssh-server</span><br></pre></td></tr></table></figure>
+<p>接着打开:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+<p>修改文件。将下图红框部分进行修改（删除前面的#，我已经修改过了），<br><img src="https://img-blog.csdnimg.cn/20191117165152192.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>保存退出，开启sshd服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service sshd start</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191117165701554.png" alt="在这里插入图片描述"></p>
+<h1 id="本地配置及连接"><a href="#本地配置及连接" class="headerlink" title="本地配置及连接"></a>本地配置及连接</h1><p>如果需要远程到腾讯云linux系统，本地linux需要安装ssh-client组件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install openssh-clients -y</span><br></pre></td></tr></table></figure>
+<p>等待安装就可以了。安装好后，使用ifconfig查看远程linux的IP地址。<br>得到IP地址后，在本地linux输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@目标服务器IP</span><br></pre></td></tr></table></figure>
+<p>输入目标服务器的登录密码，就可以连接到远程linux了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># ssh root@118.89.21.40</span></span><br><span class="line">root@118.89.21.40<span class="string">'s password: </span></span><br><span class="line"><span class="string">Last login: Sun Nov 17 10:15:07 2019 from 182.245.65.176</span></span><br><span class="line"><span class="string">[root@VM_0_4_centos ~]#</span></span><br></pre></td></tr></table></figure>
+<p>此时就成功连接了。<br>进入远程服务器的某个文件夹进行测试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_4_centos ~]<span class="comment"># cd /var/www/html</span></span><br><span class="line">[root@VM_0_4_centos html]<span class="comment"># ls</span></span><br><span class="line">amdata.c     echartshtml1.txt  echarts.simple.min.js  test4.html  test7.html</span><br><span class="line">amdata.out   echartshtml2.txt  sinx.c                 test5.html</span><br><span class="line">echart.html  echartsin.html    test3.html             test6.html</span><br></pre></td></tr></table></figure>
+<p>退出远程连接，直接输入exit<br>到此就成功连接远程Linux系统了。<br>参考博客：<br><a href="https://blog.csdn.net/hjw1314kl/article/details/102968761" target="_blank" rel="noopener">https://blog.csdn.net/hjw1314kl/article/details/102968761</a><br>及<br><a href="https://jingyan.baidu.com/article/148a19211f93244d71c3b1d7.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/148a19211f93244d71c3b1d7.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/%E6%9C%AC%E5%9C%B0linux%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8ssh%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8linux%E7%B3%BB%E7%BB%9F/" data-id="ck37d40sv000zawv69tlm2of9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-使用Matlab绘制语音信号的语谱图" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/%E4%BD%BF%E7%94%A8Matlab%E7%BB%98%E5%88%B6%E8%AF%AD%E9%9F%B3%E4%BF%A1%E5%8F%B7%E7%9A%84%E8%AF%AD%E8%B0%B1%E5%9B%BE/" class="article-date">
+  <time datetime="2019-11-20T13:52:22.651Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/%E4%BD%BF%E7%94%A8Matlab%E7%BB%98%E5%88%B6%E8%AF%AD%E9%9F%B3%E4%BF%A1%E5%8F%B7%E7%9A%84%E8%AF%AD%E8%B0%B1%E5%9B%BE/">使用Matlab绘制语音信号的语谱图</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文绘制语音信号的语谱图主要使用了<code>spectrogram</code>函数，<code>spectrogram</code>是一个MATLAB函数，使用短时傅里叶变换得到信号的频谱图。当使用时无输出参数，会自动绘制频谱图；有输出参数，则会返回输入信号的短时傅里叶变换。<br>绘制语音信号的语谱图代码如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">clc;</span><br><span class="line"><span class="built_in">clear</span>;</span><br><span class="line"><span class="built_in">close</span> all;</span><br><span class="line">[Y,fs]=audioread('lantian.wav');  %读取音频文件lantian.wav</span><br><span class="line">    %Y为读到的双声道数据</span><br><span class="line">    %fs为采样频率</span><br><span class="line">info=audioinfo('lantian.wav')      %audioinfo 函数返回音频的信息情况。</span><br><span class="line">sound(Y,fs)   %播放语音</span><br><span class="line">  </span><br><span class="line">Y1 = Y(:,<span class="number">1</span>);        %Y为双声道数据，取第<span class="number">2</span>通道</span><br><span class="line">figure(<span class="number">1</span>)</span><br><span class="line">plot(Y1)          %画Y1波形图</span><br><span class="line">title('原始语音信号')</span><br><span class="line">grid on;</span><br><span class="line"></span><br><span class="line">figure(<span class="number">2</span>)</span><br><span class="line">spectrogram(Y1,256,128,256,16000,'yaxis');</span><br><span class="line">%[S,F,T,P]=spectrogram(x,window,noverlap,nfft,fs)</span><br><span class="line">% [S,F,T,P]=spectrogram(x,window,noverlap,F,fs)</span><br><span class="line">%x---输入信号的向量。默认情况下，即没有后续输入参数，x将被分成<span class="number">8</span>段分别做变换处理，</span><br><span class="line">% 如果x不能被平分成<span class="number">8</span>段，则会做截断处理。默认情况下，其他参数的默认值为</span><br><span class="line">% window---窗函数，默认为nfft长度的海明窗Hamming,如果window为一个整数，每段长度为window，每段使用Hamming窗函数加窗。</span><br><span class="line">% noverlap---每一段的重叠样本数，默认值是在各段之间产生<span class="number">50</span>%的重叠,它必须为一个小于window或length(window)的整数</span><br><span class="line">% nfft---做FFT变换的长度，默认为<span class="number">256</span>和大于每段长度的最小<span class="number">2</span>次幂之间的最大值。</span><br><span class="line">% 另外，此参数除了使用一个常量外，还可以指定一个频率向量F</span><br><span class="line">% fs---采样频率，默认值归一化频率</span><br><span class="line">% spectrogram(...,'freqloc')使用freqloc字符串可以控制频率轴显示的位置。</span><br><span class="line">% 当freqloc=xaxis时，频率轴显示在x轴上，当freqloc=yaxis时，频率轴显示在y轴上，默认是显示在x轴上。如果在指定freqloc的同时，又有输出变量，则freqloc将被忽略。</span><br><span class="line">% F---在输入变量中使用F频率向量，函数会使用Goertzel方法计算在F指定的频率处计算频谱图。</span><br><span class="line">% 指定的频率被四舍五入到与信号分辨率相关的最近的DFT容器(bin)中。而在其他的使用nfft</span><br><span class="line">% 语法中，短时傅里叶变换方法将被使用。对于返回值中的F向量，为四舍五入的频率，其长度</span><br><span class="line">% 等于S的行数。</span><br><span class="line">% T---频谱图计算的时刻点，其长度等于上面定义的k，值为所分各段的中点。</span><br><span class="line">% P---能量谱密度PSD(Power Spectral Density)，对于实信号，P是各段PSD的单边周期估计；</span><br><span class="line">xlabel('时间(s)')</span><br><span class="line">ylabel('频率(Hz)')</span><br><span class="line">title('语谱图')</span><br></pre></td></tr></table></figure>
+<p>画出的原始语音信号频谱图如下：<br><img src="https://img-blog.csdnimg.cn/20191118221447343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>语音信号为“蓝天白云”四个字，从语音信号的频谱图中可以明显看到四段语音。<br>得到的语音信号语谱图如下：<br><img src="https://img-blog.csdnimg.cn/20191118221521653.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>从语音信号的语谱图中可以大致看出四段语音的音调情况。</p>
+<p>得到的语音信号音频信息情况：<br><img src="https://img-blog.csdnimg.cn/20191118222134127.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/%E4%BD%BF%E7%94%A8Matlab%E7%BB%98%E5%88%B6%E8%AF%AD%E9%9F%B3%E4%BF%A1%E5%8F%B7%E7%9A%84%E8%AF%AD%E8%B0%B1%E5%9B%BE/" data-id="ck37d40rx000kawv604423n7q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-腾讯云centos安装anaconda3并配置jupyter notebook环境" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/%E8%85%BE%E8%AE%AF%E4%BA%91centos%E5%AE%89%E8%A3%85anaconda3%E5%B9%B6%E9%85%8D%E7%BD%AEjupyter%20notebook%E7%8E%AF%E5%A2%83/" class="article-date">
+  <time datetime="2019-11-20T13:51:50.169Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/%E8%85%BE%E8%AE%AF%E4%BA%91centos%E5%AE%89%E8%A3%85anaconda3%E5%B9%B6%E9%85%8D%E7%BD%AEjupyter%20notebook%E7%8E%AF%E5%A2%83/">腾讯云centos安装anaconda3并配置jupyter notebook环境</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul>
+<li>腾讯云centos系统</li>
+<li>配置好网络<h1 id="安装anaconda3"><a href="#安装anaconda3" class="headerlink" title="安装anaconda3"></a>安装anaconda3</h1>从官网下载：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://repo.continuum.io/archive/Anaconda3-2019.07-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+<p>给下载的文件增加执行的权限( u代表用户，x代表执行，u+x即给用户增加执行的权限)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u+x Anaconda3-2019.07-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+<p>接着运行脚本，安装anaconda3</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./Anaconda3-2019.07-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+<p>安装过程中一直回车，遇到选择yes或no的地方都选yes，显示如下，表示安装完成。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">For changes to take effect, close and re-open your current shell. &lt;==</span><br><span class="line"></span><br><span class="line">If you<span class="string">'d prefer that conda'</span>s base environment not be activated on startup,</span><br><span class="line">   <span class="built_in">set</span> the auto_activate_base parameter to <span class="literal">false</span>:</span><br><span class="line"></span><br><span class="line">conda config --<span class="built_in">set</span> auto_activate_base <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">Thank you <span class="keyword">for</span> installing Anaconda3!</span><br><span class="line"></span><br><span class="line">===========================================================================</span><br><span class="line"></span><br><span class="line">Anaconda and JetBrains are working together to bring you Anaconda-powered</span><br><span class="line">environments tightly integrated <span class="keyword">in</span> the PyCharm IDE.</span><br><span class="line"></span><br><span class="line">PyCharm <span class="keyword">for</span> Anaconda is available at:</span><br><span class="line">https://www.anaconda.com/pycharm</span><br></pre></td></tr></table></figure>
+<p>要激活Anaconda安装，请使用以下命令将Anaconda安装程序添加的新PATH环境变量加载到当前shell会话中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>验证是否安装好：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda --version</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/2019111920280451.png" alt="在这里插入图片描述"><br>还可以查看anaconda3安装的详细信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda info</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> active environment : base</span><br><span class="line">   active env location : /root/anaconda3</span><br><span class="line">           shell level : 1</span><br><span class="line">      user config file : /root/.condarc</span><br><span class="line">populated config files :</span><br><span class="line">         conda version : 4.7.10</span><br><span class="line">   conda-build version : 3.18.8</span><br><span class="line">        python version : 3.7.3.final.0</span><br><span class="line">      virtual packages :</span><br><span class="line">      base environment : /root/anaconda3  (writable)</span><br><span class="line">          channel URLs : https://repo.anaconda.com/pkgs/main/linux-64</span><br><span class="line">                         https://repo.anaconda.com/pkgs/main/noarch</span><br><span class="line">                         https://repo.anaconda.com/pkgs/r/linux-64</span><br><span class="line">                         https://repo.anaconda.com/pkgs/r/noarch</span><br><span class="line">         package cache : /root/anaconda3/pkgs</span><br><span class="line">                         /root/.conda/pkgs</span><br><span class="line">      envs directories : /root/anaconda3/envs</span><br><span class="line">                         /root/.conda/envs</span><br><span class="line">              platform : linux-64</span><br><span class="line">            user-agent : conda/4.7.10 requests/2.22.0 CPython/3.7.3 Linux/3.10.</span><br><span class="line">               UID:GID : 0:0</span><br><span class="line">            netrc file : None</span><br><span class="line">          offline mode : False</span><br></pre></td></tr></table></figure>
+<h1 id="配置jupyter-notebook"><a href="#配置jupyter-notebook" class="headerlink" title="配置jupyter notebook"></a>配置jupyter notebook</h1><p>生成配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成配置文件jupyter_notebook_config.py</span></span><br><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191119203847959.png" alt="在这里插入图片描述"><br>设置jupyter notebook的登录密码(记住密码，登录的时候会用到)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook password</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191119203946318.png" alt="在这里插入图片描述"><br>接着进入刚刚生成的配置文件jupyter_notebook_config.py</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /root/.jupyter/jupyter_notebook_config.py</span><br></pre></td></tr></table></figure>
+<p>找到如下内容，并进行修改（配置文件比较长）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># '*'代表绑定所有的IP，在文件的第205行</span></span><br><span class="line">c.NotebookApp.ip = <span class="string">'*'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置打开时不启动浏览器（因为没有配置好使用浏览器打开），在文件的268行</span></span><br><span class="line">c.NotebookApp.open_browser = False</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置启动服务时绑定的端口为8888，在文件的第291行</span></span><br><span class="line">c.NotebookApp.port = 8888</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置默认工作目录/root/python_home，如果没有该目录，可以新建，或者自行选择目录，</span></span><br><span class="line"><span class="comment">#在文件的第262行</span></span><br><span class="line">c.NotebookApp.notebook_dir = <span class="string">'/root/python_home'</span></span><br></pre></td></tr></table></figure>
+<p>修改好后保存退出。</p>
+<p>启动jupyter notebook（<code>因为使用的是root用户安装的软件，Jupyter Notebook为了安全起见启动的时候需要加上‘–allow-root’</code>）:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --allow-root</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="注意：jupyter-notebook启动之后就暂时不关闭了，因为打开浏览器登录的时候需要jupyter-notebook后台是运行着的"><a href="#注意：jupyter-notebook启动之后就暂时不关闭了，因为打开浏览器登录的时候需要jupyter-notebook后台是运行着的" class="headerlink" title="注意：jupyter notebook启动之后就暂时不关闭了，因为打开浏览器登录的时候需要jupyter notebook后台是运行着的"></a>注意：jupyter notebook启动之后就暂时不关闭了，因为打开浏览器登录的时候需要jupyter notebook后台是运行着的</h3>到这里就配置完成了。<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1>打开浏览器，输入：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://公网ip:8888</span><br></pre></td></tr></table></figure>
+<p>输入刚刚设置的登录密码：<br><img src="https://img-blog.csdnimg.cn/20191119205831287.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>即可登录。<br><img src="https://img-blog.csdnimg.cn/20191119210010342.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>验证是否能正常编译运行python代码。在右上角点new，选择python3:<br><img src="https://img-blog.csdnimg.cn/2019111921010378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>如下：<br><img src="https://img-blog.csdnimg.cn/20191119210133109.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>接着编写简单的python程序运行（编写好后点运行）：<br><img src="https://img-blog.csdnimg.cn/20191119210320194.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>成功！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/%E8%85%BE%E8%AE%AF%E4%BA%91centos%E5%AE%89%E8%A3%85anaconda3%E5%B9%B6%E9%85%8D%E7%BD%AEjupyter%20notebook%E7%8E%AF%E5%A2%83/" data-id="ck37d40sz0010awv60alf59pf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python字符串基本操作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="article-date">
+  <time datetime="2019-11-20T13:08:32.974Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">python字符串基本操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一-字符串拼接"><a href="#一-字符串拼接" class="headerlink" title="一 字符串拼接"></a>一 字符串拼接</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a=&apos;xyz&apos;+&apos;abc&apos;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;xyzabc&apos;</span><br></pre></td></tr></table></figure>
+<h1 id="二-字符串复制"><a href="#二-字符串复制" class="headerlink" title="二 字符串复制"></a>二 字符串复制</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a=&apos;xyz&apos;*3    #将字符串打印三次</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">‘xyzxyzxyz’</span><br></pre></td></tr></table></figure>
+<h1 id="三-从控制台读取字符串"><a href="#三-从控制台读取字符串" class="headerlink" title="三 从控制台读取字符串"></a>三 从控制台读取字符串</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;myname=input(&quot;请输入名字：&quot;)</span><br><span class="line">请输入名字：xiaoming</span><br><span class="line">&gt;&gt;&gt;myname</span><br><span class="line">&apos;xiaoming&apos;</span><br></pre></td></tr></table></figure>
+<h1 id="四-提取字符串"><a href="#四-提取字符串" class="headerlink" title="四 提取字符串"></a>四 提取字符串</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a=&apos;abcdef&apos;</span><br><span class="line">&gt;&gt;&gt;a</span><br><span class="line">&apos;abcdef&apos;</span><br><span class="line">&gt;&gt;&gt;a[0]   #提取字符串的第一个字符</span><br><span class="line">&apos;a&apos;</span><br><span class="line">&gt;&gt;&gt;a[3]</span><br><span class="line">&apos;d&apos;</span><br></pre></td></tr></table></figure>
+<h1 id="五-字符串替换"><a href="#五-字符串替换" class="headerlink" title="五 字符串替换"></a>五 字符串替换</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a=&apos;abcdef&apos;</span><br><span class="line">&gt;&gt;&gt;a</span><br><span class="line">&apos;abcdef&apos;</span><br><span class="line">a=a.replace(&quot;c&quot;,&quot;m&quot;)   #用m替代c</span><br><span class="line">&gt;&gt;&gt;a</span><br><span class="line">&apos;abmdef&apos;</span><br></pre></td></tr></table></figure>
+<h1 id="六-截取一段字符"><a href="#六-截取一段字符" class="headerlink" title="六 截取一段字符"></a>六 截取一段字符</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a=&apos;abcdefgh&apos;</span><br><span class="line">&gt;&gt;&gt;a</span><br><span class="line">&apos;abcdefgh&apos;</span><br><span class="line">&gt;&gt;&gt;a[1:5]   #截取第二到第四个字符，a从1到4，第五个字符不截取</span><br><span class="line">&apos;bcde&apos;</span><br><span class="line">&gt;&gt;&gt;a[1:5:2]   #截取一段字符串，步长为2</span><br></pre></td></tr></table></figure>
+<h1 id="七-字符串分割"><a href="#七-字符串分割" class="headerlink" title="七 字符串分割"></a>七 字符串分割</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a=&quot;to be or not to be&quot;</span><br><span class="line">&gt;&gt;&gt;a.split()</span><br><span class="line">[&apos;to&apos;, &apos;be&apos;, &apos;or&apos;, &apos;not&apos;, &apos;to&apos;, &apos;be&apos;]</span><br><span class="line">&gt;&gt;&gt;a.split(&quot;to&quot;)</span><br><span class="line">[&apos;&apos;, &apos; be or not &apos;, &apos; be&apos;]</span><br></pre></td></tr></table></figure>
+<h1 id="八-字符串连接"><a href="#八-字符串连接" class="headerlink" title="八 字符串连接"></a>八 字符串连接</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a=[&quot;abc&quot;,&quot;xyz&quot;]</span><br><span class="line">&gt;&gt;&gt;&quot;&quot;.join(a)</span><br><span class="line">&apos;abcxyz&apos;</span><br><span class="line">&gt;&gt;&gt;&quot;*&quot;.join(a)   #将字符串用*连接起来</span><br><span class="line">&apos;abc*xyz&apos;</span><br></pre></td></tr></table></figure>
+<h1 id="九-查看字符串长度"><a href="#九-查看字符串长度" class="headerlink" title="九 查看字符串长度"></a>九 查看字符串长度</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a=&apos;abcdefgh&apos;</span><br><span class="line">&gt;&gt;&gt; len(a)</span><br><span class="line">8</span><br></pre></td></tr></table></figure>
+<h1 id="十-字符串查找，显示位置"><a href="#十-字符串查找，显示位置" class="headerlink" title="十 字符串查找，显示位置"></a>十 字符串查找，显示位置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a=&apos;abccdbeafagcffh&apos;</span><br><span class="line">&gt;&gt;&gt; a.find(&apos;c&apos;)   #显示c第一次出现的位置</span><br><span class="line">2</span><br><span class="line">&gt;&gt;&gt; a.rfind(&apos;c&apos;)  #显示字符c最后一次出现的位置</span><br><span class="line">11</span><br><span class="line">&gt;&gt;&gt; a.count(&apos;a&apos;)   #计算字符a在字符串中总共出现多少次</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<h1 id="十一-字符串去除首尾信息"><a href="#十一-字符串去除首尾信息" class="headerlink" title="十一 字符串去除首尾信息"></a>十一 字符串去除首尾信息</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;&quot;*sxt*&quot;.strip(&quot;*&quot;)    #去除首尾的*号</span><br><span class="line">&apos;sxt&apos;</span><br></pre></td></tr></table></figure>
+<h1 id="十二-字符串大小写转换"><a href="#十二-字符串大小写转换" class="headerlink" title="十二 字符串大小写转换"></a>十二 字符串大小写转换</h1><h2 id="1-字符串首字母大写"><a href="#1-字符串首字母大写" class="headerlink" title="1. 字符串首字母大写"></a>1. 字符串首字母大写</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a=&quot;can you speak chinese&quot;  </span><br><span class="line">&gt;&gt;&gt; a.capitalize()   #将字符串首字母大写</span><br><span class="line">&apos;Can you speak chinese&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="2-字符串每个单词首字母大写"><a href="#2-字符串每个单词首字母大写" class="headerlink" title="2. 字符串每个单词首字母大写"></a>2. 字符串每个单词首字母大写</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=&quot;can you speak chinese&quot;</span><br><span class="line">&gt;&gt;&gt; a.title()</span><br><span class="line">&apos;Can You Speak Chinese&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="3-字符串所有字符大写"><a href="#3-字符串所有字符大写" class="headerlink" title="3. 字符串所有字符大写"></a>3. 字符串所有字符大写</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=&quot;can you speak chinese&quot;</span><br><span class="line">&gt;&gt;&gt; a.upper()</span><br><span class="line">&apos;CAN YOU SPEAK CHINESE&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="4-字符串所有字符小写"><a href="#4-字符串所有字符小写" class="headerlink" title="4. 字符串所有字符小写"></a>4. 字符串所有字符小写</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=&quot;CAN YOU SPEAK CHINESE&quot;</span><br><span class="line">&gt;&gt;&gt; a.lower()</span><br><span class="line">&apos;can you speak chinese&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="5-字符串大写变小写，小写变大写"><a href="#5-字符串大写变小写，小写变大写" class="headerlink" title="5. 字符串大写变小写，小写变大写"></a>5. 字符串大写变小写，小写变大写</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=&quot;Can You Speak Chinese&quot;</span><br><span class="line">&gt;&gt;&gt; a.swapcase()</span><br><span class="line">&apos;cAN yOU sPEAK cHINESE&apos;</span><br></pre></td></tr></table></figure>
+<h1 id="十三-字符串格式化"><a href="#十三-字符串格式化" class="headerlink" title="十三 字符串格式化"></a>十三 字符串格式化</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=&quot;名字是:&#123;name&#125;,年龄是:&#123;age&#125;&quot;</span><br><span class="line">&gt;&gt;&gt; a.format(age=19,name=&apos;小红&apos;)   #将大括号的内容用变量后面的字符串替代</span><br><span class="line">&apos;名字是:小红,年龄是:19&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=&quot;&#123;:.2f&#125;&quot;  #.2f表示保留两位小数</span><br><span class="line">&gt;&gt;&gt; a.format(3.1415926)    #将数字保留两位小数</span><br><span class="line">&apos;3.14&apos;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" data-id="ck37az4ga0000ysv6352r8c6v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8TCC%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1/">使用TCC自己编译自己</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/Notepad++%E7%AE%80%E4%BB%8B/">Notepad++简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E5%B0%8F%E5%B0%8F%E8%BE%93%E5%85%A5%E6%B3%95%E7%AE%80%E4%BB%8B/">小小输入法简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8tcc%E8%AF%BB%E5%86%99%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6/">使用tcc读写文本文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/typora%E5%8F%8Amarkdown%E7%AE%80%E4%BB%8B/">typora及markdown简介</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

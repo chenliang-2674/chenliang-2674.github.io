@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>c,python,java,octave，golang，julia编程计算十万次，一百万次，一千万次sinx，比较效率 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一  在windows系统中1.1 python使用python计算sin(3.14)，循环不同次数，计算时间： 1.1.1 循环十万次：123456789import mathimport timestart = time.time()for i in range(100000):    y = math.sin(3.14)end = time.time()print(&quot;耗时&amp;#123;0&amp;#1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c,python,java,octave，golang，julia编程计算十万次，一百万次，一千万次sinx，比较效率">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;20&#x2F;c,python,java,octave%EF%BC%8Cgolang%EF%BC%8Cjulia%E7%BC%96%E7%A8%8B%E8%AE%A1%E7%AE%97%E5%8D%81%E4%B8%87%E6%AC%A1%EF%BC%8C%E4%B8%80%E7%99%BE%E4%B8%87%E6%AC%A1%EF%BC%8C%E4%B8%80%E5%8D%83%E4%B8%87%E6%AC%A1sinx%EF%BC%8C%E6%AF%94%E8%BE%83%E6%95%88%E7%8E%87&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一  在windows系统中1.1 python使用python计算sin(3.14)，循环不同次数，计算时间： 1.1.1 循环十万次：123456789import mathimport timestart = time.time()for i in range(100000):    y = math.sin(3.14)end = time.time()print(&quot;耗时&amp;#123;0&amp;#1">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191025192233584.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191025192405410.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191025192533122.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019102520140559.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191025201535227.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191025201657713.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019102521045333.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191025210551777.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191025210706928.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027001408509.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027001618863.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027002040703.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191028215559588.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191028215901374.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191028220708302.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191029000453902.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191029000303163.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191029000227921.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191026163732241.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191026163850806.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191026163122134.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191026165535464.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191026171535824.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191026171258488.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027003431989.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027003623743.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027003830724.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027154802438.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027154641118.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019102715440783.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027194441957.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027194039552.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027193829759.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027220445954.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027220302196.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027220220905.png">
+<meta property="og:updated_time" content="2019-11-20T13:54:46.067Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191025192233584.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-c,python,java,octave，golang，julia编程计算十万次，一百万次，一千万次sinx，比较效率" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/c,python,java,octave%EF%BC%8Cgolang%EF%BC%8Cjulia%E7%BC%96%E7%A8%8B%E8%AE%A1%E7%AE%97%E5%8D%81%E4%B8%87%E6%AC%A1%EF%BC%8C%E4%B8%80%E7%99%BE%E4%B8%87%E6%AC%A1%EF%BC%8C%E4%B8%80%E5%8D%83%E4%B8%87%E6%AC%A1sinx%EF%BC%8C%E6%AF%94%E8%BE%83%E6%95%88%E7%8E%87/" class="article-date">
+  <time datetime="2019-11-20T13:54:47.838Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      c,python,java,octave，golang，julia编程计算十万次，一百万次，一千万次sinx，比较效率
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一-在windows系统中"><a href="#一-在windows系统中" class="headerlink" title="一  在windows系统中"></a>一  在windows系统中</h1><h2 id="1-1-python"><a href="#1-1-python" class="headerlink" title="1.1 python"></a>1.1 python</h2><p>使用python计算sin(3.14)，循环不同次数，计算时间：</p>
+<h3 id="1-1-1-循环十万次："><a href="#1-1-1-循环十万次：" class="headerlink" title="1.1.1 循环十万次："></a>1.1.1 循环十万次：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">start = time.time()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100000</span>):</span><br><span class="line">    y = math.sin(<span class="number">3.14</span>)</span><br><span class="line">end = time.time()</span><br><span class="line">print(<span class="string">"耗时&#123;0&#125;"</span>.format(end-start))</span><br><span class="line">   <span class="comment"># print(y)</span></span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191025192233584.png" alt="在这里插入图片描述"></p>
+<h3 id="1-1-2-循环一百万次："><a href="#1-1-2-循环一百万次：" class="headerlink" title="1.1.2 循环一百万次："></a>1.1.2 循环一百万次：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">start = time.time()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000000</span>):</span><br><span class="line">    y = math.sin(<span class="number">3.14</span>)</span><br><span class="line">end = time.time()</span><br><span class="line">print(<span class="string">"耗时&#123;0&#125;"</span>.format(end-start))</span><br><span class="line">   <span class="comment"># print(y)</span></span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191025192405410.png" alt="在这里插入图片描述"></p>
+<h3 id="1-1-3-循环一千万次："><a href="#1-1-3-循环一千万次：" class="headerlink" title="1.1.3 循环一千万次："></a>1.1.3 循环一千万次：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">start = time.time()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10000000</span>):</span><br><span class="line">    y = math.sin(<span class="number">3.14</span>)</span><br><span class="line">end = time.time()</span><br><span class="line">print(<span class="string">"耗时&#123;0&#125;"</span>.format(end-start))</span><br><span class="line">   <span class="comment"># print(y)</span></span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191025192533122.png" alt="在这里插入图片描述"></p>
+<h2 id="1-2-c语言"><a href="#1-2-c语言" class="headerlink" title="1.2 c语言"></a>1.2 c语言</h2><p>使用c语言编程计算sin(3.14)，循环不同次数，计算时间：</p>
+<h3 id="1-2-1-循环十万次："><a href="#1-2-1-循环十万次：" class="headerlink" title="1.2.1 循环十万次："></a>1.2.1 循环十万次：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="keyword">clock_t</span> start, <span class="built_in">end</span>;</span><br><span class="line"><span class="keyword">double</span> t;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">float</span> y;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">start=clock();</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;=<span class="number">100000</span>;i++)</span><br><span class="line">	&#123;	</span><br><span class="line">		y = <span class="built_in">sin</span>(<span class="number">3.14</span>);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="built_in">end</span> = clock();</span><br><span class="line">t=(<span class="keyword">double</span>)(<span class="built_in">end</span>-start)/CLK_TCK;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%f\n"</span>,t);</span><br><span class="line"><span class="comment">//printf("%lf\n",y);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/2019102520140559.png" alt="在这里插入图片描述"></p>
+<h3 id="1-2-2-循环一百万次："><a href="#1-2-2-循环一百万次：" class="headerlink" title="1.2.2 循环一百万次："></a>1.2.2 循环一百万次：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="keyword">clock_t</span> start, <span class="built_in">end</span>;</span><br><span class="line"><span class="keyword">double</span> t;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">float</span> y;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">start=clock();</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;=<span class="number">1000000</span>;i++)</span><br><span class="line">	&#123;	</span><br><span class="line">		y = <span class="built_in">sin</span>(<span class="number">3.14</span>);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="built_in">end</span> = clock();</span><br><span class="line">t=(<span class="keyword">double</span>)(<span class="built_in">end</span>-start)/CLK_TCK;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%f\n"</span>,t);</span><br><span class="line"><span class="comment">//printf("%lf\n",y);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191025201535227.png" alt="在这里插入图片描述"></p>
+<h3 id="1-2-3-循环一千万次："><a href="#1-2-3-循环一千万次：" class="headerlink" title="1.2.3 循环一千万次："></a>1.2.3 循环一千万次：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="keyword">clock_t</span> start, <span class="built_in">end</span>;</span><br><span class="line"><span class="keyword">double</span> t;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">float</span> y;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">start=clock();</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;=<span class="number">10000000</span>;i++)</span><br><span class="line">	&#123;	</span><br><span class="line">		y = <span class="built_in">sin</span>(<span class="number">3.14</span>);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="built_in">end</span> = clock();</span><br><span class="line">t=(<span class="keyword">double</span>)(<span class="built_in">end</span>-start)/CLK_TCK;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%f\n"</span>,t);</span><br><span class="line"><span class="comment">//printf("%lf\n",y);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191025201657713.png" alt="在这里插入图片描述"></p>
+<h2 id="1-3-java"><a href="#1-3-java" class="headerlink" title="1.3 java"></a>1.3 java</h2><p>使用java语言编程计算sin(3.14)，循环不同次数，计算时间：</p>
+<h3 id="1-3-1-循环十万次："><a href="#1-3-1-循环十万次：" class="headerlink" title="1.3.1 循环十万次："></a>1.3.1 循环十万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sinx1</span></span>&#123;  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;  <span class="comment">//程序入口</span></span><br><span class="line">	<span class="keyword">double</span> y;</span><br><span class="line">	<span class="comment">//double degrees = 3.14;</span></span><br><span class="line">	<span class="comment">//double radians = Math.toRadians(degrees);</span></span><br><span class="line">	<span class="keyword">double</span> startTime =  System.currentTimeMillis();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">100000</span>;i++)&#123;  </span><br><span class="line">		y = Math.sin(<span class="number">3.14</span>);</span><br><span class="line">		<span class="comment">//System.out.printn(y);  </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">double</span> endTime =  System.currentTimeMillis();</span><br><span class="line">	<span class="keyword">double</span> Time = (endTime-startTime)/<span class="number">1000</span>;</span><br><span class="line">	System.out.println(Time);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/2019102521045333.png" alt="在这里插入图片描述"></p>
+<h3 id="1-3-2-循环一百万次："><a href="#1-3-2-循环一百万次：" class="headerlink" title="1.3.2 循环一百万次："></a>1.3.2 循环一百万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sinx1</span></span>&#123;  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;  <span class="comment">//程序入口</span></span><br><span class="line">	<span class="keyword">double</span> y;</span><br><span class="line">	<span class="comment">//double degrees = 3.14;</span></span><br><span class="line">	<span class="comment">//double radians = Math.toRadians(degrees);</span></span><br><span class="line">	<span class="keyword">double</span> startTime =  System.currentTimeMillis();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">1000000</span>;i++)&#123;  </span><br><span class="line">		y = Math.sin(<span class="number">3.14</span>);</span><br><span class="line">		<span class="comment">//System.out.printn(y);  </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">double</span> endTime =  System.currentTimeMillis();</span><br><span class="line">	<span class="keyword">double</span> Time = (endTime-startTime)/<span class="number">1000</span>;</span><br><span class="line">	System.out.println(Time);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191025210551777.png" alt="在这里插入图片描述"></p>
+<h3 id="1-3-3-循环一千万次："><a href="#1-3-3-循环一千万次：" class="headerlink" title="1.3.3 循环一千万次："></a>1.3.3 循环一千万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sinx1</span></span>&#123;  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;  <span class="comment">//程序入口</span></span><br><span class="line">	<span class="keyword">double</span> y;</span><br><span class="line">	<span class="comment">//double degrees = 3.14;</span></span><br><span class="line">	<span class="comment">//double radians = Math.toRadians(degrees);</span></span><br><span class="line">	<span class="keyword">double</span> startTime =  System.currentTimeMillis();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">10000000</span>;i++)&#123;  </span><br><span class="line">		y = Math.sin(<span class="number">3.14</span>);</span><br><span class="line">		<span class="comment">//System.out.printn(y);  </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">double</span> endTime =  System.currentTimeMillis();</span><br><span class="line">	<span class="keyword">double</span> Time = (endTime-startTime)/<span class="number">1000</span>;</span><br><span class="line">	System.out.println(Time);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191025210706928.png" alt="在这里插入图片描述"></p>
+<h2 id="1-4-octave"><a href="#1-4-octave" class="headerlink" title="1.4 octave:"></a>1.4 octave:</h2><h3 id="1-4-1-循环十万次："><a href="#1-4-1-循环十万次：" class="headerlink" title="1.4.1 循环十万次："></a>1.4.1 循环十万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tic</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>:<span class="number">1</span>:<span class="number">100000</span></span><br><span class="line">  y = sin(<span class="number">3.14</span>);</span><br><span class="line">endfor</span><br><span class="line">toc</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027001408509.png" alt="在这里插入图片描述"></p>
+<h3 id="1-4-2-循环一百万次："><a href="#1-4-2-循环一百万次：" class="headerlink" title="1.4.2 循环一百万次："></a>1.4.2 循环一百万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tic</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>:<span class="number">1</span>:<span class="number">1000000</span></span><br><span class="line">  y = sin(<span class="number">3.14</span>);</span><br><span class="line">endfor</span><br><span class="line">toc</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027001618863.png" alt="在这里插入图片描述"></p>
+<h3 id="1-4-3-循环一千万次："><a href="#1-4-3-循环一千万次：" class="headerlink" title="1.4.3 循环一千万次："></a>1.4.3 循环一千万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tic</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>:<span class="number">1</span>:<span class="number">10000000</span></span><br><span class="line">  y = sin(<span class="number">3.14</span>);</span><br><span class="line">endfor</span><br><span class="line">toc</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027002040703.png" alt="在这里插入图片描述"></p>
+<h2 id="1-5-golang语言"><a href="#1-5-golang语言" class="headerlink" title="1.5 golang语言"></a>1.5 golang语言</h2><h3 id="1-5-1-循环十万次"><a href="#1-5-1-循环十万次" class="headerlink" title="1.5.1 循环十万次"></a>1.5.1 循环十万次</h3><p>程序：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"math"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	start := time.Now()</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++ &#123;</span><br><span class="line">		math.Sin(<span class="number">3.14</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	cost := time.Since(start)</span><br><span class="line">	fmt.Printf(<span class="string">"%s\n"</span>, cost)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191028215559588.png" alt="在这里插入图片描述"></p>
+<h3 id="1-5-2-循环一百万次"><a href="#1-5-2-循环一百万次" class="headerlink" title="1.5.2 循环一百万次"></a>1.5.2 循环一百万次</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191028215901374.png" alt="在这里插入图片描述"></p>
+<h3 id="1-5-3-循环一千万次"><a href="#1-5-3-循环一千万次" class="headerlink" title="1.5.3 循环一千万次"></a>1.5.3 循环一千万次</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191028220708302.png" alt="在这里插入图片描述"></p>
+<h2 id="1-6-julia语言"><a href="#1-6-julia语言" class="headerlink" title="1.6 julia语言"></a>1.6 julia语言</h2><h3 id="1-6-1-循环十万次"><a href="#1-6-1-循环十万次" class="headerlink" title="1.6.1 循环十万次"></a>1.6.1 循环十万次</h3><p>程序：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">t1 = time()</span><br><span class="line">	<span class="keyword">for</span> i in <span class="number">1</span>:<span class="number">100000</span></span><br><span class="line">		sin(<span class="number">3.14</span>)</span><br><span class="line">	end</span><br><span class="line">t2 =time()</span><br><span class="line"><span class="built_in">println</span>((t2-t1)*<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191029000453902.png" alt="在这里插入图片描述"><br>单位为秒</p>
+<h3 id="1-6-2-循环一百万次"><a href="#1-6-2-循环一百万次" class="headerlink" title="1.6.2 循环一百万次"></a>1.6.2 循环一百万次</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191029000303163.png" alt="在这里插入图片描述"></p>
+<h3 id="1-6-3-循环一千万次："><a href="#1-6-3-循环一千万次：" class="headerlink" title="1.6.3 循环一千万次："></a>1.6.3 循环一千万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191029000227921.png" alt="在这里插入图片描述"></p>
+<h1 id="二-在linux系统中"><a href="#二-在linux系统中" class="headerlink" title="二 在linux系统中"></a>二 在linux系统中</h1><h2 id="2-1-python"><a href="#2-1-python" class="headerlink" title="2.1 python"></a>2.1 python</h2><p>程序同在windows中一样，不过花费时间更少，效率更高。</p>
+<h3 id="2-1-1-循环十万次："><a href="#2-1-1-循环十万次：" class="headerlink" title="2.1.1 循环十万次："></a>2.1.1 循环十万次：</h3><p>程序：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">start = time.time()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100000</span>):</span><br><span class="line">    y = math.sin(<span class="number">3.14</span>)</span><br><span class="line">end = time.time()</span><br><span class="line">print(<span class="string">"耗时&#123;0&#125;"</span>.format(end-start))</span><br><span class="line">   <span class="comment"># print(y)</span></span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191026163732241.png" alt="在这里插入图片描述"></p>
+<h3 id="2-1-2-循环一百万次："><a href="#2-1-2-循环一百万次：" class="headerlink" title="2.1.2 循环一百万次："></a>2.1.2 循环一百万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191026163850806.png" alt="在这里插入图片描述"></p>
+<h3 id="2-1-3-循环一千万次："><a href="#2-1-3-循环一千万次：" class="headerlink" title="2.1.3 循环一千万次："></a>2.1.3 循环一千万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191026163122134.png" alt="在这里插入图片描述"></p>
+<h2 id="2-2-c语言"><a href="#2-2-c语言" class="headerlink" title="2.2 c语言"></a>2.2 c语言</h2><h3 id="2-2-1-循环十万次："><a href="#2-2-1-循环十万次：" class="headerlink" title="2.2.1 循环十万次："></a>2.2.1 循环十万次：</h3><p>程序：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="keyword">clock_t</span> start, <span class="built_in">end</span>;</span><br><span class="line"><span class="keyword">double</span> t;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">float</span> y;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">start=clock();</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;=<span class="number">100000</span>;i++)</span><br><span class="line">	&#123;	</span><br><span class="line">		y = <span class="built_in">sin</span>(<span class="number">3.14</span>);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="built_in">end</span> = clock();</span><br><span class="line">t=(<span class="keyword">double</span>)(<span class="built_in">end</span>-start)/<span class="number">1000000.000000</span>;  <span class="comment">//将时间转换为秒</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%.15lfs\n"</span>,t);</span><br><span class="line"><span class="comment">//printf("%lf\n",y);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于时间很短，所以显示为0s，<br>结果：<br><img src="https://img-blog.csdnimg.cn/20191026165535464.png" alt="在这里插入图片描述"></p>
+<h3 id="2-2-2-循环一百万次："><a href="#2-2-2-循环一百万次：" class="headerlink" title="2.2.2 循环一百万次："></a>2.2.2 循环一百万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191026171535824.png" alt="在这里插入图片描述"></p>
+<h3 id="2-2-3-循环一千万次："><a href="#2-2-3-循环一千万次：" class="headerlink" title="2.2.3 循环一千万次："></a>2.2.3 循环一千万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191026171258488.png" alt="在这里插入图片描述"></p>
+<h2 id="2-3-java"><a href="#2-3-java" class="headerlink" title="2.3 java"></a>2.3 java</h2><h3 id="2-3-1-循环十万次："><a href="#2-3-1-循环十万次：" class="headerlink" title="2.3.1 循环十万次："></a>2.3.1 循环十万次：</h3><p>程序：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sinx3</span></span>&#123;  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;  </span><br><span class="line">	<span class="keyword">double</span> y;</span><br><span class="line">	<span class="comment">//double degrees = 3.14;</span></span><br><span class="line">	<span class="comment">//double radians = Math.toRadians(degrees);</span></span><br><span class="line">	<span class="keyword">double</span> startTime =  System.currentTimeMillis();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">100000</span>;i++)&#123;  </span><br><span class="line">		y = Math.sin(<span class="number">3.14</span>);</span><br><span class="line">		<span class="comment">//System.out.printn(y);  </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">double</span> endTime =  System.currentTimeMillis();</span><br><span class="line">	<span class="keyword">double</span> Time = (endTime-startTime)/<span class="number">1000</span>;</span><br><span class="line">	System.out.println(Time+<span class="string">"s"</span>);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027003431989.png" alt=""></p>
+<h3 id="2-3-2-循环一百万次："><a href="#2-3-2-循环一百万次：" class="headerlink" title="2.3.2 循环一百万次："></a>2.3.2 循环一百万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027003623743.png" alt="在这里插入图片描述"></p>
+<h3 id="2-3-3-循环一千万次："><a href="#2-3-3-循环一千万次：" class="headerlink" title="2.3.3 循环一千万次："></a>2.3.3 循环一千万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027003830724.png" alt="在这里插入图片描述"></p>
+<h2 id="2-4-octave"><a href="#2-4-octave" class="headerlink" title="2.4 octave:"></a>2.4 octave:</h2><p>octave安装可以参考我的另外一篇博客：<br><a href="https://blog.csdn.net/qq_44420246/article/details/102767943" target="_blank" rel="noopener">https://blog.csdn.net/qq_44420246/article/details/102767943</a></p>
+<h3 id="2-4-1-循环十万次："><a href="#2-4-1-循环十万次：" class="headerlink" title="2.4.1 循环十万次："></a>2.4.1 循环十万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tic</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>:<span class="number">1</span>:<span class="number">100000</span></span><br><span class="line">  y = sin(<span class="number">3.14</span>);</span><br><span class="line">endfor</span><br><span class="line">toc</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027154802438.png" alt="在这里插入图片描述"></p>
+<h3 id="2-4-2-循环一百万次："><a href="#2-4-2-循环一百万次：" class="headerlink" title="2.4.2 循环一百万次："></a>2.4.2 循环一百万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tic</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>:<span class="number">1</span>:<span class="number">1000000</span></span><br><span class="line">  y = sin(<span class="number">3.14</span>);</span><br><span class="line">endfor</span><br><span class="line">toc</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027154641118.png" alt="在这里插入图片描述"></p>
+<h3 id="2-4-3-循环一千万次："><a href="#2-4-3-循环一千万次：" class="headerlink" title="2.4.3 循环一千万次："></a>2.4.3 循环一千万次：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tic</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>:<span class="number">1</span>:<span class="number">10000000</span></span><br><span class="line">  y = sin(<span class="number">3.14</span>);</span><br><span class="line">endfor</span><br><span class="line">toc</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/2019102715440783.png" alt="在这里插入图片描述"></p>
+<h2 id="2-5-golang语言"><a href="#2-5-golang语言" class="headerlink" title="2.5 golang语言"></a>2.5 golang语言</h2><p>golang下载安装：<br><a href="https://www.cnblogs.com/chnmig/p/10107158.html" target="_blank" rel="noopener">https://www.cnblogs.com/chnmig/p/10107158.html</a></p>
+<h3 id="2-5-1-循环十万次："><a href="#2-5-1-循环十万次：" class="headerlink" title="2.5.1  循环十万次："></a>2.5.1  循环十万次：</h3><p>程序：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">        <span class="string">"fmt"</span></span><br><span class="line">        <span class="string">"math"</span></span><br><span class="line">        <span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">        start := time.Now()</span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++ &#123;</span><br><span class="line">                math.Sin(<span class="number">3.14</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        cost := time.Since(start)</span><br><span class="line">        fmt.Printf(<span class="string">"%s\n"</span>, cost)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027194441957.png" alt="在这里插入图片描述"></p>
+<h3 id="2-5-2-循环一百万次："><a href="#2-5-2-循环一百万次：" class="headerlink" title="2.5.2  循环一百万次："></a>2.5.2  循环一百万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027194039552.png" alt="在这里插入图片描述"></p>
+<h3 id="2-5-3-循环一千万次："><a href="#2-5-3-循环一千万次：" class="headerlink" title="2.5.3  循环一千万次："></a>2.5.3  循环一千万次：</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027193829759.png" alt="在这里插入图片描述"></p>
+<h2 id="2-6-Julia语言"><a href="#2-6-Julia语言" class="headerlink" title="2.6 Julia语言"></a>2.6 Julia语言</h2><p>julia在linux系统上的安装和配置参考了如下两个博客：<br>安装：<br><a href="https://blog.csdn.net/kingyuan666/article/details/81592822" target="_blank" rel="noopener">https://blog.csdn.net/kingyuan666/article/details/81592822</a><br>报错配置：<br><a href="https://blog.csdn.net/taw19960426/article/details/102754209" target="_blank" rel="noopener">https://blog.csdn.net/taw19960426/article/details/102754209</a></p>
+<h3 id="2-6-1-循环十万次"><a href="#2-6-1-循环十万次" class="headerlink" title="2.6.1 循环十万次"></a>2.6.1 循环十万次</h3><p>程序：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">t1 = time()</span><br><span class="line">	<span class="keyword">for</span> i in <span class="number">1</span>:<span class="number">100000</span></span><br><span class="line">		sin(<span class="number">2</span>*pi*<span class="number">500</span>*i)</span><br><span class="line">	end</span><br><span class="line">t2 =time()</span><br><span class="line"><span class="built_in">println</span>((t2-t1)*<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027220445954.png" alt="在这里插入图片描述"><br>单位为秒。</p>
+<h3 id="2-6-2-循环一百万次"><a href="#2-6-2-循环一百万次" class="headerlink" title="2.6.2 循环一百万次"></a>2.6.2 循环一百万次</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027220302196.png" alt="在这里插入图片描述"></p>
+<h3 id="2-6-3-循环一千万次"><a href="#2-6-3-循环一千万次" class="headerlink" title="2.6.3 循环一千万次"></a>2.6.3 循环一千万次</h3><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191027220220905.png" alt="在这里插入图片描述"></p>
+<h1 id="三-总结"><a href="#三-总结" class="headerlink" title="三 总结"></a>三 总结</h1><p>从上面的结果来看，在linux系统中运行效率明显高于windows系统，但对于golang语言和julia语言在windows和linux上则不相上下。</p>
+<h2 id="在windows系统中运行时间比较："><a href="#在windows系统中运行时间比较：" class="headerlink" title="在windows系统中运行时间比较："></a>在windows系统中运行时间比较：</h2><p>python循环一千万次sin(3.14)的时间约为：<br>3.972s<br>c语言循环一千万次sin(3.14)的时间为：<br>0.532s<br>java循环一千万次sin(3.14)的时间为：<br>0.209s<br>octave循环一千万次sin(3.14)的时间为：<br>92s<br>golang循环一千万次sin(3.14)的时间约为：<br>0.214s<br>julia循环一千万次sin(3.14)的时间约为：<br>0.103s<br>所以运行效率：<br><strong>julia&gt;java&gt;golang&gt;c&gt;python&gt;octave</strong></p>
+<h2 id="在linux系统中运行时间比较："><a href="#在linux系统中运行时间比较：" class="headerlink" title="在linux系统中运行时间比较："></a>在linux系统中运行时间比较：</h2><p>python循环一千万次sin(3.14)的时间约为：<br>1.69s<br>c语言循环一千万次sin(3.14)的时间为：<br>0.02s<br>java循环一千万次sin(3.14)的时间为：<br>0.147s<br>octave循环一千万次sin(3.14)的时间为：<br>24.5216s<br>golang循环一千万次sin(3.14)的时间约为：<br>0.114s<br>julia循环一千万次sin(3.14)的时间约为：<br>0.127s<br>所以运行效率：<br><strong>c&gt;golang&gt;julia&gt;java&gt;python&gt;octave</strong></p>
+<p>这几门语言中效率最低的为octave。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/c,python,java,octave%EF%BC%8Cgolang%EF%BC%8Cjulia%E7%BC%96%E7%A8%8B%E8%AE%A1%E7%AE%97%E5%8D%81%E4%B8%87%E6%AC%A1%EF%BC%8C%E4%B8%80%E7%99%BE%E4%B8%87%E6%AC%A1%EF%BC%8C%E4%B8%80%E5%8D%83%E4%B8%87%E6%AC%A1sinx%EF%BC%8C%E6%AF%94%E8%BE%83%E6%95%88%E7%8E%87/" data-id="ck37d40r20008awv63ge68oux" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/20/%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%20%5B%E8%85%BE%E8%AE%AF%E4%BA%91centos%E7%B3%BB%E7%BB%9F%5D%20%E4%B8%AD%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85octave%E6%97%B6%E6%8A%A5%E9%94%99/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          在linux系统 [腾讯云centos系统] 中下载安装octave时报错
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/20/html%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E4%BA%91%E6%9C%8D%E5%8A%A1cgi%EF%BC%8C%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E5%8A%A0%E6%B3%95%E8%AE%A1%E7%AE%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">html远程访问云服务cgi，实现简单的加法计算</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8TCC%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1/">使用TCC自己编译自己</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/Notepad++%E7%AE%80%E4%BB%8B/">Notepad++简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E5%B0%8F%E5%B0%8F%E8%BE%93%E5%85%A5%E6%B3%95%E7%AE%80%E4%BB%8B/">小小输入法简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8tcc%E8%AF%BB%E5%86%99%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6/">使用tcc读写文本文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/typora%E5%8F%8Amarkdown%E7%AE%80%E4%BB%8B/">typora及markdown简介</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

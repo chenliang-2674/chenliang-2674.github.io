@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>在linux系统 [腾讯云centos系统] 中下载安装octave时报错 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1 octave安装问题刚开始在网上找如何在linux系统中安装octave，尝试下载安装octave-5.1.0.tar.gz，下载： 1wget http:&#x2F;&#x2F;ftp.gnu.org&#x2F;gnu&#x2F;octave&#x2F;octave-5.1.0.tar.gz 解压： 1tar -xvf octave-5.1.0.tar.gz  但下载好解压后在网上找不到如何安装，折腾了好久也没解决。后面找到了另外一种方法：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在linux系统 [腾讯云centos系统] 中下载安装octave时报错">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;20&#x2F;%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%20[%E8%85%BE%E8%AE%AF%E4%BA%91centos%E7%B3%BB%E7%BB%9F]%20%E4%B8%AD%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85octave%E6%97%B6%E6%8A%A5%E9%94%99&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1 octave安装问题刚开始在网上找如何在linux系统中安装octave，尝试下载安装octave-5.1.0.tar.gz，下载： 1wget http:&#x2F;&#x2F;ftp.gnu.org&#x2F;gnu&#x2F;octave&#x2F;octave-5.1.0.tar.gz 解压： 1tar -xvf octave-5.1.0.tar.gz  但下载好解压后在网上找不到如何安装，折腾了好久也没解决。后面找到了另外一种方法：">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027162208884.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027165558345.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027165339584.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-11-20T13:56:17.283Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191027162208884.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-在linux系统 [腾讯云centos系统] 中下载安装octave时报错" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%20%5B%E8%85%BE%E8%AE%AF%E4%BA%91centos%E7%B3%BB%E7%BB%9F%5D%20%E4%B8%AD%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85octave%E6%97%B6%E6%8A%A5%E9%94%99/" class="article-date">
+  <time datetime="2019-11-20T13:56:19.051Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在linux系统 [腾讯云centos系统] 中下载安装octave时报错
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-octave安装问题"><a href="#1-octave安装问题" class="headerlink" title="1 octave安装问题"></a>1 octave安装问题</h2><p>刚开始在网上找如何在linux系统中安装octave，尝试下载安装octave-5.1.0.tar.gz，<br>下载：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://ftp.gnu.org/gnu/octave/octave-5.1.0.tar.gz</span><br></pre></td></tr></table></figure>
+<p>解压：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf octave-5.1.0.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>但下载好解压后在网上找不到如何安装，折腾了好久也没解决。<br>后面找到了另外一种方法：<br>需要先检查yum能不能用，输入：yum<br>结果：<br><img src="https://img-blog.csdnimg.cn/20191027162208884.png" alt="在这里插入图片描述"><br>我的是因为升级python2.7为python3.6.1的时候修改了yum，所以导致yum有问题。<br>所以在安装octave时报错。<br>输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br></pre></td></tr></table></figure>
+<p>结果报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-bash: /usr/bin/yum: /usr/bin/python2: bad interpreter: No such file or directory</span><br></pre></td></tr></table></figure>
+<p>就是因为yum有问题。</p>
+<h2 id="2解决办法"><a href="#2解决办法" class="headerlink" title="2解决办法"></a>2解决办法</h2><p>输入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/bin/yum</span><br></pre></td></tr></table></figure>
+<p>进入yum中，查看第一行，将</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br></pre></td></tr></table></figure>
+<p>修改为：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python2.7</span><br></pre></td></tr></table></figure>
+<p>这样，修改后的yum依然可以调用python2.7的python,<br>保存退出以后，再输入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/libexec/urlgrabber-ext-down</span><br></pre></td></tr></table></figure>
+<p>同样确认第一行，将</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br></pre></td></tr></table></figure>
+<p>修改为：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python2.7</span><br></pre></td></tr></table></figure>
+<p>保存退出，这样yum就修复好了，再输入yum就不会报错了。<br><img src="https://img-blog.csdnimg.cn/20191027165558345.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="3-安装octave"><a href="#3-安装octave" class="headerlink" title="3 安装octave"></a>3 安装octave</h2><p>接着就可以继续安装octave了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br></pre></td></tr></table></figure>
+<p>中途会跳出选择，输入y继续。<br>完成后，再输入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install octave</span><br></pre></td></tr></table></figure>
+<p>中途同样会跳出选择，输入y即可<br>这样octave就安装好了。<br>输入octave就可以进入octave的运行环境了，在里面就可以编辑代码运行了。<br><img src="https://img-blog.csdnimg.cn/20191027165339584.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NDIwMjQ2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>也可以新建.m脚本文件，在里面编辑代码，然后调用.m文件运行octave代码就可以了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%20[%E8%85%BE%E8%AE%AF%E4%BA%91centos%E7%B3%BB%E7%BB%9F]%20%E4%B8%AD%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85octave%E6%97%B6%E6%8A%A5%E9%94%99/" data-id="ck37d40s7000oawv6b6grdjo0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/20/vim%E6%95%99%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vim教程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/20/c,python,java,octave%EF%BC%8Cgolang%EF%BC%8Cjulia%E7%BC%96%E7%A8%8B%E8%AE%A1%E7%AE%97%E5%8D%81%E4%B8%87%E6%AC%A1%EF%BC%8C%E4%B8%80%E7%99%BE%E4%B8%87%E6%AC%A1%EF%BC%8C%E4%B8%80%E5%8D%83%E4%B8%87%E6%AC%A1sinx%EF%BC%8C%E6%AF%94%E8%BE%83%E6%95%88%E7%8E%87/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">c,python,java,octave，golang，julia编程计算十万次，一百万次，一千万次sinx，比较效率</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8TCC%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1/">使用TCC自己编译自己</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/Notepad++%E7%AE%80%E4%BB%8B/">Notepad++简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E5%B0%8F%E5%B0%8F%E8%BE%93%E5%85%A5%E6%B3%95%E7%AE%80%E4%BB%8B/">小小输入法简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/%E4%BD%BF%E7%94%A8tcc%E8%AF%BB%E5%86%99%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6/">使用tcc读写文本文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/typora%E5%8F%8Amarkdown%E7%AE%80%E4%BB%8B/">typora及markdown简介</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
